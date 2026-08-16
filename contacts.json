@@ -1,0 +1,87 @@
+{
+  "generated": "2026-08-16",
+  "note": "Researched contact details. confidence: high = published by the business or an official register; medium = third-party directory or inferred from a shared registered office.",
+  "contacts": {
+    "00151618": {
+      "company": "STRUTT AND PARKER (FARMS) LIMITED",
+      "director": "",
+      "phone": "01245 363030",
+      "email": "info@spfarms.co.uk",
+      "website": "https://www.spfarms.co.uk",
+      "source": "spfarms.co.uk/contact",
+      "confidence": "high"
+    },
+    "00363738": {
+      "company": "EASTNOR CASTLE ESTATES COMPANY LIMITED",
+      "director": "Graeme Ker (estate contact)",
+      "phone": "01531 632302",
+      "email": "enquiries@eastnorestate.co.uk",
+      "website": "https://eastnorcastle.com/estate/",
+      "source": "eastnorcastle.com estate page",
+      "confidence": "high"
+    },
+    "00286146": {
+      "company": "MILTON (PETERBOROUGH) ESTATES COMPANY",
+      "director": "",
+      "phone": "01733 267740",
+      "email": "",
+      "website": "https://www.miltonestate.co.uk",
+      "source": "Charity Commission register (Earl Fitzwilliam Charitable Trust, same estate office)",
+      "confidence": "high"
+    },
+    "01182857": {
+      "company": "L.J. FAIRBURN AND SON LIMITED",
+      "director": "Daniel Fairburn (Managing Director)",
+      "phone": "01507 490297",
+      "email": "",
+      "website": "https://www.fairburnseggs.co.uk",
+      "source": "Lincolnshire County Council directory; D&B for website",
+      "confidence": "high"
+    },
+    "00340076": {
+      "company": "GASCOINES GROUP LIMITED",
+      "director": "",
+      "phone": "01636 813245",
+      "email": "",
+      "website": "https://www.gascoines.co",
+      "source": "192.com business listing, 1 Church Street Southwell",
+      "confidence": "high"
+    },
+    "01359468": {
+      "company": "ALBANWISE LIMITED",
+      "director": "Duncan Blyth (Farm Manager, Barton Bendish)",
+      "phone": "01366 654549",
+      "email": "",
+      "website": "https://albanwisefarming.co.uk",
+      "source": "Albanwise Environment (sister company) contact page; team page for name",
+      "confidence": "medium"
+    },
+    "08798484": {
+      "company": "A L LEE FARMING COMPANY",
+      "director": "Stephen Anthony Lee / Anthony Leonard Lee (directors)",
+      "phone": "",
+      "email": "",
+      "website": "https://www.facebook.com/ALLEEFARMINGCO/",
+      "source": "Companies House officers; Facebook page (no phone published)",
+      "confidence": "medium"
+    },
+    "03199614": {
+      "company": "THREE PROSPECTS FARM LIMITED",
+      "director": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "source": "",
+      "confidence": "low"
+    },
+    "13018689": {
+      "company": "REDBROWN LIMITED",
+      "director": "",
+      "phone": "01245 363030",
+      "email": "info@spfarms.co.uk",
+      "website": "https://www.spfarms.co.uk",
+      "source": "Shares registered office with Strutt and Parker Farms (Unit 1, Old Park Farm, CM3 1LN)",
+      "confidence": "medium"
+    }
+  }
+}

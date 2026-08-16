@@ -255,6 +255,7 @@
   var ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhkb3FjbHJ3ZGR1bmNqYXh0aXhwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwMjkyNjMsImV4cCI6MjA5NjYwNTI2M30.vLCzN7-eNJh32tvy0zySDGX5bp6X1v9WlST59BSmIkk";
   var PASSCODE = "4472";               // change me: also change the note you keep
   var DATA_URL = "farms.json";
+  var CONTACTS_URL = "contacts.json";
 
   var STATUS = {
     new:            {label:"Not yet called", bg:"#E4EFE8", fg:"#1F6F4A", pin:"#1F6F4A"},
@@ -274,6 +275,7 @@
   var byNo  = {};        // company_number -> farm
   var meta  = {};        // company_number -> supabase row
   var acts  = [];        // farm_activity rows
+  var seedContacts = {}; // company_number -> researched contact (from contacts.json)
   var map, cluster, currentNo = null, sortKey = "land", sortDir = -1;
 
   /* ============ helpers ============ */
@@ -286,6 +288,19 @@
   function statusOf(no){
     var m = meta[no];
     return (m && m.pipeline_status) ? m.pipeline_status : "new";
+  }
+  // Anything you type in the app wins; researched contacts fill the gaps.
+  function contactOf(no){
+    var m = meta[no] || {}, s = seedContacts[no] || {};
+    return {
+      phone:    m.phone         || s.phone    || "",
+      email:    m.email         || s.email    || "",
+      director: m.director_name || s.director || "",
+      website:  s.website       || "",
+      source:   s.source        || "",
+      confidence: s.confidence  || "",
+      researched: !!(s.phone || s.email || s.director)
+    };
   }
   function tag(st){
     var s = STATUS[st] || STATUS.new;
@@ -384,7 +399,10 @@
       farms.forEach(function(o){ byNo[o.no] = o; });
       buildCounties();
       initMap();
-      return refreshCloud();
+      return fetch(CONTACTS_URL)
+        .then(function(r){ return r.ok ? r.json() : {contacts:{}}; })
+        .catch(function(){ return {contacts:{}}; })
+        .then(function(c){ seedContacts = c.contacts || {}; return refreshCloud(); });
     }).then(function(){
       applyFilters();
       renderList();
@@ -484,15 +502,16 @@
   }
 
   function popupHTML(o){
-    var m = meta[o.no] || {};
+    var c = contactOf(o.no);
     return '<div class="pop">' +
       '<h4>' + esc(o.name) + '</h4>' +
       '<div class="sub">' + esc(o.town || "") + (o.pc ? " · " + esc(o.pc) : "") + '</div>' +
       '<dl>' +
         '<dt>Land parcels</dt><dd class="num"><b>' + (o.land||0) + '</b> of ' + (o.titles||0) + ' titles</dd>' +
         '<dt>Farming</dt><dd>' + esc(o.sic || "—") + '</dd>' +
-        '<dt>Phone</dt><dd>' + (m.phone ? '<a href="tel:'+esc(m.phone)+'">'+esc(m.phone)+'</a>' : '<span style="color:#8A9992">not found yet</span>') + '</dd>' +
-        '<dt>Email</dt><dd>' + (m.email ? esc(m.email) : '<span style="color:#8A9992">not found yet</span>') + '</dd>' +
+        (c.director ? '<dt>Contact</dt><dd>' + esc(c.director) + '</dd>' : '') +
+        '<dt>Phone</dt><dd>' + (c.phone ? '<a href="tel:'+esc(c.phone.replace(/\s/g,""))+'"><b>'+esc(c.phone)+'</b></a>' : '<span style="color:#8A9992">not found yet</span>') + '</dd>' +
+        '<dt>Email</dt><dd>' + (c.email ? '<a href="mailto:'+esc(c.email)+'">'+esc(c.email)+'</a>' : '<span style="color:#8A9992">not found yet</span>') + '</dd>' +
         '<dt>Status</dt><dd>' + tag(statusOf(o.no)) + '</dd>' +
       '</dl>' +
       '<button class="go" data-open="' + esc(o.no) + '">Open record</button>' +
@@ -531,7 +550,7 @@
 
     var cap = sel.slice(0, 600);
     cap.forEach(function(o){
-      var m = meta[o.no] || {};
+      var m = contactOf(o.no);
       h += '<tr data-open="'+esc(o.no)+'">' +
         '<td><b>'+esc(o.name)+'</b><br><span style="color:#5D6E66;font-size:12.5px">'+esc(o.town||"")+' · '+esc(o.pc||"")+'</span></td>' +
         '<td>'+esc(o.county||"")+'</td>' +
@@ -566,6 +585,7 @@
     var o = byNo[no];
     if(!o) return;
     var m = meta[no] || {};
+    var c = contactOf(no);
     var mine = acts.filter(function(a){ return a.company_number === no; });
 
     var h = '<button class="back" id="dBack">← Back</button>' +
@@ -589,9 +609,9 @@
       '<div class="card">' +
         '<h3>Contact &amp; status <span class="saved" id="savedFlag">Saved</span></h3>' +
         '<div class="grid2">' +
-          '<div class="fld"><label for="dDir">Person in charge</label><input id="dDir" value="' + esc(m.director_name||"") + '" placeholder="Director / farm manager"></div>' +
-          '<div class="fld"><label for="dPhone">Phone</label><input id="dPhone" value="' + esc(m.phone||"") + '" placeholder="01xxx xxxxxx"></div>' +
-          '<div class="fld"><label for="dEmail">Email</label><input id="dEmail" value="' + esc(m.email||"") + '" placeholder="name@farm.co.uk"></div>' +
+          '<div class="fld"><label for="dDir">Person in charge</label><input id="dDir" value="' + esc(c.director) + '" placeholder="Director / farm manager"></div>' +
+          '<div class="fld"><label for="dPhone">Phone</label><input id="dPhone" value="' + esc(c.phone) + '" placeholder="01xxx xxxxxx"></div>' +
+          '<div class="fld"><label for="dEmail">Email</label><input id="dEmail" value="' + esc(c.email) + '" placeholder="name@farm.co.uk"></div>' +
           '<div class="fld"><label for="dAcres">Acres available (ask on the call)</label><input id="dAcres" type="number" min="0" value="' + esc(m.acreage_est||"") + '" placeholder="5"></div>' +
           '<div class="fld"><label for="dStatus">Status</label><select id="dStatus">' +
             STATUS_ORDER.map(function(k){
@@ -599,7 +619,10 @@
             }).join("") +
           '</select></div>' +
         '</div>' +
-        '<div class="row" style="margin-top:12px"><button class="btn" id="dSave">Save details</button></div>' +
+        '<div class="row" style="margin-top:12px"><button class="btn" id="dSave">Save details</button>' +
+          (c.website ? '<a class="btn ghost" href="' + esc(c.website) + '" target="_blank" rel="noopener" style="text-decoration:none">Open website ↗</a>' : '') +
+        '</div>' +
+        (c.source ? '<div style="margin-top:10px;font-size:12.5px;color:#5D6E66">Found via ' + esc(c.source) + ' · confidence ' + esc(c.confidence) + ' — worth confirming on the call.</div>' : '') +
       '</div>' +
 
       '<div class="card">' +
