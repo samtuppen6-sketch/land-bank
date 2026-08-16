@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Land Bank — Solpath</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0F1D18; --paper:#EFF2EE; --surface:#FFFFFF; --line:#D7DED8;
+    --muted:#5D6E66; --green:#1F6F4A; --green-dk:#164F35; --ochre:#A8541B;
+    --amber:#B58900; --red:#A32E22; --blue:#1B5E8A;
+    --r:10px; --shadow:0 1px 2px rgba(15,29,24,.07), 0 8px 24px rgba(15,29,24,.06);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.disp{font-family:"Space Grotesk",-apple-system,sans-serif;font-weight:700;letter-spacing:-.01em;margin:0}
+  .num{font-variant-numeric:tabular-nums}
+  button,input,select,textarea{font:inherit;color:inherit}
+  button{cursor:pointer}
+  a{color:var(--green)}
+
+  /* ---------- gate ---------- */
+  #gate{position:fixed;inset:0;z-index:9000;background:var(--ink);display:flex;align-items:center;justify-content:center;padding:24px}
+  #gate .box{width:100%;max-width:340px;text-align:center;color:#fff}
+  #gate .mark{font-family:"Space Grotesk";font-weight:700;font-size:13px;letter-spacing:.18em;text-transform:uppercase;opacity:.6}
+  #gate h1{font-size:30px;margin:10px 0 4px}
+  #gate p{color:#9DB3A9;font-size:14px;margin:0 0 22px}
+  #gate input{width:100%;padding:13px 14px;border-radius:var(--r);border:1px solid #33463E;background:#16261F;color:#fff;text-align:center;letter-spacing:.3em;font-size:17px}
+  #gate button{width:100%;margin-top:10px;padding:13px;border:0;border-radius:var(--r);background:var(--green);color:#fff;font-weight:700}
+  #gate .err{color:#E58C7F;font-size:13px;height:18px;margin-top:10px}
+
+  /* ---------- shell ---------- */
+  #app{display:none;height:100%;flex-direction:column}
+  header{
+    display:flex;align-items:center;gap:16px;padding:10px 18px;
+    background:var(--ink);color:#fff;flex:0 0 auto;
+  }
+  header .brand{font-family:"Space Grotesk";font-weight:700;font-size:16px;letter-spacing:-.01em}
+  header .brand span{color:#7FC0A0}
+  nav{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+  nav button{
+    background:transparent;border:0;color:#A9BFB6;padding:8px 14px;border-radius:8px;font-weight:600;font-size:14px;
+  }
+  nav button.on{background:#22352D;color:#fff}
+  nav button .pill{
+    display:inline-block;min-width:19px;padding:0 5px;margin-left:6px;border-radius:9px;
+    background:var(--red);color:#fff;font-size:11px;font-weight:700;line-height:19px;text-align:center
+  }
+  main{flex:1 1 auto;min-height:0;position:relative}
+  .view{position:absolute;inset:0;display:none;overflow:auto}
+  .view.on{display:block}
+  .view.flush{overflow:hidden}
+
+  /* ---------- filter bar ---------- */
+  .filters{
+    display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+    padding:10px 14px;background:var(--surface);border-bottom:1px solid var(--line)
+  }
+  .filters label{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+  .filters select,.filters input{
+    padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface)
+  }
+  .filters .count{margin-left:auto;font-size:13px;color:var(--muted)}
+  .filters .count b{color:var(--ink);font-size:15px}
+
+  /* ---------- map ---------- */
+  #mapWrap{position:absolute;inset:0;display:flex;flex-direction:column}
+  #map{flex:1 1 auto;min-height:0;background:#DDE4DE}
+  .legend{
+    position:absolute;right:12px;bottom:24px;z-index:600;background:rgba(255,255,255,.95);
+    border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;font-size:12px;box-shadow:var(--shadow)
+  }
+  .legend b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px}
+  .legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:middle}
+
+  .leaflet-popup-content{margin:12px 14px;min-width:220px}
+  .pop h4{font-family:"Space Grotesk";font-size:15px;margin:0 0 2px}
+  .pop .sub{color:var(--muted);font-size:12.5px;margin-bottom:8px}
+  .pop dl{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;margin:0 0 10px;font-size:13px}
+  .pop dt{color:var(--muted)}
+  .pop dd{margin:0}
+  .pop .go{display:block;width:100%;text-align:center;padding:9px;border:0;border-radius:8px;background:var(--green);color:#fff;font-weight:700}
+
+  /* ---------- table ---------- */
+  table{width:100%;border-collapse:collapse;background:var(--surface)}
+  th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);font-size:14px}
+  th{position:sticky;top:0;background:var(--surface);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);z-index:2;cursor:pointer;white-space:nowrap}
+  tbody tr{cursor:pointer}
+  tbody tr:hover{background:#F5F8F5}
+  .tag{display:inline-block;padding:2px 8px;border-radius:99px;font-size:11.5px;font-weight:700;white-space:nowrap}
+
+  /* ---------- detail ---------- */
+  #detail{position:absolute;inset:0;background:var(--paper);display:none;overflow:auto;z-index:1200}
+  #detail.on{display:block}
+  .dwrap{max-width:920px;margin:0 auto;padding:18px 16px 60px}
+  .back{background:none;border:0;color:var(--muted);font-weight:600;padding:6px 0;margin-bottom:8px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:14px;box-shadow:var(--shadow)}
+  .card h3{font-size:13px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:12px}
+  .dhead h2{font-size:23px;line-height:1.2}
+  .dhead .meta{color:var(--muted);font-size:13.5px;margin-top:4px}
+  .stats{display:flex;gap:26px;margin-top:14px;flex-wrap:wrap}
+  .stat b{display:block;font-family:"Space Grotesk";font-size:21px}
+  .stat span{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+  .fld label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:4px;font-weight:700}
+  .fld input,.fld select,.fld textarea{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+  .fld textarea{min-height:78px;resize:vertical}
+  .btn{padding:10px 16px;border:0;border-radius:8px;background:var(--green);color:#fff;font-weight:700}
+  .btn.ghost{background:var(--surface);border:1px solid var(--line);color:var(--ink)}
+  .btn:disabled{opacity:.5}
+  .row{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
+  .saved{font-size:12.5px;color:var(--green);opacity:0;transition:opacity .2s}
+  .saved.on{opacity:1}
+
+  .tl{list-style:none;margin:0;padding:0}
+  .tl li{padding:11px 0 11px 14px;border-left:2px solid var(--line);position:relative}
+  .tl li:before{content:"";position:absolute;left:-5px;top:16px;width:8px;height:8px;border-radius:50%;background:var(--green)}
+  .tl .when{font-size:11.5px;color:var(--muted)}
+  .tl .what{margin-top:2px;white-space:pre-wrap}
+  .tl .kind{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+
+  .cb{display:flex;gap:12px;align-items:center;padding:13px 14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);margin-bottom:9px;cursor:pointer}
+  .cb .when{font-family:"Space Grotesk";font-weight:700;min-width:118px}
+  .cb.over{border-left:4px solid var(--red)}
+  .cb.soon{border-left:4px solid var(--amber)}
+  .cb .nm{font-weight:600}
+  .cb .nt{color:var(--muted);font-size:13px}
+  .cb .done{margin-left:auto;padding:7px 12px;border:1px solid var(--line);background:var(--surface);border-radius:8px;font-size:13px;font-weight:600}
+
+  .empty{padding:44px 20px;text-align:center;color:var(--muted)}
+  .empty b{display:block;font-family:"Space Grotesk";font-size:17px;color:var(--ink);margin-bottom:6px}
+  .pad{padding:16px}
+  .banner{background:#FFF6E5;border:1px solid #E8D6A8;color:#6B4E12;padding:9px 14px;font-size:13px}
+  @media (max-width:640px){
+    .filters{gap:7px;padding:8px 10px}
+    header{padding:9px 12px;gap:10px}
+    nav button{padding:7px 10px;font-size:13px}
+  }
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <div class="box">
+    <div class="mark">Solpath</div>
+    <h1>Land Bank</h1>
+    <p>Enter the access code to continue.</p>
+    <input id="code" type="password" inputmode="numeric" autocomplete="off" placeholder="••••••" aria-label="Access code">
+    <button id="codeGo">Unlock</button>
+    <div class="err" id="codeErr"></div>
+  </div>
+</div>
+
+<div id="app">
+  <header>
+    <div class="brand">Solpath <span>/ Land Bank</span></div>
+    <nav>
+      <button data-v="map" class="on">Map</button>
+      <button data-v="list">Pipeline</button>
+      <button data-v="calls">Callbacks<span class="pill" id="cbCount" style="display:none">0</span></button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- MAP -->
+    <section class="view on flush" id="v-map">
+      <div id="mapWrap">
+        <div class="filters">
+          <label for="fCounty">County</label>
+          <select id="fCounty"><option value="">All</option></select>
+          <label for="fLand">Min land parcels</label>
+          <select id="fLand">
+            <option value="1">1+</option>
+            <option value="3" selected>3+</option>
+            <option value="5">5+</option>
+            <option value="10">10+</option>
+            <option value="0">Any (incl. none)</option>
+          </select>
+          <label for="fStatus">Status</label>
+          <select id="fStatus">
+            <option value="">All</option>
+            <option value="new">Not yet called</option>
+            <option value="interested">Interested</option>
+            <option value="warm">Warm</option>
+            <option value="handed_over">Handed over</option>
+            <option value="dead">Dead</option>
+          </select>
+          <input id="fSearch" type="search" placeholder="Search name or postcode" style="min-width:190px">
+          <div class="count"><b id="shown" class="num">0</b> farms shown</div>
+        </div>
+        <div id="map"></div>
+        <div class="legend">
+          <b>Pin size = land parcels owned</b>
+          <div><i style="background:#1F6F4A"></i>Not yet called</div>
+          <div><i style="background:#B58900"></i>In progress</div>
+          <div><i style="background:#1B5E8A"></i>Handed to David</div>
+          <div><i style="background:#9AA8A1"></i>Dead / not interested</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIST -->
+    <section class="view" id="v-list">
+      <div class="filters">
+        <label for="lStatus">Status</label>
+        <select id="lStatus">
+          <option value="">All</option>
+          <option value="new">Not yet called</option>
+          <option value="called">Called</option>
+          <option value="no_answer">No answer</option>
+          <option value="interested">Interested</option>
+          <option value="warm">Warm</option>
+          <option value="handed_over">Handed over</option>
+          <option value="not_interested">Not interested</option>
+          <option value="dead">Dead</option>
+        </select>
+        <label for="lCounty">County</label>
+        <select id="lCounty"><option value="">All</option></select>
+        <input id="lSearch" type="search" placeholder="Search name or postcode" style="min-width:190px">
+        <div class="count"><b id="lShown" class="num">0</b> rows</div>
+      </div>
+      <div id="tableWrap"></div>
+    </section>
+
+    <!-- CALLBACKS -->
+    <section class="view" id="v-calls">
+      <div class="pad" id="cbList"></div>
+    </section>
+
+    <!-- DETAIL -->
+    <div id="detail"><div class="dwrap" id="dBody"></div></div>
+  </main>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  /* ============ config ============ */
+  var SUPA = "https://xdoqclrwdduncjaxtixp.supabase.co";
+  var ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhkb3FjbHJ3ZGR1bmNqYXh0aXhwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwMjkyNjMsImV4cCI6MjA5NjYwNTI2M30.vLCzN7-eNJh32tvy0zySDGX5bp6X1v9WlST59BSmIkk";
+  var PASSCODE = "4472";               // change me: also change the note you keep
+  var DATA_URL = "farms.json";
+
+  var STATUS = {
+    new:            {label:"Not yet called", bg:"#E4EFE8", fg:"#1F6F4A", pin:"#1F6F4A"},
+    called:         {label:"Called",         bg:"#FBF1D8", fg:"#7A5C00", pin:"#B58900"},
+    no_answer:      {label:"No answer",      bg:"#FBF1D8", fg:"#7A5C00", pin:"#B58900"},
+    interested:     {label:"Interested",     bg:"#FBF1D8", fg:"#7A5C00", pin:"#B58900"},
+    warm:           {label:"Warm",           bg:"#FBE7D8", fg:"#A8541B", pin:"#A8541B"},
+    handed_over:    {label:"Handed over",    bg:"#DCEAF4", fg:"#1B5E8A", pin:"#1B5E8A"},
+    live:           {label:"Live project",   bg:"#DCEAF4", fg:"#1B5E8A", pin:"#1B5E8A"},
+    not_interested: {label:"Not interested", bg:"#ECEFED", fg:"#5D6E66", pin:"#9AA8A1"},
+    dead:           {label:"Dead",           bg:"#ECEFED", fg:"#5D6E66", pin:"#9AA8A1"}
+  };
+  var STATUS_ORDER = ["new","called","no_answer","interested","warm","handed_over","live","not_interested","dead"];
+
+  /* ============ state ============ */
+  var farms = [];        // seed rows from farms.json
+  var byNo  = {};        // company_number -> farm
+  var meta  = {};        // company_number -> supabase row
+  var acts  = [];        // farm_activity rows
+  var map, cluster, currentNo = null, sortKey = "land", sortDir = -1;
+
+  /* ============ helpers ============ */
+  function $(id){ return document.getElementById(id); }
+  function esc(s){
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+    });
+  }
+  function statusOf(no){
+    var m = meta[no];
+    return (m && m.pipeline_status) ? m.pipeline_status : "new";
+  }
+  function tag(st){
+    var s = STATUS[st] || STATUS.new;
+    return '<span class="tag" style="background:'+s.bg+';color:'+s.fg+'">'+esc(s.label)+'</span>';
+  }
+  function fmtDT(iso){
+    if(!iso) return "";
+    try{
+      return new Date(iso).toLocaleString("en-GB",{weekday:"short",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
+    }catch(e){ return iso; }
+  }
+  function toLocalInput(iso){
+    var d = iso ? new Date(iso) : new Date();
+    var p = function(n){ return String(n).padStart(2,"0"); };
+    return d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate())+"T"+p(d.getHours())+":"+p(d.getMinutes());
+  }
+
+  /* ============ supabase REST ============ */
+  function api(path, opts){
+    opts = opts || {};
+    var h = {
+      "apikey": ANON,
+      "Authorization": "Bearer " + ANON,
+      "Content-Type": "application/json"
+    };
+    if(opts.prefer) h["Prefer"] = opts.prefer;
+    return fetch(SUPA + "/rest/v1/" + path, {
+      method: opts.method || "GET",
+      headers: h,
+      body: opts.body ? JSON.stringify(opts.body) : undefined
+    }).then(function(r){
+      if(!r.ok) return r.text().then(function(t){ throw new Error(r.status + " " + t.slice(0,180)); });
+      return r.status === 204 ? null : r.json();
+    });
+  }
+
+  function upsertProspect(no, patch){
+    var f = byNo[no] || {};
+    var row = Object.assign({
+      company_number: no,
+      company_name:   f.name || no,
+      county:         f.county || null,
+      postcode:       f.pc || null,
+      postcode_norm:  (f.pc||"").replace(/\s/g,"").toUpperCase() || null,
+      address_line:   f.addr || null,
+      town:           f.town || null,
+      sic_text:       f.sic || null,
+      lat:            f.lat != null ? f.lat : null,
+      lng:            f.lng != null ? f.lng : null,
+      title_count:    f.titles || 0,
+      land_title_count: f.land || 0,
+      land_counties:  f.areas || null,
+      sample_land:    f.sample || null
+    }, meta[no] || {}, patch);
+    delete row.id; delete row.created_at; delete row.updated_at;
+    return api("farm_prospects?on_conflict=company_number", {
+      method:"POST", body:[row], prefer:"resolution=merge-duplicates,return=representation"
+    }).then(function(res){
+      if(res && res[0]) meta[no] = res[0];
+      return meta[no];
+    });
+  }
+
+  /* ============ boot ============ */
+  function unlock(){
+    var v = $("code").value.trim();
+    if(v === PASSCODE){
+      try{ localStorage.setItem("lb_ok","1"); }catch(e){}
+      start();
+    } else {
+      $("codeErr").textContent = "That code isn't right.";
+      $("code").value = "";
+      $("code").focus();
+    }
+  }
+  $("codeGo").addEventListener("click", unlock);
+  $("code").addEventListener("keydown", function(e){ if(e.key === "Enter") unlock(); });
+
+  function start(){
+    $("gate").style.display = "none";
+    $("app").style.display = "flex";
+    loadAll();
+  }
+
+  function loadAll(){
+    fetch(DATA_URL).then(function(r){
+      if(!r.ok) throw new Error("Couldn't load farms.json (" + r.status + ")");
+      return r.json();
+    }).then(function(p){
+      var f = p.fields;
+      farms = p.rows.map(function(r){
+        var o = {};
+        for(var i=0;i<f.length;i++) o[f[i]] = r[i];
+        return o;
+      });
+      farms.forEach(function(o){ byNo[o.no] = o; });
+      buildCounties();
+      initMap();
+      return refreshCloud();
+    }).then(function(){
+      applyFilters();
+      renderList();
+      renderCallbacks();
+    }).catch(function(e){
+      document.querySelector("main").insertAdjacentHTML("afterbegin",
+        '<div class="banner">Data didn\'t load: ' + esc(e.message) + '</div>');
+    });
+  }
+
+  function refreshCloud(){
+    return Promise.all([
+      api("farm_prospects?select=*&limit=20000").catch(function(){ return []; }),
+      api("farm_activity?select=*&order=created_at.desc&limit=5000").catch(function(){ return []; })
+    ]).then(function(res){
+      meta = {};
+      (res[0]||[]).forEach(function(r){ meta[r.company_number] = r; });
+      acts = res[1] || [];
+    });
+  }
+
+  /* ============ filters ============ */
+  function buildCounties(){
+    var seen = {};
+    farms.forEach(function(o){ if(o.county) seen[o.county] = (seen[o.county]||0)+1; });
+    var list = Object.keys(seen).sort(function(a,b){ return seen[b]-seen[a]; });
+    var html = '<option value="">All</option>' + list.map(function(c){
+      return '<option value="'+esc(c)+'">'+esc(c)+' ('+seen[c]+')</option>';
+    }).join("");
+    $("fCounty").innerHTML = html;
+    $("lCounty").innerHTML = html;
+  }
+
+  function matches(o, county, minLand, status, q){
+    if(county && o.county !== county) return false;
+    if(minLand && (o.land||0) < minLand) return false;
+    if(status){
+      var st = statusOf(o.no);
+      if(status === "new"  && st !== "new") return false;
+      if(status === "dead" && st !== "dead" && st !== "not_interested") return false;
+      if(status !== "new" && status !== "dead" && st !== status) return false;
+    }
+    if(q){
+      var hay = (o.name + " " + o.pc + " " + (o.town||"")).toLowerCase();
+      if(hay.indexOf(q) === -1) return false;
+    }
+    return true;
+  }
+
+  function applyFilters(){
+    var county  = $("fCounty").value;
+    var minLand = parseInt($("fLand").value, 10) || 0;
+    var status  = $("fStatus").value;
+    var q       = $("fSearch").value.trim().toLowerCase();
+    var sel = farms.filter(function(o){ return matches(o, county, minLand, status, q); });
+    $("shown").textContent = sel.length.toLocaleString();
+    drawPins(sel);
+  }
+  ["fCounty","fLand","fStatus"].forEach(function(id){
+    $(id).addEventListener("change", applyFilters);
+  });
+  $("fSearch").addEventListener("input", applyFilters);
+
+  /* ============ map ============ */
+  function initMap(){
+    map = L.map("map", {preferCanvas:true}).setView([52.7,-1.0], 7);
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+      attribution:'&copy; OpenStreetMap &copy; CARTO', maxZoom:19
+    }).addTo(map);
+    cluster = L.markerClusterGroup({
+      chunkedLoading:true, spiderfyOnMaxZoom:true, disableClusteringAtZoom:12, maxClusterRadius:48
+    });
+    map.addLayer(cluster);
+  }
+
+  function radiusFor(land){
+    if(land >= 25) return 11;
+    if(land >= 10) return 9;
+    if(land >= 5)  return 7.5;
+    if(land >= 2)  return 6;
+    return 4.5;
+  }
+
+  function drawPins(sel){
+    cluster.clearLayers();
+    var marks = sel.map(function(o){
+      var st = statusOf(o.no);
+      var col = (STATUS[st] || STATUS.new).pin;
+      var m = L.circleMarker([o.lat, o.lng], {
+        radius: radiusFor(o.land||0),
+        color:"#fff", weight:1.5, fillColor:col, fillOpacity:.92
+      });
+      m.bindPopup(popupHTML(o), {maxWidth:300});
+      return m;
+    });
+    cluster.addLayers(marks);
+  }
+
+  function popupHTML(o){
+    var m = meta[o.no] || {};
+    return '<div class="pop">' +
+      '<h4>' + esc(o.name) + '</h4>' +
+      '<div class="sub">' + esc(o.town || "") + (o.pc ? " · " + esc(o.pc) : "") + '</div>' +
+      '<dl>' +
+        '<dt>Land parcels</dt><dd class="num"><b>' + (o.land||0) + '</b> of ' + (o.titles||0) + ' titles</dd>' +
+        '<dt>Farming</dt><dd>' + esc(o.sic || "—") + '</dd>' +
+        '<dt>Phone</dt><dd>' + (m.phone ? '<a href="tel:'+esc(m.phone)+'">'+esc(m.phone)+'</a>' : '<span style="color:#8A9992">not found yet</span>') + '</dd>' +
+        '<dt>Email</dt><dd>' + (m.email ? esc(m.email) : '<span style="color:#8A9992">not found yet</span>') + '</dd>' +
+        '<dt>Status</dt><dd>' + tag(statusOf(o.no)) + '</dd>' +
+      '</dl>' +
+      '<button class="go" data-open="' + esc(o.no) + '">Open record</button>' +
+    '</div>';
+  }
+
+  document.addEventListener("click", function(e){
+    var b = e.target.closest("[data-open]");
+    if(b) openDetail(b.getAttribute("data-open"));
+  });
+
+  /* ============ pipeline table ============ */
+  function renderList(){
+    var county = $("lCounty").value;
+    var status = $("lStatus").value;
+    var q = $("lSearch").value.trim().toLowerCase();
+    var sel = farms.filter(function(o){
+      if(county && o.county !== county) return false;
+      if(status && statusOf(o.no) !== status) return false;
+      if(q && (o.name + " " + o.pc + " " + (o.town||"")).toLowerCase().indexOf(q) === -1) return false;
+      return true;
+    });
+    sel.sort(function(a,b){
+      var x, y;
+      if(sortKey === "name"){ x = a.name; y = b.name; return x < y ? sortDir : x > y ? -sortDir : 0; }
+      if(sortKey === "status"){ x = STATUS_ORDER.indexOf(statusOf(a.no)); y = STATUS_ORDER.indexOf(statusOf(b.no)); }
+      else { x = a[sortKey] || 0; y = b[sortKey] || 0; }
+      return (x - y) * sortDir;
+    });
+    $("lShown").textContent = sel.length.toLocaleString();
+
+    var head = [["name","Company"],["county","County"],["land","Land parcels"],["titles","Titles"],["status","Status"],["phone","Phone"]];
+    var h = '<table><thead><tr>' + head.map(function(c){
+      return '<th data-sort="'+c[0]+'">'+c[1]+(sortKey===c[0]?(sortDir>0?" ▲":" ▼"):"")+'</th>';
+    }).join("") + '</tr></thead><tbody>';
+
+    var cap = sel.slice(0, 600);
+    cap.forEach(function(o){
+      var m = meta[o.no] || {};
+      h += '<tr data-open="'+esc(o.no)+'">' +
+        '<td><b>'+esc(o.name)+'</b><br><span style="color:#5D6E66;font-size:12.5px">'+esc(o.town||"")+' · '+esc(o.pc||"")+'</span></td>' +
+        '<td>'+esc(o.county||"")+'</td>' +
+        '<td class="num">'+(o.land||0)+'</td>' +
+        '<td class="num">'+(o.titles||0)+'</td>' +
+        '<td>'+tag(statusOf(o.no))+'</td>' +
+        '<td>'+(m.phone ? esc(m.phone) : '<span style="color:#9AA8A1">—</span>')+'</td>' +
+      '</tr>';
+    });
+    h += '</tbody></table>';
+    if(sel.length > cap.length){
+      h += '<div class="pad" style="color:#5D6E66;font-size:13px">Showing the first '+cap.length+' of '+sel.length.toLocaleString()+'. Narrow the filters to see the rest.</div>';
+    }
+    if(!sel.length){
+      h = '<div class="empty"><b>Nothing matches those filters</b>Try widening the county or status.</div>';
+    }
+    $("tableWrap").innerHTML = h;
+    Array.prototype.forEach.call($("tableWrap").querySelectorAll("th[data-sort]"), function(th){
+      th.addEventListener("click", function(){
+        var k = th.getAttribute("data-sort");
+        if(sortKey === k) sortDir = -sortDir; else { sortKey = k; sortDir = (k === "name") ? 1 : -1; }
+        renderList();
+      });
+    });
+  }
+  ["lCounty","lStatus"].forEach(function(id){ $(id).addEventListener("change", renderList); });
+  $("lSearch").addEventListener("input", renderList);
+
+  /* ============ detail ============ */
+  function openDetail(no){
+    currentNo = no;
+    var o = byNo[no];
+    if(!o) return;
+    var m = meta[no] || {};
+    var mine = acts.filter(function(a){ return a.company_number === no; });
+
+    var h = '<button class="back" id="dBack">← Back</button>' +
+      '<div class="card dhead">' +
+        '<h2>' + esc(o.name) + '</h2>' +
+        '<div class="meta">' + esc([o.addr,o.town,o.pc].filter(Boolean).join(", ")) + '</div>' +
+        '<div class="meta">Company ' + esc(no) +
+          ' · <a href="https://find-and-update.company-information.service.gov.uk/company/' + esc(no) + '" target="_blank" rel="noopener">Companies House ↗</a>' +
+          ' · <a href="https://www.google.com/search?q=' + encodeURIComponent(o.name + " " + (o.town||"") + " farm contact") + '" target="_blank" rel="noopener">Find contact ↗</a>' +
+        '</div>' +
+        '<div class="stats">' +
+          '<div class="stat"><b class="num">' + (o.land||0) + '</b><span>Land parcels</span></div>' +
+          '<div class="stat"><b class="num">' + (o.titles||0) + '</b><span>Total titles</span></div>' +
+          '<div class="stat"><b>' + esc(o.county||"—") + '</b><span>County</span></div>' +
+          '<div class="stat"><b style="font-size:14px;font-weight:600">' + esc(o.sic||"—") + '</b><span>Farm type</span></div>' +
+        '</div>' +
+        (o.areas ? '<div class="meta" style="margin-top:12px">Land held in: ' + esc(o.areas) + '</div>' : '') +
+        (o.sample ? '<div class="meta" style="margin-top:4px">e.g. ' + esc(o.sample) + '</div>' : '') +
+      '</div>' +
+
+      '<div class="card">' +
+        '<h3>Contact &amp; status <span class="saved" id="savedFlag">Saved</span></h3>' +
+        '<div class="grid2">' +
+          '<div class="fld"><label for="dDir">Person in charge</label><input id="dDir" value="' + esc(m.director_name||"") + '" placeholder="Director / farm manager"></div>' +
+          '<div class="fld"><label for="dPhone">Phone</label><input id="dPhone" value="' + esc(m.phone||"") + '" placeholder="01xxx xxxxxx"></div>' +
+          '<div class="fld"><label for="dEmail">Email</label><input id="dEmail" value="' + esc(m.email||"") + '" placeholder="name@farm.co.uk"></div>' +
+          '<div class="fld"><label for="dAcres">Acres available (ask on the call)</label><input id="dAcres" type="number" min="0" value="' + esc(m.acreage_est||"") + '" placeholder="5"></div>' +
+          '<div class="fld"><label for="dStatus">Status</label><select id="dStatus">' +
+            STATUS_ORDER.map(function(k){
+              return '<option value="'+k+'"'+(statusOf(no)===k?" selected":"")+'>'+esc(STATUS[k].label)+'</option>';
+            }).join("") +
+          '</select></div>' +
+        '</div>' +
+        '<div class="row" style="margin-top:12px"><button class="btn" id="dSave">Save details</button></div>' +
+      '</div>' +
+
+      '<div class="card">' +
+        '<h3>Log a call or note</h3>' +
+        '<div class="fld"><label for="dNote">What happened</label><textarea id="dNote" placeholder="Spoke to… interested in 12 acres behind the barn…"></textarea></div>' +
+        '<div class="row" style="margin-top:12px">' +
+          '<div class="fld" style="flex:1 1 200px"><label for="dWhen">Set a callback (optional)</label><input id="dWhen" type="datetime-local"></div>' +
+          '<button class="btn" id="dLog">Save note</button>' +
+        '</div>' +
+      '</div>' +
+
+      '<div class="card">' +
+        '<h3>History</h3>' +
+        (mine.length ? '<ul class="tl">' + mine.map(function(a){
+          return '<li>' +
+            '<div class="kind">' + esc(a.type) + (a.due_at ? " · callback " + esc(fmtDT(a.due_at)) : "") + '</div>' +
+            '<div class="when">' + esc(fmtDT(a.created_at)) + '</div>' +
+            '<div class="what">' + esc(a.body||"") + '</div>' +
+          '</li>';
+        }).join("") + '</ul>' : '<div style="color:#5D6E66">Nothing logged yet.</div>') +
+      '</div>';
+
+    $("dBody").innerHTML = h;
+    $("detail").classList.add("on");
+    $("dBack").addEventListener("click", closeDetail);
+    $("dSave").addEventListener("click", saveDetail);
+    $("dLog").addEventListener("click", logNote);
+  }
+
+  function closeDetail(){
+    $("detail").classList.remove("on");
+    currentNo = null;
+    applyFilters();
+    renderList();
+    renderCallbacks();
+  }
+
+  function saveDetail(){
+    var no = currentNo;
+    var btn = $("dSave");
+    btn.disabled = true;
+    var acres = $("dAcres").value;
+    upsertProspect(no, {
+      director_name: $("dDir").value.trim() || null,
+      phone:         $("dPhone").value.trim() || null,
+      email:         $("dEmail").value.trim() || null,
+      acreage_est:   acres === "" ? null : Number(acres),
+      pipeline_status: $("dStatus").value,
+      enrichment_status: ($("dPhone").value.trim() || $("dEmail").value.trim()) ? "enriched" : "pending"
+    }).then(function(){
+      btn.disabled = false;
+      $("savedFlag").classList.add("on");
+      setTimeout(function(){ var f=$("savedFlag"); if(f) f.classList.remove("on"); }, 1600);
+    }).catch(function(e){
+      btn.disabled = false;
+      alert("Couldn't save: " + e.message);
+    });
+  }
+
+  function logNote(){
+    var no = currentNo;
+    var body = $("dNote").value.trim();
+    var when = $("dWhen").value;
+    if(!body && !when){ alert("Add a note or a callback time first."); return; }
+    var btn = $("dLog");
+    btn.disabled = true;
+    var row = {
+      company_number: no,
+      type: when ? "callback" : "note",
+      body: body || null,
+      due_at: when ? new Date(when).toISOString() : null,
+      created_by: "sam"
+    };
+    api("farm_activity", {method:"POST", body:[row], prefer:"return=representation"})
+      .then(function(res){
+        if(res && res[0]) acts.unshift(res[0]);
+        return upsertProspect(no, {pipeline_status: $("dStatus").value});
+      })
+      .then(function(){
+        btn.disabled = false;
+        openDetail(no);
+        renderCallbacks();
+      })
+      .catch(function(e){
+        btn.disabled = false;
+        alert("Couldn't save the note: " + e.message);
+      });
+  }
+
+  /* ============ callbacks ============ */
+  function renderCallbacks(){
+    var due = acts.filter(function(a){ return a.due_at && !a.done_at; })
+                  .sort(function(a,b){ return new Date(a.due_at) - new Date(b.due_at); });
+    var now = Date.now();
+    var overdue = due.filter(function(a){ return new Date(a.due_at) < now; }).length;
+
+    var pill = $("cbCount");
+    if(due.length){ pill.style.display = "inline-block"; pill.textContent = due.length; }
+    else pill.style.display = "none";
+    pill.style.background = overdue ? "#A32E22" : "#B58900";
+
+    if(!due.length){
+      $("cbList").innerHTML = '<div class="empty"><b>No callbacks booked</b>Set one from any farm record and it will appear here.</div>';
+      return;
+    }
+    $("cbList").innerHTML = due.map(function(a){
+      var f = byNo[a.company_number] || {};
+      var t = new Date(a.due_at).getTime();
+      var cls = t < now ? "cb over" : (t - now < 864e5 ? "cb soon" : "cb");
+      return '<div class="'+cls+'" data-open="'+esc(a.company_number)+'">' +
+        '<div class="when">' + esc(fmtDT(a.due_at)) + '</div>' +
+        '<div><div class="nm">' + esc(f.name || a.company_number) + '</div>' +
+        '<div class="nt">' + esc(a.body || "No note") + '</div></div>' +
+        '<button class="done" data-done="'+esc(a.id)+'">Mark done</button>' +
+      '</div>';
+    }).join("");
+
+    Array.prototype.forEach.call($("cbList").querySelectorAll("[data-done]"), function(b){
+      b.addEventListener("click", function(e){
+        e.stopPropagation();
+        var id = b.getAttribute("data-done");
+        b.disabled = true;
+        api("farm_activity?id=eq." + encodeURIComponent(id), {
+          method:"PATCH", body:{done_at:new Date().toISOString()}, prefer:"return=representation"
+        }).then(function(){
+          acts.forEach(function(a){ if(a.id === id) a.done_at = new Date().toISOString(); });
+          renderCallbacks();
+        }).catch(function(err){
+          b.disabled = false;
+          alert("Couldn't update: " + err.message);
+        });
+      });
+    });
+  }
+
+  /* ============ nav ============ */
+  Array.prototype.forEach.call(document.querySelectorAll("nav button"), function(b){
+    b.addEventListener("click", function(){
+      Array.prototype.forEach.call(document.querySelectorAll("nav button"), function(x){ x.classList.remove("on"); });
+      b.classList.add("on");
+      var v = b.getAttribute("data-v");
+      Array.prototype.forEach.call(document.querySelectorAll(".view"), function(s){ s.classList.remove("on"); });
+      $("v-" + v).classList.add("on");
+      $("detail").classList.remove("on");
+      if(v === "map" && map) setTimeout(function(){ map.invalidateSize(); }, 60);
+      if(v === "list") renderList();
+      if(v === "calls") renderCallbacks();
+    });
+  });
+
+  /* ============ go ============ */
+  try{
+    if(localStorage.getItem("lb_ok") === "1") start();
+    else $("code").focus();
+  }catch(e){ $("code").focus(); }
+
+})();
+</script>
+</body>
+</html>
