@@ -197,6 +197,13 @@
             <option value="handed_over">Handed over</option>
             <option value="dead">Dead</option>
           </select>
+          <label for="fContact">Contact</label>
+          <select id="fContact">
+            <option value="">Any</option>
+            <option value="phone">Has phone</option>
+            <option value="verified">Has phone (verified only)</option>
+            <option value="none">No phone yet</option>
+          </select>
           <input id="fSearch" type="search" placeholder="Search name or postcode" style="min-width:190px">
           <div class="count"><b id="shown" class="num">0</b> farms shown</div>
         </div>
@@ -299,6 +306,8 @@
       website:  s.website       || "",
       source:   s.source        || "",
       confidence: s.confidence  || "",
+      flag:     s.flag          || "",
+      emailStatus: s.email_status || "",
       researched: !!(s.phone || s.email || s.director)
     };
   }
@@ -436,9 +445,15 @@
     $("lCounty").innerHTML = html;
   }
 
-  function matches(o, county, minLand, status, q){
+  function matches(o, county, minLand, status, q, contact){
     if(county && o.county !== county) return false;
     if(minLand && (o.land||0) < minLand) return false;
+    if(contact){
+      var cc = contactOf(o.no);
+      if(contact === "phone"    && !cc.phone) return false;
+      if(contact === "none"     &&  cc.phone) return false;
+      if(contact === "verified" && (!cc.phone || cc.confidence === "check")) return false;
+    }
     if(status){
       var st = statusOf(o.no);
       if(status === "new"  && st !== "new") return false;
@@ -457,11 +472,12 @@
     var minLand = parseInt($("fLand").value, 10) || 0;
     var status  = $("fStatus").value;
     var q       = $("fSearch").value.trim().toLowerCase();
-    var sel = farms.filter(function(o){ return matches(o, county, minLand, status, q); });
+    var contact = $("fContact").value;
+    var sel = farms.filter(function(o){ return matches(o, county, minLand, status, q, contact); });
     $("shown").textContent = sel.length.toLocaleString();
     drawPins(sel);
   }
-  ["fCounty","fLand","fStatus"].forEach(function(id){
+  ["fCounty","fLand","fStatus","fContact"].forEach(function(id){
     $(id).addEventListener("change", applyFilters);
   });
   $("fSearch").addEventListener("input", applyFilters);
@@ -514,6 +530,7 @@
         '<dt>Email</dt><dd>' + (c.email ? '<a href="mailto:'+esc(c.email)+'">'+esc(c.email)+'</a>' : '<span style="color:#8A9992">not found yet</span>') + '</dd>' +
         '<dt>Status</dt><dd>' + tag(statusOf(o.no)) + '</dd>' +
       '</dl>' +
+      (c.flag ? '<div style="background:#FFF6E5;border:1px solid #E8D6A8;color:#6B4E12;padding:7px 9px;border-radius:7px;font-size:12px;margin-bottom:9px">⚠ ' + esc(c.flag) + '</div>' : '') +
       '<button class="go" data-open="' + esc(o.no) + '">Open record</button>' +
     '</div>';
   }
@@ -622,6 +639,8 @@
         '<div class="row" style="margin-top:12px"><button class="btn" id="dSave">Save details</button>' +
           (c.website ? '<a class="btn ghost" href="' + esc(c.website) + '" target="_blank" rel="noopener" style="text-decoration:none">Open website ↗</a>' : '') +
         '</div>' +
+        (c.flag ? '<div style="margin-top:12px;background:#FFF6E5;border:1px solid #E8D6A8;color:#6B4E12;padding:10px 12px;border-radius:8px;font-size:13px">⚠ ' + esc(c.flag) + '</div>' : '') +
+        (c.emailStatus ? '<div style="margin-top:8px;font-size:12.5px;color:#5D6E66">Email: ' + esc(c.emailStatus) + '</div>' : '') +
         (c.source ? '<div style="margin-top:10px;font-size:12.5px;color:#5D6E66">Found via ' + esc(c.source) + ' · confidence ' + esc(c.confidence) + ' — worth confirming on the call.</div>' : '') +
       '</div>' +
 
