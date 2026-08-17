@@ -118,15 +118,18 @@ async function planning(lat: number, lon: number) {
 }
 
 function availableWeighted(site: Row, overrides: Row = {}) {
-  const values: Array<[number,number]> = [
-    [Number(overrides.grid_score ?? site.grid_score), 25],
-    [Number(overrides.land_score ?? site.land_score), 20],
-    [Number(overrides.planning_score ?? site.planning_score), 15],
-    [Number(overrides.agricultural_score ?? null), 10],
-    [Number(overrides.topography_score ?? null), 10],
-    [Number(overrides.solar_score ?? site.solar_score), 10],
-    [Number(overrides.ownership_score ?? site.ownership_score), 10],
-  ].filter(([v]) => Number.isFinite(v));
+  const candidates: Array<[unknown,number]> = [
+    [overrides.grid_score ?? site.grid_score, 25],
+    [overrides.land_score ?? site.land_score, 20],
+    [overrides.planning_score ?? site.planning_score, 15],
+    [overrides.agricultural_score, 10],
+    [overrides.topography_score, 10],
+    [overrides.solar_score ?? site.solar_score, 10],
+    [overrides.ownership_score ?? site.ownership_score, 10],
+  ];
+  const values: Array<[number,number]> = candidates
+    .filter(([raw]) => raw !== null && raw !== undefined && raw !== '' && Number.isFinite(Number(raw)))
+    .map(([raw,w]) => [Number(raw),w]);
   if (!values.length) return null;
   const weight = values.reduce((a,[,w])=>a+w,0);
   return round1(values.reduce((a,[v,w])=>a+v*w,0)/weight);
