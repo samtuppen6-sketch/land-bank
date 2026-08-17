@@ -16,20 +16,22 @@ jobs:
           node-version: '22'
       - name: Check scoring engine syntax
         run: node --check lib/scoring.js
-      - name: Check V2 live inline JavaScript syntax
+      - name: Check V2 inline JavaScript syntax
         run: |
           node <<'NODE'
           const fs = require('fs');
-          const html = fs.readFileSync('v2-live.html', 'utf8');
-          const scripts = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)]
-            .map(m => m[1])
-            .filter(s => s.trim());
-          if (!scripts.length) throw new Error('No inline script found in v2-live.html');
-          scripts.forEach((src, i) => {
-            try { new Function(src); }
-            catch (e) { throw new Error(`Inline script ${i + 1} failed to parse: ${e.message}`); }
-          });
-          console.log(`Parsed ${scripts.length} inline script(s) successfully.`);
+          for (const file of ['v2-live.html', 'v2-app.html']) {
+            const html = fs.readFileSync(file, 'utf8');
+            const scripts = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)]
+              .map(m => m[1])
+              .filter(s => s.trim());
+            if (!scripts.length) throw new Error(`No inline script found in ${file}`);
+            scripts.forEach((src, i) => {
+              try { new Function(src); }
+              catch (e) { throw new Error(`${file} inline script ${i + 1} failed to parse: ${e.message}`); }
+            });
+            console.log(`${file}: parsed ${scripts.length} inline script(s) successfully.`);
+          }
           NODE
       - name: Check required LandBank V2 markers
         run: |
@@ -37,3 +39,9 @@ jobs:
           grep -q "lb_dashboard_metrics" v2-live.html
           grep -q "saveRecord" v2-live.html
           grep -q "LandBank V2" v2-live.html
+          grep -q "lb_frontend_workspace" v2-app.html
+          grep -q "lb_dashboard_metrics" v2-app.html
+          grep -q "saveRecord" v2-app.html
+          grep -q "logActivity" v2-app.html
+          grep -q "renderCallbacks" v2-app.html
+          grep -q "LandBank V2" v2-app.html
