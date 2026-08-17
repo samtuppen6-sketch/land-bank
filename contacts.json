@@ -1,7 +1,376 @@
 {
-  "generated": "2026-08-16",
-  "note": "Researched contact details. confidence: high = published by the business or an official register; medium = third-party directory or inferred from a shared registered office.",
+  "generated": "2026-08-17",
+  "note": "confidence: high = postcode matched exactly; medium = same area and name, worth confirming on the call.",
   "contacts": {
+    "10232301": {
+      "company": "TEYDALE FARMING LIMITED",
+      "director": "",
+      "phone": "01723 870467",
+      "email": "",
+      "website": "https://wastetraining.co.uk/",
+      "source": "Google Places — Waste Training & Consultancy Ltd",
+      "confidence": "high"
+    },
+    "10299441": {
+      "company": "LEVERTON BROTHERS LIMITED",
+      "director": "",
+      "phone": "",
+      "email": "",
+      "website": "http://www.leverton-brothers.co.uk/",
+      "source": "Google Places — Leverton Brothers Ltd",
+      "confidence": "high"
+    },
+    "10343567": {
+      "company": "HARDGAIN LIMITED",
+      "director": "",
+      "phone": "01524 736680",
+      "email": "",
+      "website": "https://www.booths.co.uk/store/carnforth/",
+      "source": "Google Places — Booths, Carnforth",
+      "confidence": "high"
+    },
+    "10477204": {
+      "company": "RE EVANS FARMS LIMITED",
+      "director": "",
+      "phone": "01646 636366",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Evans Peter",
+      "confidence": "high"
+    },
+    "10693658": {
+      "company": "BOULEH LIMITED",
+      "director": "",
+      "phone": "07466 536126",
+      "email": "",
+      "website": "",
+      "source": "Google Places — CLUCKIN'L",
+      "confidence": "high"
+    },
+    "10918528": {
+      "company": "WEBBER HOLDINGS (EXMOOR) LIMITED",
+      "director": "",
+      "phone": "01769 573181",
+      "email": "",
+      "website": "https://www.webbers.co.uk/offices/estate-and-lettings-agents-in-south-molton-north-devon/",
+      "source": "Google Places — Webbers Estate Agents South Molton",
+      "confidence": "medium"
+    },
+    "10983587": {
+      "company": "DALEHAM FARMING LIMITED",
+      "director": "",
+      "phone": "07874 453441",
+      "email": "",
+      "website": "http://daleham-farming.space/",
+      "source": "Google Places — Daleham Farming",
+      "confidence": "high"
+    },
+    "11013865": {
+      "company": "HARTLEY FARMING (YORKSHIRE) LIMITED",
+      "director": "",
+      "phone": "01904 448556",
+      "email": "",
+      "website": "http://www.jehartleyfrozenveg.co.uk",
+      "source": "Google Places — JE Hartley Ltd",
+      "confidence": "high"
+    },
+    "11178614": {
+      "company": "RIVIERA FARMS LIMITED",
+      "director": "",
+      "phone": "01736 850960",
+      "email": "",
+      "website": "https://rivieraproduce.org/",
+      "source": "Google Places — Riviera Produce",
+      "confidence": "high"
+    },
+    "11310958": {
+      "company": "NATURAL FARM PRODUCE LIMITED",
+      "director": "",
+      "phone": "023 9246 3475",
+      "email": "",
+      "website": "http://www.stokefruitfarm.co.uk/",
+      "source": "Google Places — Stoke Fruit Farm Shop",
+      "confidence": "medium"
+    },
+    "11384632": {
+      "company": "VINEYARD FARMS LIMITED",
+      "director": "",
+      "phone": "0330 122 5290",
+      "email": "",
+      "website": "https://silverhandestate.com/",
+      "source": "Google Places — Silverhand Estate",
+      "confidence": "high"
+    },
+    "11620619": {
+      "company": "A & M TURNEY LIMITED",
+      "director": "",
+      "phone": "01789 292494",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Turney A & M",
+      "confidence": "high"
+    },
+    "11703603": {
+      "company": "F.T.HOLT & SON (FARMS) LIMITED",
+      "director": "",
+      "phone": "01795 521210",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Holt F T & Son Ltd",
+      "confidence": "high"
+    },
+    "11820399": {
+      "company": "D.A. WILLIAMS & SONS LIMITED",
+      "director": "",
+      "phone": "01964 670451",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Williams J R & Sons Ltd",
+      "confidence": "high"
+    },
+    "12009764": {
+      "company": "SLM PERCIVAL LTD",
+      "director": "",
+      "phone": "0116 247 3500",
+      "email": "",
+      "website": "https://www.howespercival.com/leicester-solicitors/?utm_source=google&utm_medium=organic&utm_campaign=google_business_leicester&utm_content=Norwich",
+      "source": "Google Places — Howes Percival Leicester Solicitors",
+      "confidence": "medium"
+    },
+    "12148408": {
+      "company": "HERRING FARMS LIMITED",
+      "director": "",
+      "phone": "01673 843212",
+      "email": "",
+      "website": "",
+      "source": "Google Places — D J Herring Farmer",
+      "confidence": "medium"
+    },
+    "12202441": {
+      "company": "SIX LIMES LIMITED",
+      "director": "",
+      "phone": "01778 391570",
+      "email": "",
+      "website": "https://larkfleetgroup.co.uk/",
+      "source": "Google Places — The Larkfleet Group of Companies",
+      "confidence": "high"
+    },
+    "12279283": {
+      "company": "LIGHTON FARMING LTD",
+      "director": "",
+      "phone": "01205 724216",
+      "email": "",
+      "website": "http://www.framptonhousecare.co.uk/",
+      "source": "Google Places — Frampton House",
+      "confidence": "high"
+    },
+    "12376322": {
+      "company": "STUBB HOUSE FARMS LIMITED",
+      "director": "",
+      "phone": "01325 730587",
+      "email": "",
+      "website": "https://johndickinsontransport.com/",
+      "source": "Google Places — John Dickinson Transport Limited",
+      "confidence": "high"
+    },
+    "12533127": {
+      "company": "J R GOWTHORPE LTD",
+      "director": "",
+      "phone": "01757 288296",
+      "email": "",
+      "website": "",
+      "source": "Google Places — JR GOWTHORPE LTD",
+      "confidence": "high"
+    },
+    "12570358": {
+      "company": "C.A. STRAWSON FARMING LIMITED",
+      "director": "",
+      "phone": "01623 870421",
+      "email": "",
+      "website": "http://www.strawsons.com/",
+      "source": "Google Places — Strawson Ltd",
+      "confidence": "high"
+    },
+    "13018689": {
+      "company": "REDBROWN LIMITED",
+      "director": "",
+      "phone": "01245 363030",
+      "email": "info@spfarms.co.uk",
+      "website": "https://www.spfarms.co.uk",
+      "source": "Shares registered office with Strutt and Parker Farms (Unit 1, Old Park Farm, CM3 1LN)",
+      "confidence": "medium"
+    },
+    "13042827": {
+      "company": "PHEASANTRY FARMS AND BREWERY LIMITED",
+      "director": "",
+      "phone": "01777 872728",
+      "email": "",
+      "website": "https://pheasantryevents.co.uk/",
+      "source": "Google Places — Pheasantry Brewery",
+      "confidence": "high"
+    },
+    "13154132": {
+      "company": "O.A. TAYLOR & SONS FARMS LIMITED",
+      "director": "",
+      "phone": "01406 422266",
+      "email": "",
+      "website": "http://www.taylors-bulbs.com/",
+      "source": "Google Places — Taylor O A & Sons Ltd",
+      "confidence": "high"
+    },
+    "13209991": {
+      "company": "FOLLY MANOR LIMITED",
+      "director": "",
+      "phone": "07494 070388",
+      "email": "",
+      "website": "https://www.themanorldn.com/",
+      "source": "Google Places — The Manor LDN Dance Studio",
+      "confidence": "medium"
+    },
+    "13214330": {
+      "company": "LUTON HOO ESTATE NOMINEES (NO.2) LIMITED",
+      "director": "",
+      "phone": "01582 721443",
+      "email": "",
+      "website": "http://www.lutonhooestate.co.uk/",
+      "source": "Google Places — Luton Hoo Estate",
+      "confidence": "high"
+    },
+    "13467777": {
+      "company": "J F SMITH & SON FARMS LIMITED",
+      "director": "",
+      "phone": "01754 830288",
+      "email": "",
+      "website": "",
+      "source": "Google Places — R.H-J Farms Ltd",
+      "confidence": "medium"
+    },
+    "13478157": {
+      "company": "COLLISON CUT FLOWERS LTD",
+      "director": "",
+      "phone": "01553 828406",
+      "email": "",
+      "website": "http://www.collisoncutflowers.co.uk/",
+      "source": "Google Places — Collison Cut Flowers Ltd.",
+      "confidence": "high"
+    },
+    "14217606": {
+      "company": "LOCKHILL BRIARS COMPANY LIMITED",
+      "director": "",
+      "phone": "07818 246616",
+      "email": "",
+      "website": "http://www.carsofsomerset.co.uk/",
+      "source": "Google Places — Cars Of Somerset LTD",
+      "confidence": "high"
+    },
+    "14397699": {
+      "company": "LOXTON ESTATE LTD",
+      "director": "",
+      "phone": "01440 783661",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Thurlow Estate",
+      "confidence": "medium"
+    },
+    "14469313": {
+      "company": "G HEATH FARMS LIMITED",
+      "director": "",
+      "phone": "01270 781158",
+      "email": "",
+      "website": "https://www.gh-construction.co.uk/",
+      "source": "Google Places — Graham Heath Construction Ltd",
+      "confidence": "high"
+    },
+    "14587707": {
+      "company": "RUMFORD LIMITED",
+      "director": "",
+      "phone": "01692 536883",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Rumford Ltd",
+      "confidence": "high"
+    },
+    "14591560": {
+      "company": "ESHTON PARK LIMITED",
+      "director": "",
+      "phone": "01756 749229",
+      "email": "",
+      "website": "https://www.ukcampsite.co.uk/sites/details.asp?revid=4187",
+      "source": "Google Places — Eshton Road Caravan Park",
+      "confidence": "medium"
+    },
+    "14859813": {
+      "company": "KITESFIELD ESTATES LIMITED",
+      "director": "",
+      "phone": "01234 828060",
+      "email": "",
+      "website": "https://www.bedfordiafarms.co.uk/",
+      "source": "Google Places — Bedfordia Farms",
+      "confidence": "high"
+    },
+    "15089553": {
+      "company": "ROOKFIELD LIMITED",
+      "director": "",
+      "phone": "01636 683231",
+      "email": "",
+      "website": "https://www.castleandfalconnewark.co.uk/",
+      "source": "Google Places — The Castle & Falcon",
+      "confidence": "high"
+    },
+    "15259192": {
+      "company": "HAWRIDGE FARMS LIMITED",
+      "director": "",
+      "phone": "01494 758368",
+      "email": "",
+      "website": "http://www.hawridge-cholesbury.bucks.sch.uk/",
+      "source": "Google Places — Hawridge and Cholesbury Church of England School",
+      "confidence": "medium"
+    },
+    "15324195": {
+      "company": "GRIFFITHS FARMS LTD",
+      "director": "",
+      "phone": "01952 770322",
+      "email": "",
+      "website": "",
+      "source": "Google Places — J A & O Griffiths & Sons",
+      "confidence": "high"
+    },
+    "15591621": {
+      "company": "ALFORD FARMING LIMITED",
+      "director": "",
+      "phone": "01507 466644",
+      "email": "",
+      "website": "https://www.willoughbyfarms.co.uk/",
+      "source": "Google Places — Willoughby Farms Ltd",
+      "confidence": "high"
+    },
+    "15910180": {
+      "company": "ACE STUD LTD",
+      "director": "",
+      "phone": "01638 730214",
+      "email": "",
+      "website": "http://www.dukesstud.net/",
+      "source": "Google Places — Dukes Stud Ltd",
+      "confidence": "medium"
+    },
+    "16023825": {
+      "company": "GILBERT FAMILY INVESTMENTS LIMITED",
+      "director": "",
+      "phone": "01354 610590",
+      "email": "",
+      "website": "",
+      "source": "Google Places — J Gilbert & Son Ltd",
+      "confidence": "high"
+    },
+    "08771747": {
+      "company": "BRYNKINALT FARMING LIMITED",
+      "director": "",
+      "phone": "01691 773425",
+      "email": "",
+      "website": "https://www.brynkinalt.co.uk/",
+      "source": "Google Places — Brynkinalt Estate",
+      "confidence": "high"
+    },
     "00151618": {
       "company": "STRUTT AND PARKER (FARMS) LIMITED",
       "director": "",
@@ -10,6 +379,4470 @@
       "website": "https://www.spfarms.co.uk",
       "source": "spfarms.co.uk/contact",
       "confidence": "high"
+    },
+    "00340076": {
+      "company": "GASCOINES GROUP LIMITED",
+      "director": "",
+      "phone": "01636 813245",
+      "email": "",
+      "website": "https://www.gascoines.co",
+      "source": "192.com business listing, 1 Church Street Southwell",
+      "confidence": "high"
+    },
+    "01312512": {
+      "company": "HOPKINS ESTATES LIMITED",
+      "director": "",
+      "phone": "01963 824200",
+      "email": "",
+      "website": "https://hopkins-estates.co.uk/",
+      "source": "Google Places — Hopkins Estates Ltd",
+      "confidence": "high"
+    },
+    "01182857": {
+      "company": "L.J. FAIRBURN AND SON LIMITED",
+      "director": "Daniel Fairburn (Managing Director)",
+      "phone": "01507 490297",
+      "email": "",
+      "website": "https://www.fairburnseggs.co.uk",
+      "source": "Lincolnshire County Council directory; D&B for website",
+      "confidence": "high"
+    },
+    "07320026": {
+      "company": "THE COUNTRYSIDE REGENERATION TRUST LTD",
+      "director": "",
+      "phone": "01223 651215",
+      "email": "",
+      "website": "https://www.thecrt.co.uk/",
+      "source": "Google Places — Countryside Regeneration Trust",
+      "confidence": "high"
+    },
+    "00484343": {
+      "company": "R.J. & A.E. GODFREY,",
+      "director": "",
+      "phone": "01652 688057",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Godfrey R J & a E",
+      "confidence": "high"
+    },
+    "03197940": {
+      "company": "KNIGHTWOOD TRUST FARMS LIMITED",
+      "director": "",
+      "phone": "01757 555605",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Knightwood Trust Farms Ltd",
+      "confidence": "medium"
+    },
+    "00788102": {
+      "company": "CHAMBERLAYNE FARMS LIMITED",
+      "director": "",
+      "phone": "01452 415180",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Chamberlayne Farms",
+      "confidence": "high"
+    },
+    "00720374": {
+      "company": "CARR-ELLISON FARMS",
+      "director": "",
+      "phone": "01665 578272",
+      "email": "",
+      "website": "https://www.hedgeleyfarms.com/",
+      "source": "Google Places — Carr-Ellison Farms",
+      "confidence": "high"
+    },
+    "01882355": {
+      "company": "FAIRLAWNE ESTATE COMPANY LIMITED",
+      "director": "",
+      "phone": "01732 810944",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Fairlawne Estate Co Ltd",
+      "confidence": "high"
+    },
+    "01157109": {
+      "company": "IOLO OWEN & CO. LIMITED",
+      "director": "",
+      "phone": "01407 840242",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Owen Properties",
+      "confidence": "medium"
+    },
+    "02257544": {
+      "company": "HAGUE FARMING LIMITED",
+      "director": "",
+      "phone": "0114 283 4970",
+      "email": "",
+      "website": "https://hague.uk.com/",
+      "source": "Google Places — Hague Plant Limited",
+      "confidence": "high"
+    },
+    "01045629": {
+      "company": "CHARLES BISHOP LIMITED",
+      "director": "",
+      "phone": "01590 625800",
+      "email": "",
+      "website": "https://www.moorebarlow.com/?utm_source=gmb&utm_medium=lymington",
+      "source": "Google Places — Moore Barlow Lymington",
+      "confidence": "high"
+    },
+    "07281214": {
+      "company": "B BUSH & SONS LIMITED",
+      "director": "",
+      "phone": "07775 736344",
+      "email": "",
+      "website": "",
+      "source": "Google Places — B Bush & Sons Limited",
+      "confidence": "high"
+    },
+    "00493859": {
+      "company": "C.W.PARKER(WAINFLEET)LIMITED",
+      "director": "",
+      "phone": "01754 881155",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Wainfleet Care Home",
+      "confidence": "medium"
+    },
+    "00275988": {
+      "company": "TORTWORTH ESTATE LIMITED",
+      "director": "",
+      "phone": "01454 260268",
+      "email": "",
+      "website": "https://www.tortworthestate.com/",
+      "source": "Google Places — The Tortworth Estate",
+      "confidence": "high"
+    },
+    "00430620": {
+      "company": "SMITH & SONS (BLETCHINGTON) LIMITED",
+      "director": "",
+      "phone": "01869 331281",
+      "email": "",
+      "website": "http://www.smithsbletchington.co.uk/",
+      "source": "Google Places — Smith & Sons Bletchington Ltd",
+      "confidence": "high"
+    },
+    "00431776": {
+      "company": "G.H. DEAN & CO. LIMITED",
+      "director": "",
+      "phone": "01795 423981",
+      "email": "",
+      "website": "https://www.blackbirdfarming.co.uk/",
+      "source": "Google Places — G H Dean & Co Ltd",
+      "confidence": "medium"
+    },
+    "03745477": {
+      "company": "H.R BOURN & SONS (LINWOOD) LIMITED",
+      "director": "",
+      "phone": "01673 858998",
+      "email": "",
+      "website": "",
+      "source": "Google Places — H R Bourn & Sons",
+      "confidence": "high"
+    },
+    "00553452": {
+      "company": "GOODWOOD ESTATE COMPANY LIMITED(THE)",
+      "director": "",
+      "phone": "01243 755000",
+      "email": "",
+      "website": "https://www.goodwood.com/goodwood-estate/?utm_source=google&utm_medium=organic&utm_campaign=GMB-Goodwood-Estate",
+      "source": "Google Places — The Goodwood Estate",
+      "confidence": "high"
+    },
+    "00803130": {
+      "company": "A C HULME AND SONS",
+      "director": "",
+      "phone": "01227 728442",
+      "email": "",
+      "website": "https://www.achfarming.co.uk/",
+      "source": "Google Places — A C Hulme & Sons",
+      "confidence": "high"
+    },
+    "00319261": {
+      "company": "EVERARDS BREWERY LIMITED",
+      "director": "",
+      "phone": "0116 201 4101",
+      "email": "",
+      "website": "https://www.everards.co.uk/",
+      "source": "Google Places — Everards of Leicestershire",
+      "confidence": "high"
+    },
+    "00673545": {
+      "company": "L.NETTLETON & SON LIMITED",
+      "director": "",
+      "phone": "01964 612471",
+      "email": "",
+      "website": "",
+      "source": "Google Places — P Nettleton & Son",
+      "confidence": "high"
+    },
+    "07772945": {
+      "company": "HOLMEDALE VALLEY LIMITED",
+      "director": "",
+      "phone": "01748 822709",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Home Dale Valley Ltd",
+      "confidence": "high"
+    },
+    "00971446": {
+      "company": "O.A.TAYLOR & SONS BULBS LIMITED",
+      "director": "",
+      "phone": "01406 422266",
+      "email": "",
+      "website": "http://www.taylors-bulbs.com/",
+      "source": "Google Places — Taylor O A & Sons Ltd",
+      "confidence": "high"
+    },
+    "08483602": {
+      "company": "B ELLIOTT FARMING LTD",
+      "director": "",
+      "phone": "01484 428758",
+      "email": "",
+      "website": "http://belliottproperty.co.uk/",
+      "source": "Google Places — B Elliott Property Ltd",
+      "confidence": "high"
+    },
+    "00362871": {
+      "company": "BLANKNEY ESTATES LIMITED",
+      "director": "",
+      "phone": "01522 810264",
+      "email": "",
+      "website": "https://www.blankney.com/",
+      "source": "Google Places — Blankney Estates Limited",
+      "confidence": "high"
+    },
+    "07773873": {
+      "company": "BROCKTON HOUSE FARM LIMITED",
+      "director": "",
+      "phone": "01952 951235",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Brockton House Farm Ltd",
+      "confidence": "high"
+    },
+    "03381606": {
+      "company": "HEATHPATCH LIMITED",
+      "director": "",
+      "phone": "01449 741481",
+      "email": "",
+      "website": "http://heathpatch.co.uk/",
+      "source": "Google Places — Heathpatch Ltd",
+      "confidence": "high"
+    },
+    "08891923": {
+      "company": "GREEN LABEL POULTRY LIMITED",
+      "director": "",
+      "phone": "01473 734240",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Green",
+      "confidence": "high"
+    },
+    "00794656": {
+      "company": "HARROWDEN FARMS LIMITED",
+      "director": "",
+      "phone": "01933 678996",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Harrowden Farms",
+      "confidence": "high"
+    },
+    "07940731": {
+      "company": "STUART PARTNERS LIMITED",
+      "director": "",
+      "phone": "01395 232800",
+      "email": "",
+      "website": "http://www.stuartpartners.co.uk/",
+      "source": "Google Places — Stuart Partners Ltd",
+      "confidence": "high"
+    },
+    "02053621": {
+      "company": "P.J. DUFFY & SON (FARMS) LIMITED",
+      "director": "",
+      "phone": "01205 260310",
+      "email": "",
+      "website": "http://www.lynwaynurseries.co.uk/",
+      "source": "Google Places — P J Duffy & Son Ltd",
+      "confidence": "high"
+    },
+    "00580823": {
+      "company": "W.S.CHAPMAN & SONS LIMITED",
+      "director": "",
+      "phone": "01724 782407",
+      "email": "",
+      "website": "",
+      "source": "Google Places — W S Chapman & Sons Ltd",
+      "confidence": "high"
+    },
+    "03336971": {
+      "company": "BIRDSALL FARMS LIMITED",
+      "director": "",
+      "phone": "01924 895952",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Birdsall Farms Ltd",
+      "confidence": "high"
+    },
+    "00560621": {
+      "company": "F.H.EASTON LIMITED",
+      "director": "",
+      "phone": "01953 789333",
+      "email": "",
+      "website": "https://eastonltd.co.uk/",
+      "source": "Google Places — F H Easton Ltd",
+      "confidence": "high"
+    },
+    "03329992": {
+      "company": "COLETHROP FARM LIMITED",
+      "director": "",
+      "phone": "",
+      "email": "",
+      "website": "https://find-and-update.company-information.service.gov.uk/company/03329992",
+      "source": "Google Places — Colethrop Farm Limited",
+      "confidence": "high"
+    },
+    "00798456": {
+      "company": "WILLIAM CORBETT FARMS LIMITED",
+      "director": "",
+      "phone": "01827 880448",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Corbett D W",
+      "confidence": "high"
+    },
+    "06585393": {
+      "company": "M R TIZZARD LIMITED",
+      "director": "",
+      "phone": "01935 812911",
+      "email": "",
+      "website": "",
+      "source": "Google Places — M R Tizzard Ltd",
+      "confidence": "high"
+    },
+    "01257376": {
+      "company": "LEDA PROPERTIES LIMITED",
+      "director": "",
+      "phone": "01993 813175",
+      "email": "",
+      "website": "https://ledaproperties-abingdon.co.uk/",
+      "source": "Google Places — Leda Properties Ltd",
+      "confidence": "high"
+    },
+    "01301566": {
+      "company": "THENHURST AGRICULTURAL LIMITED",
+      "director": "",
+      "phone": "020 8267 5000",
+      "email": "",
+      "website": "http://www.haymarket.com/",
+      "source": "Google Places — BOAT International",
+      "confidence": "high"
+    },
+    "00633913": {
+      "company": "JACK BUCK (HOLDINGS) LIMITED",
+      "director": "",
+      "phone": "01406 370219",
+      "email": "",
+      "website": "https://www.jackbuck.co.uk/",
+      "source": "Google Places — Jack Buck Farms",
+      "confidence": "high"
+    },
+    "00438351": {
+      "company": "E.J. MACKELDEN & SONS (BOBBING) LIMITED",
+      "director": "",
+      "phone": "01398 323326",
+      "email": "",
+      "website": "",
+      "source": "Google Places — E J Mackelden",
+      "confidence": "high"
+    },
+    "00541042": {
+      "company": "CHARLES WHARTON LIMITED",
+      "director": "",
+      "phone": "01493 369342",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Wharton Charles & Partners",
+      "confidence": "high"
+    },
+    "05360623": {
+      "company": "SOUTH DOWNS REAL ESTATE LIMITED",
+      "director": "",
+      "phone": "07885 748611",
+      "email": "",
+      "website": "https://www.southdownsenergy.co.uk/",
+      "source": "Google Places — South Downs Energy EPC",
+      "confidence": "medium"
+    },
+    "00639363": {
+      "company": "HUGH CRANE LIMITED",
+      "director": "",
+      "phone": "01493 750072",
+      "email": "",
+      "website": "https://www.hughcrane.co.uk/",
+      "source": "Google Places — Hugh Crane (Cleaning Equipment) Ltd",
+      "confidence": "medium"
+    },
+    "00530969": {
+      "company": "A.W. SMITH & SONS LIMITED",
+      "director": "",
+      "phone": "01507 603108",
+      "email": "",
+      "website": "",
+      "source": "Google Places — George Smith & Sons",
+      "confidence": "medium"
+    },
+    "00359724": {
+      "company": "THE CALLALY ESTATES COMPANY LIMITED",
+      "director": "",
+      "phone": "07393 821442",
+      "email": "",
+      "website": "https://callalyclays.com/",
+      "source": "Google Places — Callaly Clays",
+      "confidence": "high"
+    },
+    "00660840": {
+      "company": "SOUTH DARENTH FARMS AND COLD STORE COMPANY LIMITED",
+      "director": "",
+      "phone": "01322 863267",
+      "email": "",
+      "website": "https://www.hsd-developments.co.uk/",
+      "source": "Google Places — South Darenth Farms & Cold Store Co Ltd",
+      "confidence": "high"
+    },
+    "01521353": {
+      "company": "CHILTON HOME FARMS LTD",
+      "director": "",
+      "phone": "07712 410198",
+      "email": "",
+      "website": "http://chiltongroundsfarm.co.uk/",
+      "source": "Google Places — Chilton Grounds Farm",
+      "confidence": "medium"
+    },
+    "00698851": {
+      "company": "SUSSEX WILDLIFE TRUST",
+      "director": "",
+      "phone": "01273 492630",
+      "email": "",
+      "website": "https://sussexwildlifetrust.org.uk/",
+      "source": "Google Places — Sussex Wildlife Trust",
+      "confidence": "high"
+    },
+    "02660716": {
+      "company": "GREAT OAKLEY FARMS LIMITED",
+      "director": "",
+      "phone": "01536 741707",
+      "email": "",
+      "website": "https://greatoakley.co.uk/",
+      "source": "Google Places — Great Oakley Farm",
+      "confidence": "high"
+    },
+    "01046828": {
+      "company": "YORKWOLD PIGPRO LIMITED",
+      "director": "",
+      "phone": "01377 252662",
+      "email": "",
+      "website": "https://dewhirstfarming.co.uk/york-wold/",
+      "source": "Google Places — Yorkwold Pigpro Ltd",
+      "confidence": "high"
+    },
+    "00228813": {
+      "company": "BIRDSALL ESTATES COMPANY LIMITED",
+      "director": "",
+      "phone": "01944 316000",
+      "email": "",
+      "website": "http://birdsallestates.co.uk/",
+      "source": "Google Places — Birdsall Estates Co Ltd",
+      "confidence": "high"
+    },
+    "00928752": {
+      "company": "J.A. & E. MONTGOMERY LIMITED",
+      "director": "",
+      "phone": "01963 440243",
+      "email": "",
+      "website": "https://www.montgomerycheese.co.uk/",
+      "source": "Google Places — JA & E Montgomery",
+      "confidence": "high"
+    },
+    "00854752": {
+      "company": "R. H. LAMYMAN LIMITED",
+      "director": "",
+      "phone": "01400 230266",
+      "email": "",
+      "website": "",
+      "source": "Google Places — R H Lamyman Ltd",
+      "confidence": "high"
+    },
+    "00561990": {
+      "company": "ALFRED HYMAS LIMITED",
+      "director": "",
+      "phone": "01765 677761",
+      "email": "",
+      "website": "http://www.alfredhymas.co.uk/",
+      "source": "Google Places — Alfred Hymas Ltd",
+      "confidence": "high"
+    },
+    "03967460": {
+      "company": "G AND A LEISURE LIMITED",
+      "director": "",
+      "phone": "01686 650628",
+      "email": "",
+      "website": "",
+      "source": "Google Places — G & A Leisure Ltd",
+      "confidence": "medium"
+    },
+    "02249847": {
+      "company": "IAN KEMSLEY FARMS LIMITED",
+      "director": "",
+      "phone": "01795 842216",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Kemsley Farms",
+      "confidence": "high"
+    },
+    "00623482": {
+      "company": "HAWKES LIMITED",
+      "director": "",
+      "phone": "01790 752267",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Hawkes Ltd",
+      "confidence": "high"
+    },
+    "02162174": {
+      "company": "YEO VALLEY FARMS LIMITED",
+      "director": "",
+      "phone": "01761 462798",
+      "email": "",
+      "website": "https://www.yeovalley.co.uk/",
+      "source": "Google Places — Yeo Valley Production",
+      "confidence": "medium"
+    },
+    "04340085": {
+      "company": "MORRIS'S OF USK LIMITED",
+      "director": "",
+      "phone": "01291 673603",
+      "email": "",
+      "website": "http://www.uskgardencentre.co.uk/",
+      "source": "Google Places — Morris' of Usk",
+      "confidence": "high"
+    },
+    "04223369": {
+      "company": "MF BENNION LIMITED",
+      "director": "",
+      "phone": "01531 890216",
+      "email": "",
+      "website": "",
+      "source": "Google Places — M F Bennion",
+      "confidence": "high"
+    },
+    "00714473": {
+      "company": "R. BRATLEY (QUADRING) LIMITED",
+      "director": "",
+      "phone": "01775 840322",
+      "email": "",
+      "website": "http://www.bratley.co.uk/",
+      "source": "Google Places — Bratley R",
+      "confidence": "high"
+    },
+    "00928482": {
+      "company": "W. H. STRAWSON (NOTTS.) LIMITED",
+      "director": "",
+      "phone": "01427 667777",
+      "email": "",
+      "website": "",
+      "source": "Google Places — WH Strawson Notts Ltd",
+      "confidence": "high"
+    },
+    "00482521": {
+      "company": "RICHARD HARDY (FISHTOFT)",
+      "director": "",
+      "phone": "01205 365023",
+      "email": "",
+      "website": "",
+      "source": "Google Places — R Hardy Vegetables Ltd",
+      "confidence": "high"
+    },
+    "03574891": {
+      "company": "GOLDTHORPE FARMING LTD",
+      "director": "",
+      "phone": "01302 841230",
+      "email": "",
+      "website": "https://goldthorpetransportltd.co.uk/",
+      "source": "Google Places — Goldthorpe C & Sons",
+      "confidence": "high"
+    },
+    "01805914": {
+      "company": "J.E.G. FARMS LIMITED",
+      "director": "",
+      "phone": "01205 870592",
+      "email": "",
+      "website": "",
+      "source": "Google Places — J E G Farms",
+      "confidence": "high"
+    },
+    "01325964": {
+      "company": "T.R. HOLMES (FARMS) LIMITED",
+      "director": "",
+      "phone": "01522 692007",
+      "email": "",
+      "website": "",
+      "source": "Google Places — T Holmes Farms",
+      "confidence": "medium"
+    },
+    "00607392": {
+      "company": "L.E.TUCKWELL LIMITED",
+      "director": "",
+      "phone": "01728 628325",
+      "email": "",
+      "website": "http://www.tuckwells.com/",
+      "source": "Google Places — Tuckwells",
+      "confidence": "high"
+    },
+    "01009447": {
+      "company": "R.W.BEATY(FARMS)LIMITED",
+      "director": "",
+      "phone": "01933 680206",
+      "email": "",
+      "website": "",
+      "source": "Google Places — R w Beaty",
+      "confidence": "high"
+    },
+    "03335253": {
+      "company": "QUANTIL AGRICULTURE LIMITED",
+      "director": "",
+      "phone": "01695 586100",
+      "email": "",
+      "website": "http://www.quantilseedservices.co.uk/",
+      "source": "Google Places — Quantil Seed Services",
+      "confidence": "medium"
+    },
+    "00603651": {
+      "company": "G.R.WARD & CO.",
+      "director": "",
+      "phone": "01400 272220",
+      "email": "",
+      "website": "",
+      "source": "Google Places — G R Ward & Co",
+      "confidence": "high"
+    },
+    "01211887": {
+      "company": "C. T. SHELDON LIMITED",
+      "director": "",
+      "phone": "07404 031110",
+      "email": "",
+      "website": "",
+      "source": "Google Places — C.T Sheldon Limited",
+      "confidence": "high"
+    },
+    "00683407": {
+      "company": "TROSTON FARMS LIMITED",
+      "director": "",
+      "phone": "01359 250650",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Troston Farms Ltd",
+      "confidence": "medium"
+    },
+    "00568996": {
+      "company": "STAPLES BROTHERS LIMITED",
+      "director": "",
+      "phone": "01205 872900",
+      "email": "",
+      "website": "https://staplesvegetables.co.uk/",
+      "source": "Google Places — Staples Vegetables",
+      "confidence": "medium"
+    },
+    "03368361": {
+      "company": "RAMSBURY ESTATES LIMITED",
+      "director": "",
+      "phone": "01672 520647",
+      "email": "",
+      "website": "http://www.ramsburyestates.co.uk/",
+      "source": "Google Places — Ramsbury Estates Ltd",
+      "confidence": "high"
+    },
+    "04851199": {
+      "company": "NESS HALL LTD",
+      "director": "",
+      "phone": "01439 748221",
+      "email": "",
+      "website": "http://www.nesshall.com/",
+      "source": "Google Places — Ness Hall",
+      "confidence": "high"
+    },
+    "00840519": {
+      "company": "W.J. SKIPPER (HAULAGE) LIMITED",
+      "director": "",
+      "phone": "01283 575200",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Skipper W J Ltd Haulage and Farming",
+      "confidence": "high"
+    },
+    "00465714": {
+      "company": "PROCTOR BROS. (GOSBERTON) LIMITED",
+      "director": "",
+      "phone": "01775 840481",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Proctor Bros (Gosberton) Ltd",
+      "confidence": "medium"
+    },
+    "00624983": {
+      "company": "G H DAVIES HOLDINGS LIMITED",
+      "director": "",
+      "phone": "01743 761613",
+      "email": "",
+      "website": "",
+      "source": "Google Places — G H Davies Holdings Ltd, Norton Farm, Cross Houses, , SHREWSBURY, SY5 7AR",
+      "confidence": "medium"
+    },
+    "01749542": {
+      "company": "G.E. & B. FEARN FARMS LIMITED",
+      "director": "",
+      "phone": "01522 704684",
+      "email": "",
+      "website": "https://www.fearnplantltd.com/",
+      "source": "Google Places — Fearn Plant Ltd",
+      "confidence": "medium"
+    },
+    "01441284": {
+      "company": "IAN MOSEY LIMITED",
+      "director": "",
+      "phone": "01347 888636",
+      "email": "",
+      "website": "http://www.ianmosey.com/",
+      "source": "Google Places — Ian Mosey",
+      "confidence": "medium"
+    },
+    "04849246": {
+      "company": "GRANGE FARMS LIMITED",
+      "director": "",
+      "phone": "01304 372228",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Grange Farms Ltd",
+      "confidence": "high"
+    },
+    "00787985": {
+      "company": "R.CAUDWELL(PRODUCE)LIMITED",
+      "director": "",
+      "phone": "01472 840381",
+      "email": "",
+      "website": "http://caudwellproduce.co.uk/",
+      "source": "Google Places — Caudwell R Produce",
+      "confidence": "high"
+    },
+    "02033792": {
+      "company": "F W S CARTER & SONS LIMITED",
+      "director": "",
+      "phone": "01395 232855",
+      "email": "",
+      "website": "http://www.greendalegroup.co.uk/",
+      "source": "Google Places — F W S Carter & Sons",
+      "confidence": "high"
+    },
+    "00640486": {
+      "company": "FRED WALTER & SONS LIMITED",
+      "director": "",
+      "phone": "01777 818264",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Fred Walter & Sons LTD",
+      "confidence": "high"
+    },
+    "01003545": {
+      "company": "M.BAKER PRODUCE LIMITED",
+      "director": "",
+      "phone": "01205 870384",
+      "email": "",
+      "website": "http://www.leggates.co.uk/",
+      "source": "Google Places — M Leggate and Sons (Produce) Ltd",
+      "confidence": "medium"
+    },
+    "01277218": {
+      "company": "R. A. BACKHOUSE FARMS LIMITED",
+      "director": "",
+      "phone": "01405 839341",
+      "email": "",
+      "website": "http://www.csbackhouse.co.uk/",
+      "source": "Google Places — Backhouse C S",
+      "confidence": "medium"
+    },
+    "00570931": {
+      "company": "MARK H POSKITT LIMITED",
+      "director": "",
+      "phone": "01977 661236",
+      "email": "",
+      "website": "https://www.poskittcarrots.co.uk/",
+      "source": "Google Places — M H Poskitt Ltd.",
+      "confidence": "high"
+    },
+    "02579228": {
+      "company": "RIPPLE FARMS LIMITED",
+      "director": "",
+      "phone": "01304 372848",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Ledger Farms Ltd",
+      "confidence": "high"
+    },
+    "09446482": {
+      "company": "F B PARRISH AND SON LIMITED",
+      "director": "",
+      "phone": "01462 813260",
+      "email": "",
+      "website": "https://www.parrishfarms.co.uk/",
+      "source": "Google Places — F B Parrish & Son Ltd",
+      "confidence": "high"
+    },
+    "00084840": {
+      "company": "BROMBOROUGH ESTATE COMPANY,LIMITED(THE)",
+      "director": "",
+      "phone": "01933 312497",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Bromborough Estate Co",
+      "confidence": "high"
+    },
+    "00550481": {
+      "company": "YATTENDON ESTATES LIMITED",
+      "director": "",
+      "phone": "01635 203901",
+      "email": "",
+      "website": "http://www.yattendon.co.uk/",
+      "source": "Google Places — Yattendon Estates Ltd",
+      "confidence": "high"
+    },
+    "00471909": {
+      "company": "G.E. GREEN LIMITED",
+      "director": "",
+      "phone": "01733 271011",
+      "email": "",
+      "website": "",
+      "source": "Google Places — G E Green Ltd",
+      "confidence": "high"
+    },
+    "04434150": {
+      "company": "COKENACH LIMITED",
+      "director": "",
+      "phone": "01763 846076",
+      "email": "",
+      "website": "http://www.cokenach.co.uk/",
+      "source": "Google Places — Cokenach Ltd",
+      "confidence": "high"
+    },
+    "01066417": {
+      "company": "GRAY & SONS (CHELMSFORD) LIMITED",
+      "director": "",
+      "phone": "01245 475181",
+      "email": "",
+      "website": "https://www.grayandsons.co.uk/?utm_source=google&utm_medium=wix_google_business_profile&utm_campaign=1882292159393941406",
+      "source": "Google Places — Gray & Sons (Chelmsford)",
+      "confidence": "high"
+    },
+    "00636545": {
+      "company": "PADFIELD (HAYLEYS) LIMITED",
+      "director": "",
+      "phone": "01992 572511",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Hayleys Estate",
+      "confidence": "high"
+    },
+    "01513266": {
+      "company": "WARWEST LIMITED",
+      "director": "",
+      "phone": "01628 762600",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Bray Business Centre",
+      "confidence": "high"
+    },
+    "01372008": {
+      "company": "GRANTHAM BROS. LIMITED",
+      "director": "",
+      "phone": "01507 609600",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Grantham Bros",
+      "confidence": "high"
+    },
+    "09033834": {
+      "company": "H C BOURN & SON (FARMING) LIMITED",
+      "director": "",
+      "phone": "01673 858998",
+      "email": "",
+      "website": "",
+      "source": "Google Places — H R Bourn & Sons",
+      "confidence": "medium"
+    },
+    "00502230": {
+      "company": "ALVIS BROTHERS LIMITED",
+      "director": "",
+      "phone": "01934 862320",
+      "email": "",
+      "website": "http://www.lyecrossfarm.co.uk/",
+      "source": "Google Places — Alvis Bros Ltd",
+      "confidence": "high"
+    },
+    "00452743": {
+      "company": "GOODALES ORCHARDS LIMITED",
+      "director": "",
+      "phone": "01945 583799",
+      "email": "",
+      "website": "https://orchards.demat.org.uk/",
+      "source": "Google Places — Orchards Church of England Academy",
+      "confidence": "medium"
+    },
+    "09548640": {
+      "company": "BOUGHTON FARMING LIMITED",
+      "director": "",
+      "phone": "01536 510515",
+      "email": "",
+      "website": "http://www.boughton.co.uk/",
+      "source": "Google Places — Boughton Loam Ltd",
+      "confidence": "medium"
+    },
+    "00875005": {
+      "company": "J.W.SPENCER FARMS LIMITED",
+      "director": "",
+      "phone": "01366 727183",
+      "email": "",
+      "website": "",
+      "source": "Google Places — J W Spencer Farms Ltd",
+      "confidence": "medium"
+    },
+    "00428701": {
+      "company": "COURT HOUSE FARMS LIMITED",
+      "director": "",
+      "phone": "01439 770318",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Wilson R W",
+      "confidence": "high"
+    },
+    "02508542": {
+      "company": "BAXTER FARMS LIMITED",
+      "director": "",
+      "phone": "01843 847228",
+      "email": "",
+      "website": "http://baxterfarms.co.uk/",
+      "source": "Google Places — Baxter Farms",
+      "confidence": "medium"
+    },
+    "00607130": {
+      "company": "BEDFORDIA FARMS LIMITED",
+      "director": "",
+      "phone": "01234 828060",
+      "email": "",
+      "website": "https://www.bedfordiafarms.co.uk/",
+      "source": "Google Places — Bedfordia Farms",
+      "confidence": "high"
+    },
+    "01117622": {
+      "company": "ASCOTT FARMS LIMITED",
+      "director": "",
+      "phone": "01296 688242",
+      "email": "",
+      "website": "http://www.ascottestate.co.uk/",
+      "source": "Google Places — Ascott Estate Office",
+      "confidence": "high"
+    },
+    "00962965": {
+      "company": "S.J.PHILLIPS & SONS(KEMBLE)LIMITED",
+      "director": "",
+      "phone": "01451 844291",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Phillips S J & Son Ltd",
+      "confidence": "high"
+    },
+    "00746473": {
+      "company": "ELLIS BROS (CONTRACTORS) LIMITED",
+      "director": "",
+      "phone": "01754 764176",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Ellis Bros Contactors Ltd",
+      "confidence": "high"
+    },
+    "00869514": {
+      "company": "T.H.CLEMENTS & SON LIMITED",
+      "director": "",
+      "phone": "01205 760456",
+      "email": "",
+      "website": "http://www.thclements.co.uk/",
+      "source": "Google Places — T H Clements",
+      "confidence": "high"
+    },
+    "00605374": {
+      "company": "A.E. & W.A.FARR LIMITED",
+      "director": "",
+      "phone": "01462 742637",
+      "email": "",
+      "website": "",
+      "source": "Google Places — A E & W A Farr Ltd",
+      "confidence": "high"
+    },
+    "05089828": {
+      "company": "A.W. PHOENIX & SONS LIMITED",
+      "director": "",
+      "phone": "01205 290206",
+      "email": "",
+      "website": "",
+      "source": "Google Places — A W phoenix & sons",
+      "confidence": "high"
+    },
+    "02369313": {
+      "company": "JOHN SAUL LIMITED",
+      "director": "",
+      "phone": "01205 870473",
+      "email": "",
+      "website": "http://www.johnsaulfarms.co.uk/%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82,%D0%BA%D0%B0%D0%BA%20%D0%B2%D0%B0%D1%88%D0%B8%20%D0%B4%D0%B5%D0%BB%D0%B0%20%D0%BF%D1%80%D0%B8%D0%BD%D0%B8%D0%BC%D0%B0%D0%B5%D1%82%20%D0%B3%D1%80%D0%B0%D0%B6%D0%B4%D0%B0%D0%BD%D0%B8%D0%BD%D0%B0%20%D0%B8%D0%B7%20%D0%A3%D0%B7%D0%B1%D0%B5%D0%BA%D0%B8%D1%81%D1%82%D0%B0%D0%BD?",
+      "source": "Google Places — John Saul Ltd",
+      "confidence": "high"
+    },
+    "01053413": {
+      "company": "R. H-J. (FARMS) LIMITED",
+      "director": "",
+      "phone": "01754 830288",
+      "email": "",
+      "website": "",
+      "source": "Google Places — R.H-J Farms Ltd",
+      "confidence": "high"
+    },
+    "01886862": {
+      "company": "P A WRIGHT & SONS LIMITED",
+      "director": "",
+      "phone": "01827 880472",
+      "email": "",
+      "website": "http://www.wrightsoftwycross.co.uk/",
+      "source": "Google Places — Wrights of Twycross",
+      "confidence": "high"
+    },
+    "08607059": {
+      "company": "GREENHEATH FARMING COMPANY LIMITED",
+      "director": "",
+      "phone": "01842 862068",
+      "email": "",
+      "website": "http://www.greenheath.co.uk/",
+      "source": "Google Places — Greenheath Limited",
+      "confidence": "high"
+    },
+    "00505822": {
+      "company": "LEONARD TOWLER & COMPANY LIMITED",
+      "director": "",
+      "phone": "01553 840208",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Leonard Towler & Co",
+      "confidence": "high"
+    },
+    "00572218": {
+      "company": "FRIDLINGTON FARMS LIMITED",
+      "director": "",
+      "phone": "01347 878400",
+      "email": "",
+      "website": "https://fridlingtonfarms.co.uk/",
+      "source": "Google Places — Fridlington Farms Ltd",
+      "confidence": "high"
+    },
+    "03630048": {
+      "company": "C. HORRELL LIMITED",
+      "director": "",
+      "phone": "01733 270247",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Horrell C A",
+      "confidence": "high"
+    },
+    "00435439": {
+      "company": "ARDEN FARMS OWMBY LTD",
+      "director": "",
+      "phone": "01673 878686",
+      "email": "",
+      "website": "http://www.ardenfarms.co.uk/",
+      "source": "Google Places — Arden Farms",
+      "confidence": "high"
+    },
+    "00451505": {
+      "company": "MEASURES FARMS LIMITED",
+      "director": "",
+      "phone": "01832 293190",
+      "email": "",
+      "website": "https://www.measuresfarms.co.uk/",
+      "source": "Google Places — Measures Farms Ltd",
+      "confidence": "high"
+    },
+    "00523257": {
+      "company": "SCHWIER FARMS LIMITED",
+      "director": "",
+      "phone": "01277 890463",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Schwier Farm Ltd",
+      "confidence": "high"
+    },
+    "00469255": {
+      "company": "RALPH POCKLINGTON LIMITED",
+      "director": "",
+      "phone": "01205 362141",
+      "email": "",
+      "website": "",
+      "source": "Google Places — R Pocklington Ltd",
+      "confidence": "high"
+    },
+    "01918366": {
+      "company": "H. & S. ROE & SONS FARMS LIMITED",
+      "director": "",
+      "phone": "01522 681542",
+      "email": "",
+      "website": "",
+      "source": "Google Places — H & S Roe & Sons Farms Ltd",
+      "confidence": "high"
+    },
+    "00669412": {
+      "company": "R.H.TOPHAM & SONS LIMITED",
+      "director": "",
+      "phone": "01480 476555",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Topham R H & Sons Ltd",
+      "confidence": "high"
+    },
+    "08928249": {
+      "company": "ASHCOURT FARMS LIMITED",
+      "director": "",
+      "phone": "01759 361535",
+      "email": "",
+      "website": "https://www.ashcourt.com/",
+      "source": "Google Places — Ashcourt Group - Pocklington Office",
+      "confidence": "high"
+    },
+    "00554808": {
+      "company": "SLY BROS. (POTATOES) LIMITED",
+      "director": "",
+      "phone": "01775 630300",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Sly Bros Potatoes Ltd",
+      "confidence": "high"
+    },
+    "05200667": {
+      "company": "IAN P LAIRD UNLIMITED",
+      "director": "",
+      "phone": "01526 342265",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Laird Ian P",
+      "confidence": "high"
+    },
+    "01673287": {
+      "company": "R & A NEEDHAM FARMS LIMITED",
+      "director": "",
+      "phone": "01507 327595",
+      "email": "",
+      "website": "http://www.pollcharolais.co.uk/",
+      "source": "Google Places — R & A Needham Farms Ltd",
+      "confidence": "high"
+    },
+    "01182979": {
+      "company": "LOCKWOOD ESTATES LIMITED",
+      "director": "",
+      "phone": "01522 731000",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Lockwood Estates Ltd",
+      "confidence": "high"
+    },
+    "00517149": {
+      "company": "J.W. NEEDHAM LIMITED",
+      "director": "",
+      "phone": "01507 327440",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Needham P H & B M",
+      "confidence": "medium"
+    },
+    "03329993": {
+      "company": "KEMBLE FARMS LIMITED",
+      "director": "",
+      "phone": "01285 652788",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Cirencester Park Farms Ltd",
+      "confidence": "medium"
+    },
+    "03369333": {
+      "company": "C.E. DAVIDSON FARMS LTD.",
+      "director": "",
+      "phone": "01379 388077",
+      "email": "",
+      "website": "https://www.cedavidson.co.uk/",
+      "source": "Google Places — C. E. Davidson Ltd",
+      "confidence": "medium"
+    },
+    "02000078": {
+      "company": "BROADTRENCH LIMITED",
+      "director": "",
+      "phone": "01964 543564",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Broadtrench Ltd",
+      "confidence": "medium"
+    },
+    "07602013": {
+      "company": "BAYBUTT HOLDINGS LIMITED",
+      "director": "",
+      "phone": "01772 815945",
+      "email": "",
+      "website": "https://alanbaybutt.com/",
+      "source": "Google Places — Alan Baybutt and Sons ltd",
+      "confidence": "high"
+    },
+    "07777030": {
+      "company": "WOODACRE PARK FARMS LIMITED",
+      "director": "",
+      "phone": "07791 527935",
+      "email": "",
+      "website": "http://woodacreparkfarms.co.uk/",
+      "source": "Google Places — Woodacre Park Farms Ltd",
+      "confidence": "medium"
+    },
+    "00697833": {
+      "company": "DELAMORE FARMS LIMITED",
+      "director": "",
+      "phone": "07810 826843",
+      "email": "",
+      "website": "http://www.delamores.co.uk/",
+      "source": "Google Places — Delamores, Moat Road, Terrington St. Clement, Norfolk, PE34 4PN",
+      "confidence": "medium"
+    },
+    "00506212": {
+      "company": "S.A.MOSSOP(FARMS)LIMITED",
+      "director": "",
+      "phone": "01472 388208",
+      "email": "",
+      "website": "",
+      "source": "Google Places — S A Mossop Farms Ltd",
+      "confidence": "high"
+    },
+    "01823807": {
+      "company": "W. HOYES & SONS LIMITED",
+      "director": "",
+      "phone": "01507 568213",
+      "email": "",
+      "website": "",
+      "source": "Google Places — W Hoyes & Sons",
+      "confidence": "high"
+    },
+    "00439439": {
+      "company": "J.S.DAKIN & COMPANY",
+      "director": "",
+      "phone": "01636 821555",
+      "email": "",
+      "website": "",
+      "source": "Google Places — J S Dakin & Co",
+      "confidence": "high"
+    },
+    "00517321": {
+      "company": "LOOSE HALL FARM LIMITED",
+      "director": "",
+      "phone": "01449 740322",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Loose Hall Farm Ltd",
+      "confidence": "high"
+    },
+    "00599804": {
+      "company": "CATTLE (HOLDERNESS) LIMITED",
+      "director": "",
+      "phone": "01964 622347",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Holderness Sand & Gravel Co",
+      "confidence": "medium"
+    },
+    "00830446": {
+      "company": "WILLERBY WOLD PIGGERIES LIMITED",
+      "director": "",
+      "phone": "01944 710267",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Willerby Wold Piggeries Ltd",
+      "confidence": "high"
+    },
+    "01326900": {
+      "company": "J.A. CUSSONS LIMITED",
+      "director": "",
+      "phone": "01944 710365",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Cussons J A",
+      "confidence": "high"
+    },
+    "00679532": {
+      "company": "J.G.SWIERS(HELPERBY)LIMITED",
+      "director": "",
+      "phone": "01423 360232",
+      "email": "",
+      "website": "",
+      "source": "Google Places — H C Swiers",
+      "confidence": "medium"
+    },
+    "00305369": {
+      "company": "FRIENDSHIP ESTATES LIMITED",
+      "director": "",
+      "phone": "01302 700220",
+      "email": "",
+      "website": "https://www.friendshipestates.co.uk/",
+      "source": "Google Places — Friendship Estates Ltd",
+      "confidence": "high"
+    },
+    "04431462": {
+      "company": "COCK OF THE NORTH (POULTRY) LIMITED",
+      "director": "",
+      "phone": "01709 586829",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Cock Of The North Poultry",
+      "confidence": "medium"
+    },
+    "01221759": {
+      "company": "J.S.R. FARMS LIMITED",
+      "director": "",
+      "phone": "01377 229264",
+      "email": "",
+      "website": "https://www.jsr.co.uk/",
+      "source": "Google Places — JSR Farms LTD",
+      "confidence": "high"
+    },
+    "00602626": {
+      "company": "R.N. PADFIELD & SONS LIMITED",
+      "director": "",
+      "phone": "01452 849142",
+      "email": "",
+      "website": "http://www.hawthornsestate.co.uk/",
+      "source": "Google Places — The Hawthorns Estate",
+      "confidence": "high"
+    },
+    "00538910": {
+      "company": "CHANDLER & DUNN LIMITED",
+      "director": "",
+      "phone": "01304 814245",
+      "email": "",
+      "website": "http://www.chandleranddunn.co.uk/",
+      "source": "Google Places — Chandler & Dunn",
+      "confidence": "high"
+    },
+    "00475661": {
+      "company": "E.W.PEPPER LIMITED",
+      "director": "",
+      "phone": "01763 264260",
+      "email": "",
+      "website": "",
+      "source": "Google Places — E W Pepper Ltd",
+      "confidence": "high"
+    },
+    "00821836": {
+      "company": "P.G. RIX (FARMS) LIMITED",
+      "director": "",
+      "phone": "01206 271309",
+      "email": "",
+      "website": "http://www.rixfarms.co.uk/",
+      "source": "Google Places — P G Rix Farms Ltd",
+      "confidence": "high"
+    },
+    "00439189": {
+      "company": "SMITH FARMS (CLACTON) LIMITED",
+      "director": "",
+      "phone": "01255 822050",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Smith Farms Ltd",
+      "confidence": "high"
+    },
+    "00435991": {
+      "company": "F.G.BATTLE & SONS,LIMITED",
+      "director": "",
+      "phone": "01522 791202",
+      "email": "",
+      "website": "http://www.fgbattle.co.uk/",
+      "source": "Google Places — F G Battle & Sons Ltd",
+      "confidence": "high"
+    },
+    "09028785": {
+      "company": "BEARSTONE STUD LIMITED",
+      "director": "",
+      "phone": "01630 647197",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Bearstone Stud",
+      "confidence": "high"
+    },
+    "00148350": {
+      "company": "J.H.& F.W.GREEN LIMITED",
+      "director": "",
+      "phone": "01243 785141",
+      "email": "",
+      "website": "",
+      "source": "Google Places — J H & F W Green Ltd",
+      "confidence": "high"
+    },
+    "00581479": {
+      "company": "GARTHORPE FARMING COMPANY LIMITED",
+      "director": "",
+      "phone": "01724 798315",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Garthorpe Farming Co Ltd",
+      "confidence": "high"
+    },
+    "00582441": {
+      "company": "T.C.CHEER COMPANY LIMITED",
+      "director": "",
+      "phone": "01205 724258",
+      "email": "",
+      "website": "https://www.cheersnurseries.co.uk/",
+      "source": "Google Places — Cheers Nurseries",
+      "confidence": "high"
+    },
+    "04290726": {
+      "company": "C.A. STRAWSON & SON LIMITED",
+      "director": "",
+      "phone": "01623 870421",
+      "email": "",
+      "website": "http://www.strawsons.com/",
+      "source": "Google Places — Strawson Ltd",
+      "confidence": "high"
+    },
+    "02517001": {
+      "company": "MOOR HOUSE FARMING LIMITED",
+      "director": "",
+      "phone": "01964 543242",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Moor House Farming Ltd",
+      "confidence": "high"
+    },
+    "00460990": {
+      "company": "WELBOURN FARMS,LIMITED",
+      "director": "",
+      "phone": "01400 273538",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Welbourn Farms Ltd",
+      "confidence": "high"
+    },
+    "01242564": {
+      "company": "LIGHTWATER FARMS LIMITED",
+      "director": "",
+      "phone": "01765 635321",
+      "email": "",
+      "website": "http://www.lightwatervalley.co.uk/",
+      "source": "Google Places — Lightwater Valley Family Adventure Park",
+      "confidence": "medium"
+    },
+    "06727994": {
+      "company": "AFTON PROJECTS LIMITED",
+      "director": "",
+      "phone": "01977 555532",
+      "email": "",
+      "website": "http://www.aftonprojects.com/",
+      "source": "Google Places — Afton Projects",
+      "confidence": "medium"
+    },
+    "03195929": {
+      "company": "M.H.S. FARMS LIMITED",
+      "director": "",
+      "phone": "01733 270298",
+      "email": "",
+      "website": "https://www.parkfarmthorney.co.uk/",
+      "source": "Google Places — Park Farm",
+      "confidence": "high"
+    },
+    "02816627": {
+      "company": "MAN OF ROSS LIMITED",
+      "director": "",
+      "phone": "01989 763111",
+      "email": "",
+      "website": "https://www.facebook.com/TheManofRossInn",
+      "source": "Google Places — Man Of Ross",
+      "confidence": "medium"
+    },
+    "02810485": {
+      "company": "FGS AGRI LIMITED",
+      "director": "",
+      "phone": "01233 820055",
+      "email": "",
+      "website": "http://www.fgsagri.co.uk/",
+      "source": "Google Places — FGS Agri",
+      "confidence": "high"
+    },
+    "01328651": {
+      "company": "WESTFIELD FARMS (MANEA) LIMITED",
+      "director": "",
+      "phone": "01354 680781",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Westfield Farms Manea Ltd",
+      "confidence": "high"
+    },
+    "00600419": {
+      "company": "HOBBS ESTATES LTD",
+      "director": "",
+      "phone": "01787 222674",
+      "email": "",
+      "website": "http://www.hobbsestates.co.uk/",
+      "source": "Google Places — Hobbs Estates Ltd",
+      "confidence": "high"
+    },
+    "07841711": {
+      "company": "S. W. ATTWOOD (FARMS) LIMITED",
+      "director": "",
+      "phone": "01795 880441",
+      "email": "",
+      "website": "https://swattwood.co.uk/",
+      "source": "Google Places — S W Attwood & Partners",
+      "confidence": "high"
+    },
+    "01159496": {
+      "company": "HALTON PIGS LIMITED",
+      "director": "",
+      "phone": "01754 830288",
+      "email": "",
+      "website": "",
+      "source": "Google Places — R.H-J Farms Ltd",
+      "confidence": "high"
+    },
+    "03140055": {
+      "company": "C. J. H. FARMING LIMITED",
+      "director": "",
+      "phone": "01245 248664",
+      "email": "",
+      "website": "",
+      "source": "Google Places — C J H Farming",
+      "confidence": "high"
+    },
+    "00630302": {
+      "company": "R.H. WARD (WELTON) LIMITED",
+      "director": "",
+      "phone": "01522 730210",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Ward R H Ltd",
+      "confidence": "high"
+    },
+    "01816750": {
+      "company": "OLDERSHAWS OF MOULTON LIMITED",
+      "director": "",
+      "phone": "01406 370380",
+      "email": "",
+      "website": "http://www.oldershawgroup.co.uk/",
+      "source": "Google Places — Oldershaws Of Moulton Ltd",
+      "confidence": "medium"
+    },
+    "00562943": {
+      "company": "DAVID BLACK & SON LIMITED",
+      "director": "",
+      "phone": "01449 781243",
+      "email": "",
+      "website": "https://blacksofbacton.co.uk/",
+      "source": "Google Places — David Black & Son Ltd",
+      "confidence": "high"
+    },
+    "01329943": {
+      "company": "WHITSBURY FARM & STUD LIMITED",
+      "director": "",
+      "phone": "01725 518254",
+      "email": "",
+      "website": "http://www.whitsburymanorstud.co.uk/",
+      "source": "Google Places — Whitsbury Farm & Stud Ltd",
+      "confidence": "medium"
+    },
+    "04626564": {
+      "company": "WARRENDALE GROUP LIMITED",
+      "director": "",
+      "phone": "01759 361254",
+      "email": "",
+      "website": "https://warrendale-wagyu.co.uk/?utm_source=gmb&utm_medium=organic&utm_campaign=gmb",
+      "source": "Google Places — Warrendale Wagyu Ltd",
+      "confidence": "high"
+    },
+    "09726733": {
+      "company": "HARDYS FARM LIMITED",
+      "director": "",
+      "phone": "01754 872267",
+      "email": "",
+      "website": "http://www.hardysanimalfarm.co.uk/",
+      "source": "Google Places — Hardy's Animal Farm",
+      "confidence": "high"
+    },
+    "01768469": {
+      "company": "FEARY FARMS (TILNEY) LIMITED",
+      "director": "",
+      "phone": "01945 880218",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Feary Farms (Tilney) Ltd",
+      "confidence": "high"
+    },
+    "00792276": {
+      "company": "HARDINGHAM FARMS LIMITED",
+      "director": "",
+      "phone": "01953 851716",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Hardingham Farms",
+      "confidence": "high"
+    },
+    "02699148": {
+      "company": "WORTON FARMS LIMITED",
+      "director": "",
+      "phone": "07710 634631",
+      "email": "",
+      "website": "http://www.wortonkitchengarden.com/",
+      "source": "Google Places — Worton Kitchen Garden",
+      "confidence": "high"
+    },
+    "03355569": {
+      "company": "SMITH BROTHERS FARMS LTD",
+      "director": "",
+      "phone": "0121 308 1946",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Walter Smith Farms Ltd",
+      "confidence": "medium"
+    },
+    "01611951": {
+      "company": "SCOTT AND SCOTT (AYSTON) LIMITED",
+      "director": "",
+      "phone": "01572 823345",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Scott & Scott Ayston Ltd",
+      "confidence": "high"
+    },
+    "00557540": {
+      "company": "CNEWR ESTATE LIMITED(THE)",
+      "director": "",
+      "phone": "07538 190831",
+      "email": "",
+      "website": "http://www.cnewrestate.co.uk/",
+      "source": "Google Places — The Cnewr Estate, Brecon",
+      "confidence": "medium"
+    },
+    "03312759": {
+      "company": "HOBSON FARMING LIMITED",
+      "director": "",
+      "phone": "01904 628670",
+      "email": "",
+      "website": "http://hobsonfarming.co.uk/",
+      "source": "Google Places — Hobson Farming Ltd",
+      "confidence": "high"
+    },
+    "03443510": {
+      "company": "BAWTRY FARMS LIMITED",
+      "director": "",
+      "phone": "01302 710341",
+      "email": "",
+      "website": "http://bawtryhall.co.uk/",
+      "source": "Google Places — Bawtry Hall",
+      "confidence": "medium"
+    },
+    "00530481": {
+      "company": "ROBERT PADFIELD LIMITED",
+      "director": "",
+      "phone": "01279 422619",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Robert Padfield Ltd",
+      "confidence": "high"
+    },
+    "04049547": {
+      "company": "ASHTON AGRICULTURAL AND GENERAL LIMITED",
+      "director": "",
+      "phone": "01229 889888",
+      "email": "",
+      "website": "",
+      "source": "Google Places — ASHTON AGRICULTURAL AND GENERAL LIMITED",
+      "confidence": "high"
+    },
+    "01741468": {
+      "company": "EDWARD VINSON LIMITED",
+      "director": "",
+      "phone": "01795 532728",
+      "email": "",
+      "website": "http://www.edwardvinson.co.uk/",
+      "source": "Google Places — Edward Vinson Ltd",
+      "confidence": "high"
+    },
+    "09588322": {
+      "company": "RICK HOWELL FARMS LIMITED",
+      "director": "",
+      "phone": "01507 477451",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Rick Howell Structural Steelwork Limited",
+      "confidence": "high"
+    },
+    "03053098": {
+      "company": "PENMAR FARMING LIMITED",
+      "director": "",
+      "phone": "01890 820456",
+      "email": "",
+      "website": "http://www.penmarfarming.co.uk/",
+      "source": "Google Places — Penmar Farming",
+      "confidence": "high"
+    },
+    "00688797": {
+      "company": "THOMAS BEAZLEY & SONS LIMITED",
+      "director": "",
+      "phone": "01234 824565",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Beazley T B W",
+      "confidence": "high"
+    },
+    "04767619": {
+      "company": "CHEVELEY PARK FARMS LIMITED",
+      "director": "",
+      "phone": "01638 730316",
+      "email": "",
+      "website": "http://www.cheveleypark.co.uk/",
+      "source": "Google Places — Cheveley Park Stud",
+      "confidence": "high"
+    },
+    "00723798": {
+      "company": "AVIAGEN TURKEYS LIMITED",
+      "director": "",
+      "phone": "01829 772020",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Aviagen Turkeys",
+      "confidence": "high"
+    },
+    "03007729": {
+      "company": "VARFELL FARMS LTD",
+      "director": "",
+      "phone": "01736 711271",
+      "email": "",
+      "website": "http://www.varfell.com/",
+      "source": "Google Places — Varfell Farms Ltd",
+      "confidence": "high"
+    },
+    "09119211": {
+      "company": "G T BIRKETT LIMITED",
+      "director": "",
+      "phone": "017687 79003",
+      "email": "",
+      "website": "https://birketteng.co.uk/",
+      "source": "Google Places — Birkett Civil Engineering Ltd",
+      "confidence": "medium"
+    },
+    "02890411": {
+      "company": "CANFORD RENEWABLE ENERGY LIMITED",
+      "director": "",
+      "phone": "01202 612504",
+      "email": "",
+      "website": "http://www.canfordrenewableenergy.co.uk/",
+      "source": "Google Places — Canford Renewable Energy Limited",
+      "confidence": "high"
+    },
+    "00533478": {
+      "company": "WM.ALLISON & SONS LIMITED",
+      "director": "",
+      "phone": "01388 603245",
+      "email": "",
+      "website": "http://www.william-allison.co.uk/",
+      "source": "Google Places — William Allison & Sons",
+      "confidence": "high"
+    },
+    "00827283": {
+      "company": "MERCER FARMING LIMITED",
+      "director": "",
+      "phone": "01283 713901",
+      "email": "",
+      "website": "http://farmfreshrevolution.com/",
+      "source": "Google Places — Farm Fresh Revolution",
+      "confidence": "high"
+    },
+    "00799344": {
+      "company": "H.R. PHILPOT & SON (BARLEYLANDS) LIMITED",
+      "director": "",
+      "phone": "01268 532253",
+      "email": "",
+      "website": "",
+      "source": "Google Places — HR Philpot & Sons",
+      "confidence": "high"
+    },
+    "04381522": {
+      "company": "EARTH TRUST",
+      "director": "",
+      "phone": "01865 407792",
+      "email": "",
+      "website": "http://www.earthtrust.org.uk/",
+      "source": "Google Places — Earth Trust",
+      "confidence": "high"
+    },
+    "00725104": {
+      "company": "OAKLANDS FARM EGGS LIMITED",
+      "director": "",
+      "phone": "01952 770322",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Oaklands Farm Eggs Limited",
+      "confidence": "high"
+    },
+    "01870434": {
+      "company": "LINCOLNSHIRE FIELD PRODUCTS LIMITED",
+      "director": "",
+      "phone": "01775 725041",
+      "email": "",
+      "website": "http://www.lincsfp.com/",
+      "source": "Google Places — Lincolnshire Field Products",
+      "confidence": "high"
+    },
+    "00833185": {
+      "company": "BURGESS & WALKER TRANSPORT LIMITED",
+      "director": "",
+      "phone": "01480 468959",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Burgess & Walker Transport Ltd",
+      "confidence": "medium"
+    },
+    "00636201": {
+      "company": "GEORGE HAY & SONS LIMITED",
+      "director": "",
+      "phone": "01406 370474",
+      "email": "",
+      "website": "",
+      "source": "Google Places — G Hay & Sons Ltd",
+      "confidence": "medium"
+    },
+    "08276872": {
+      "company": "JACKAMAX LIMITED",
+      "director": "",
+      "phone": "01752 301010",
+      "email": "",
+      "website": "https://www.pkf-francisclark.co.uk/contact-us/plymouth-office/",
+      "source": "Google Places — PKF Francis Clark Plymouth",
+      "confidence": "high"
+    },
+    "02130188": {
+      "company": "HOBILLS LIMITED",
+      "director": "",
+      "phone": "01664 444238",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Hobills Ltd",
+      "confidence": "high"
+    },
+    "00567225": {
+      "company": "WM.YOUNGS & SON (FARMS) LIMITED",
+      "director": "",
+      "phone": "01263 735201",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Youngs William & Son Farms Ltd",
+      "confidence": "high"
+    },
+    "03471248": {
+      "company": "BECKHITHE FARMS LIMITED",
+      "director": "",
+      "phone": "01493 701550",
+      "email": "",
+      "website": "http://www.beckhithefarms.co.uk/",
+      "source": "Google Places — Beckhithe Farms",
+      "confidence": "high"
+    },
+    "00539695": {
+      "company": "C.J.C. LEE (SAXTHORPE) LIMITED",
+      "director": "",
+      "phone": "01263 587277",
+      "email": "",
+      "website": "http://www.cjclee.co.uk/",
+      "source": "Google Places — CJC Lee (Saxthorpe) Ltd",
+      "confidence": "high"
+    },
+    "06538751": {
+      "company": "SALTCARR FARMS LIMITED",
+      "director": "",
+      "phone": "01263 587003",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Saltcarr Farms Ltd",
+      "confidence": "high"
+    },
+    "00507895": {
+      "company": "WILLOUGHBY FARMS LIMITED",
+      "director": "",
+      "phone": "01507 466644",
+      "email": "",
+      "website": "https://www.willoughbyfarms.co.uk/",
+      "source": "Google Places — Willoughby Farms Ltd",
+      "confidence": "high"
+    },
+    "01148230": {
+      "company": "CROWMARSH BATTLE FARMS LIMITED",
+      "director": "",
+      "phone": "01491 837242",
+      "email": "",
+      "website": "http://www.crowmarshbattlefarms.co.uk/",
+      "source": "Google Places — Clacks Farm, Crowmarsh Battle Farms Ltd",
+      "confidence": "medium"
+    },
+    "01701881": {
+      "company": "STONYDELPH LIMITED",
+      "director": "",
+      "phone": "01827 60033",
+      "email": "",
+      "website": "https://www.philipbarnes.co.uk/",
+      "source": "Google Places — Philip Barnes & Co Ltd",
+      "confidence": "high"
+    },
+    "00753022": {
+      "company": "BLOOMS HALL FARMS LIMITED",
+      "director": "",
+      "phone": "01986 785468",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Blooms Hall Farm",
+      "confidence": "high"
+    },
+    "02643804": {
+      "company": "J.D. AND R.J. BAKER FARMS LIMITED",
+      "director": "",
+      "phone": "01449 737229",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Baker J D & R J Farms Ltd",
+      "confidence": "high"
+    },
+    "00547353": {
+      "company": "LONGTHORP (KILPIN) LIMITED",
+      "director": "",
+      "phone": "01430 433030",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Longthorp Kilpin Ltd",
+      "confidence": "high"
+    },
+    "02077863": {
+      "company": "EDWARD FISHER & CO. LIMITED",
+      "director": "",
+      "phone": "01909 731709",
+      "email": "",
+      "website": "",
+      "source": "Google Places — L H Fisher Farms",
+      "confidence": "high"
+    },
+    "00836326": {
+      "company": "NELSON M. GREEN & SONS LIMITED",
+      "director": "",
+      "phone": "01778 440285",
+      "email": "",
+      "website": "http://www.nelsongreen.com",
+      "source": "Google Places — Nelson M Green and Sons",
+      "confidence": "high"
+    },
+    "00568719": {
+      "company": "HENRY TUNNARD LIMITED",
+      "director": "",
+      "phone": "01205 722237",
+      "email": "",
+      "website": "https://henrytunnardltd.co.uk/",
+      "source": "Google Places — Henry Tunnard Ltd",
+      "confidence": "high"
+    },
+    "00705290": {
+      "company": "W.LANHAM & SONS LIMITED",
+      "director": "",
+      "phone": "01493 731687",
+      "email": "",
+      "website": "",
+      "source": "Google Places — W Lanham & Sons",
+      "confidence": "high"
+    },
+    "03903540": {
+      "company": "PAUL SPINK LIMITED",
+      "director": "",
+      "phone": "01777 228422",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Paul Spink Ltd",
+      "confidence": "high"
+    },
+    "08739433": {
+      "company": "EQUINE WELFARE LIMITED",
+      "director": "",
+      "phone": "020 8342 1111",
+      "email": "",
+      "website": "http://www.dartsgb.co.uk/",
+      "source": "Google Places — DARTS GB",
+      "confidence": "high"
+    },
+    "00561359": {
+      "company": "JOHN BOYD (FARMS) LIMITED",
+      "director": "",
+      "phone": "01622 858484",
+      "email": "",
+      "website": "",
+      "source": "Google Places — W G Boyd",
+      "confidence": "high"
+    },
+    "03548144": {
+      "company": "PETARY LTD",
+      "director": "",
+      "phone": "01354 740199",
+      "email": "",
+      "website": "http://www.fieldsendwater.co.uk/?utm_source=Google&utm_medium=GBP&utm_campaign=Website_Clicks",
+      "source": "Google Places — Fields End Water Caravan Park, Glamping Pods, Lodges & Fishery",
+      "confidence": "high"
+    },
+    "00687287": {
+      "company": "DENNIS (HADDENHAM) LIMITED",
+      "director": "",
+      "phone": "01353 741914",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Dennis Haddenham Ltd",
+      "confidence": "high"
+    },
+    "00505435": {
+      "company": "R.C.EAYRS LIMITED",
+      "director": "",
+      "phone": "01480 890292",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Eayrs Farms",
+      "confidence": "medium"
+    },
+    "05291852": {
+      "company": "ROWE FARMING LIMITED",
+      "director": "",
+      "phone": "01354 672000",
+      "email": "",
+      "website": "http://greenvale.co.uk/",
+      "source": "Google Places — Greenvale AP",
+      "confidence": "high"
+    },
+    "00142895": {
+      "company": "D.STEWART & SON, LIMITED",
+      "director": "",
+      "phone": "01425 272244",
+      "email": "",
+      "website": "https://www.stewarts.co.uk/contact/stewarts-christchurch-garden-centre",
+      "source": "Google Places — Stewarts Christchurch Garden Centre",
+      "confidence": "medium"
+    },
+    "05348765": {
+      "company": "G A DEAN LIMITED",
+      "director": "",
+      "phone": "07747 016272",
+      "email": "",
+      "website": "https://www.pilfordfarm.co.uk/",
+      "source": "Google Places — G A Dean Ltd",
+      "confidence": "high"
+    },
+    "04018781": {
+      "company": "ALLEN (HANFORD) LIMITED",
+      "director": "",
+      "phone": "01235 812333",
+      "email": "",
+      "website": "https://www.allenandharris.co.uk/estate-agents/didcot?utm_source=Google&utm_medium=Main+URL&utm_campaign=Google+Knowledge+Panel&utm_id=YEXT&y_source=1_NjUyNTUzNzEtNzE1LWxvY2F0aW9uLndlYnNpdGU%3D",
+      "source": "Google Places — Allen and Harris Estate Agents Didcot",
+      "confidence": "medium"
+    },
+    "08444731": {
+      "company": "BONDGRIP LIMITED",
+      "director": "",
+      "phone": "01371 874994",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Stonham",
+      "confidence": "high"
+    },
+    "00504062": {
+      "company": "H.T.SMITH(FARMS)LIMITED",
+      "director": "",
+      "phone": "07967 555470",
+      "email": "",
+      "website": "https://www.htsmithfarms.co.uk/",
+      "source": "Google Places — HT Smith Farms",
+      "confidence": "high"
+    },
+    "00400447": {
+      "company": "COMMON FARM,LIMITED",
+      "director": "",
+      "phone": "07967 377530",
+      "email": "",
+      "website": "http://commonfarmltd.com/",
+      "source": "Google Places — Common Farm Ltd",
+      "confidence": "high"
+    },
+    "00321822": {
+      "company": "BULMER BRICK AND TILE COMPANY LIMITED(THE)",
+      "director": "",
+      "phone": "01787 269232",
+      "email": "",
+      "website": "http://www.bulmerbrickandtile.co.uk/",
+      "source": "Google Places — Bulmer Brick & Tile Co Ltd",
+      "confidence": "high"
+    },
+    "05915466": {
+      "company": "SJR FARMING LIMITED",
+      "director": "",
+      "phone": "01268 762764",
+      "email": "",
+      "website": "http://www.sjrfarming.co.uk/",
+      "source": "Google Places — SJR Farming Ltd",
+      "confidence": "high"
+    },
+    "00355344": {
+      "company": "BURLINGTON FARMS LIMITED",
+      "director": "",
+      "phone": "01234 376284",
+      "email": "",
+      "website": "http://www.ragibson.co.uk/",
+      "source": "Google Places — R A Gibson Colesden Ltd",
+      "confidence": "high"
+    },
+    "00742499": {
+      "company": "PETER STRAWSON LIMITED",
+      "director": "",
+      "phone": "01472 822442",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Strawson Peter Ltd",
+      "confidence": "high"
+    },
+    "01984894": {
+      "company": "FIGGIS FARMS LIMITED",
+      "director": "",
+      "phone": "91 442 21 15",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Figgis Farm",
+      "confidence": "high"
+    },
+    "09787995": {
+      "company": "HAWKING FARMING LIMITED",
+      "director": "",
+      "phone": "01225 892292",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Hawking W A",
+      "confidence": "high"
+    },
+    "00975229": {
+      "company": "M.J. WORTH LIMITED",
+      "director": "",
+      "phone": "01754 880310",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Worth M J Ltd",
+      "confidence": "high"
+    },
+    "01247631": {
+      "company": "J. NEAVE (SAXBY) LIMITED",
+      "director": "",
+      "phone": "07831 263177",
+      "email": "",
+      "website": "http://brightwatergardens.co.uk/",
+      "source": "Google Places — Brightwater Gardens",
+      "confidence": "high"
+    },
+    "00784855": {
+      "company": "MALCOLM WRISDALE LIMITED",
+      "director": "",
+      "phone": "01790 752251",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Malcolm Wrisdale Ltd",
+      "confidence": "high"
+    },
+    "00492990": {
+      "company": "FRANK RICHARDSON & SON LIMITED",
+      "director": "",
+      "phone": "01778 560004",
+      "email": "",
+      "website": "https://www.thetfordfarmestate.co.uk/",
+      "source": "Google Places — Thetford Farm Estate",
+      "confidence": "high"
+    },
+    "00717358": {
+      "company": "ALEC CONEY (FARMS) LIMITED",
+      "director": "",
+      "phone": "01205 310888",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Coney Alec",
+      "confidence": "high"
+    },
+    "01097320": {
+      "company": "W.R. HAINES (LEASOW FARMS) LIMITED",
+      "director": "",
+      "phone": "01386 841226",
+      "email": "",
+      "website": "",
+      "source": "Google Places — W R Haines Leasow Farms Ltd",
+      "confidence": "high"
+    },
+    "02434505": {
+      "company": "PAUL RACKHAM LIMITED",
+      "director": "",
+      "phone": "01953 717176",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Rackham Paul Ltd",
+      "confidence": "high"
+    },
+    "01922885": {
+      "company": "P & P PROFESSIONAL FARMERS LIMITED",
+      "director": "",
+      "phone": "01692 404601",
+      "email": "",
+      "website": "http://www.lfpapworth.co.uk/",
+      "source": "Google Places — L F Papworth Ltd",
+      "confidence": "high"
+    },
+    "04480604": {
+      "company": "HAZELL AND JEFFERIES FARMS LIMITED",
+      "director": "",
+      "phone": "0118 984 2684",
+      "email": "",
+      "website": "https://www.hazellj.co.uk/",
+      "source": "Google Places — Hazell & Jefferies Ltd",
+      "confidence": "high"
+    },
+    "00844536": {
+      "company": "E.OLDROYD & SONS(LOFTHOUSE)LIMITED",
+      "director": "",
+      "phone": "0113 282 2245",
+      "email": "",
+      "website": "",
+      "source": "Google Places — E Oldroyd & Sons",
+      "confidence": "high"
+    },
+    "SC156515": {
+      "company": "2 AGRICULTURE LIMITED",
+      "director": "",
+      "phone": "0131 335 3800",
+      "email": "",
+      "website": "http://www.2agriculture.com/",
+      "source": "Google Places — 2Agriculture Ltd (HO)",
+      "confidence": "high"
+    },
+    "00531390": {
+      "company": "H.TIMMIS(FARMS)LIMITED",
+      "director": "",
+      "phone": "01952 604216",
+      "email": "",
+      "website": "http://www.timmisfarming.co.uk/",
+      "source": "Google Places — H Timmis Farms",
+      "confidence": "medium"
+    },
+    "07034689": {
+      "company": "ANGUS BEEF COMPANY LIMITED",
+      "director": "",
+      "phone": "01430 430694",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Higgins Recycling",
+      "confidence": "high"
+    },
+    "02105527": {
+      "company": "JAMES H. TENNANT LIMITED",
+      "director": "",
+      "phone": "01262 673921",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Tennant James Ltd",
+      "confidence": "high"
+    },
+    "08299304": {
+      "company": "THOMSON SAWMILLS HOLDINGS LIMITED",
+      "director": "",
+      "phone": "01603 754442",
+      "email": "",
+      "website": "https://www.thomsonsawmills.co.uk/?utm_source=google&utm_medium=gmb&utm_campaign=googlemybusiness",
+      "source": "Google Places — Thomson Sawmills Ltd",
+      "confidence": "high"
+    },
+    "00522651": {
+      "company": "FRED GRANT",
+      "director": "",
+      "phone": "01205 760215",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Fred Grant Co",
+      "confidence": "high"
+    },
+    "03115027": {
+      "company": "F CRAVEN & SONS LIMITED",
+      "director": "",
+      "phone": "01205 460255",
+      "email": "",
+      "website": "https://fcravenandsons.com/",
+      "source": "Google Places — F Craven & Sons Ltd",
+      "confidence": "high"
+    },
+    "00643046": {
+      "company": "P. WINTERTON LIMITED",
+      "director": "",
+      "phone": "0116 264 5000",
+      "email": "",
+      "website": "http://www.lemonpath.co.uk/",
+      "source": "Google Places — Lemonpath Ltd",
+      "confidence": "high"
+    },
+    "00831585": {
+      "company": "JOHN MAKIN LIMITED",
+      "director": "",
+      "phone": "07742 082394",
+      "email": "",
+      "website": "https://www.bungalowfarmbuckton.co.uk/",
+      "source": "Google Places — Bungalow Farm Buckton | Camping & Caravan Site",
+      "confidence": "high"
+    },
+    "00434503": {
+      "company": "E & E J ANDREWS LIMITED",
+      "director": "",
+      "phone": "01508 538926",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Andrews E & E J (James)",
+      "confidence": "high"
+    },
+    "02377021": {
+      "company": "GERMANY FARMS LIMITED",
+      "director": "",
+      "phone": "01636 636295",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Germany F & Son",
+      "confidence": "high"
+    },
+    "06492950": {
+      "company": "M MADDERS FARMING LIMITED",
+      "director": "",
+      "phone": "01785 252392",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Madders J S",
+      "confidence": "medium"
+    },
+    "09215645": {
+      "company": "R J HOWARD FARMING LIMITED",
+      "director": "",
+      "phone": "01777 248632",
+      "email": "",
+      "website": "",
+      "source": "Google Places — R J Howard Farming Ltd",
+      "confidence": "high"
+    },
+    "05393246": {
+      "company": "LAMPITS FARMS LIMITED",
+      "director": "",
+      "phone": "01379 678751",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Lampits Farms Ltd",
+      "confidence": "high"
+    },
+    "03331831": {
+      "company": "N J R FARMING LIMITED",
+      "director": "",
+      "phone": "07980 732330",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Dean Hall Farm",
+      "confidence": "high"
+    },
+    "00472895": {
+      "company": "C. WRIGHT (FARMERS) LIMITED",
+      "director": "",
+      "phone": "01205 870434",
+      "email": "",
+      "website": "http://www.charleswrightandsons.co.uk/",
+      "source": "Google Places — Charles Wright & Sons",
+      "confidence": "high"
+    },
+    "05883942": {
+      "company": "R J WRIGHT (2006) LIMITED",
+      "director": "",
+      "phone": "01406 540503",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Wright R J Ltd",
+      "confidence": "high"
+    },
+    "03731652": {
+      "company": "PETER C. THOROLD LIMITED",
+      "director": "",
+      "phone": "01775 840360",
+      "email": "",
+      "website": "http://www.thoroldsproduce.co.uk/",
+      "source": "Google Places — PC Thorold Ltd",
+      "confidence": "high"
+    },
+    "01330804": {
+      "company": "JAMES COLES & SONS (NURSERIES) LIMITED",
+      "director": "",
+      "phone": "0116 241 2115",
+      "email": "",
+      "website": "http://www.colesnurseries.co.uk/?utm_source=GBP&utm_medium=GBP&utm_campaign=GBP",
+      "source": "Google Places — James Coles & Sons (Nurseries) Limited",
+      "confidence": "high"
+    },
+    "06119632": {
+      "company": "KINGSDOWN FARM LTD",
+      "director": "",
+      "phone": "01722 435190",
+      "email": "",
+      "website": "http://www.begbies-traynorgroup.com/offices/salisbury-insolvency-practitioners",
+      "source": "Google Places — BTG Begbies Traynor - Insolvency Practitioners Salisbury",
+      "confidence": "high"
+    },
+    "01393468": {
+      "company": "SEVERALS FARM LIMITED",
+      "director": "",
+      "phone": "01302 556674",
+      "email": "",
+      "website": "https://www.navartisglobal.com/",
+      "source": "Google Places — Navartis Doncaster",
+      "confidence": "high"
+    },
+    "02106074": {
+      "company": "RICHARD W. TENNANT LIMITED",
+      "director": "",
+      "phone": "01377 252264",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Richard W Tennant Ltd",
+      "confidence": "high"
+    },
+    "00771880": {
+      "company": "WHITING ASH FARMS LIMITED",
+      "director": "",
+      "phone": "01531 650723",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Whiting Ash Farms Ltd",
+      "confidence": "high"
+    },
+    "00316628": {
+      "company": "W.J.&M.MASH LIMITED",
+      "director": "",
+      "phone": "01494 782508",
+      "email": "",
+      "website": "",
+      "source": "Google Places — W. J. & M. Mash Limited",
+      "confidence": "high"
+    },
+    "00388078": {
+      "company": "BANK FARM LIMITED",
+      "director": "",
+      "phone": "01553 774761",
+      "email": "",
+      "website": "https://mapus.co.uk/",
+      "source": "Google Places — Mapus-Smith & Lemmon LLP",
+      "confidence": "high"
+    },
+    "00650878": {
+      "company": "C.P.RICHARDS & SON LIMITED",
+      "director": "",
+      "phone": "01736 752393",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Richards C P & Son Ltd",
+      "confidence": "high"
+    },
+    "01362374": {
+      "company": "TEMUKA LIMITED",
+      "director": "",
+      "phone": "01761 413347",
+      "email": "",
+      "website": "https://www.onestop.co.uk/",
+      "source": "Google Places — One Stop",
+      "confidence": "high"
+    },
+    "04296191": {
+      "company": "DARTS FARM LIMITED",
+      "director": "",
+      "phone": "01392 878200",
+      "email": "",
+      "website": "http://www.dartsfarm.co.uk/",
+      "source": "Google Places — Darts Farm",
+      "confidence": "high"
+    },
+    "05303470": {
+      "company": "BITTADON FARMS LIMITED",
+      "director": "",
+      "phone": "01271 850320",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Church Farm",
+      "confidence": "high"
+    },
+    "06073879": {
+      "company": "MARSH GREEN ESTATES LTD",
+      "director": "",
+      "phone": "07879 553997",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Marsh Green Estates Shoot",
+      "confidence": "high"
+    },
+    "02317292": {
+      "company": "GRAHAM WARD FARMS LIMITED",
+      "director": "",
+      "phone": "01782 750300",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Graham Ward Farms Ltd",
+      "confidence": "high"
+    },
+    "02689205": {
+      "company": "BOWLDOWN FARMS LIMITED",
+      "director": "",
+      "phone": "01666 890224",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Bowldown Farm Airstrip GB-0333",
+      "confidence": "high"
+    },
+    "02809573": {
+      "company": "YORKSHIRE DAIRY GOATS",
+      "director": "",
+      "phone": "01430 861400",
+      "email": "",
+      "website": "http://www.sthelensfarm.co.uk/",
+      "source": "Google Places — St Helen's Farm",
+      "confidence": "high"
+    },
+    "01132200": {
+      "company": "J. & M. SEABROOK (TOLLESBURY) LIMITED",
+      "director": "",
+      "phone": "01621 860250",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Seabrook J & M Ltd",
+      "confidence": "high"
+    },
+    "01007609": {
+      "company": "G.& B.DOBSON LIMITED",
+      "director": "",
+      "phone": "01507 603904",
+      "email": "",
+      "website": "http://www.gbdobsonltd.co.uk/",
+      "source": "Google Places — G & B Dobson Ltd",
+      "confidence": "high"
+    },
+    "00498691": {
+      "company": "T.H.HOBSON LIMITED",
+      "director": "",
+      "phone": "01904 607202",
+      "email": "",
+      "website": "",
+      "source": "Google Places — T H Hobson Ltd",
+      "confidence": "high"
+    },
+    "00497414": {
+      "company": "J.T.HOLLIS(FARMS)LIMITED",
+      "director": "",
+      "phone": "01400 272256",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Hollis Farms Ltd",
+      "confidence": "medium"
+    },
+    "00368657": {
+      "company": "F & A GEORGE LIMITED",
+      "director": "",
+      "phone": "01933 441000",
+      "email": "",
+      "website": "http://www.whitworthbros.ltd.uk/",
+      "source": "Google Places — Whitworths Bros Ltd",
+      "confidence": "high"
+    },
+    "00506165": {
+      "company": "H. CASSWELL AND SON (GOSBERTON) LIMITED",
+      "director": "",
+      "phone": "01775 840212",
+      "email": "",
+      "website": "",
+      "source": "Google Places — H Casswell & Son Gosberton",
+      "confidence": "high"
+    },
+    "07578762": {
+      "company": "S C FOSTER FARMING",
+      "director": "",
+      "phone": "01609 881236",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Foster a & Em",
+      "confidence": "medium"
+    },
+    "00686278": {
+      "company": "STANGROOM BROS.LIMITED",
+      "director": "",
+      "phone": "01328 700291",
+      "email": "",
+      "website": "http://www.stangroombrothers.co.uk/",
+      "source": "Google Places — Stangroom Bros Ltd",
+      "confidence": "high"
+    },
+    "04295450": {
+      "company": "BARFOOT FARMS LIMITED",
+      "director": "",
+      "phone": "01243 268811",
+      "email": "",
+      "website": "https://www.barfoots.com/",
+      "source": "Google Places — Barfoots Of Botley Ltd",
+      "confidence": "high"
+    },
+    "00689950": {
+      "company": "VITACRESS SALADS LIMITED",
+      "director": "",
+      "phone": "01264 738766",
+      "email": "",
+      "website": "http://www.vitacress.com/",
+      "source": "Google Places — Vitacress Salads Ltd",
+      "confidence": "high"
+    },
+    "01236614": {
+      "company": "S.H. SOMERSCALES LIMITED",
+      "director": "",
+      "phone": "01469 560704",
+      "email": "",
+      "website": "http://stuartsomerscales.com/",
+      "source": "Google Places — S H Somerscales LTD",
+      "confidence": "high"
+    },
+    "00481434": {
+      "company": "H.P. BRAMHILL & COMPANY LIMITED",
+      "director": "",
+      "phone": "01724 798202",
+      "email": "",
+      "website": "",
+      "source": "Google Places — H P Bramhill & Co",
+      "confidence": "high"
+    },
+    "06405783": {
+      "company": "P.S. & J.E. WARD LTD",
+      "director": "",
+      "phone": "01553 828283",
+      "email": "",
+      "website": "",
+      "source": "Google Places — P S & J E Ward Ltd.Belmont Nurseries",
+      "confidence": "medium"
+    },
+    "00804843": {
+      "company": "PRESTON FARMS LIMITED",
+      "director": "",
+      "phone": "01296 712200",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Preston Farms Ltd",
+      "confidence": "high"
+    },
+    "07413382": {
+      "company": "BOARSTALL FARMS LTD",
+      "director": "",
+      "phone": "01844 238256",
+      "email": "",
+      "website": "http://www.boarstallmeats.co.uk/",
+      "source": "Google Places — Boarstall Meats",
+      "confidence": "medium"
+    },
+    "00600529": {
+      "company": "E.A.DRING(FARMS)LIMITED",
+      "director": "",
+      "phone": "01205 280488",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Dring E a Ltd",
+      "confidence": "high"
+    },
+    "03745473": {
+      "company": "ROBERT NELSTROP FARMS LIMITED",
+      "director": "",
+      "phone": "01522 520097",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Nelstrop Farms Ltd",
+      "confidence": "high"
+    },
+    "00600245": {
+      "company": "J.H.DORRINGTON & SON(DUNSBY)LIMITED",
+      "director": "",
+      "phone": "01778 440201",
+      "email": "",
+      "website": "",
+      "source": "Google Places — J H Dorrington & Son Dunsby Ltd",
+      "confidence": "high"
+    },
+    "01150518": {
+      "company": "D.F. MEANWELL LIMITED",
+      "director": "",
+      "phone": "01522 720210",
+      "email": "",
+      "website": "",
+      "source": "Google Places — D F Meanwell Ltd",
+      "confidence": "high"
+    },
+    "00425609": {
+      "company": "BELVOIR FARMING COMPANY LIMITED",
+      "director": "",
+      "phone": "01476 870286",
+      "email": "",
+      "website": "https://belvoirfarm.co.uk/",
+      "source": "Google Places — Belvoir Fruit Farms",
+      "confidence": "high"
+    },
+    "00654056": {
+      "company": "BRADFIELDS FARM LIMITED",
+      "director": "",
+      "phone": "01823 461260",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Bradfields Farm Ltd",
+      "confidence": "high"
+    },
+    "00615597": {
+      "company": "E.W.PORTER AND SON",
+      "director": "",
+      "phone": "01842 828215",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Porter E W & Son",
+      "confidence": "high"
+    },
+    "00950744": {
+      "company": "CALEY FARMS LIMITED",
+      "director": "",
+      "phone": "01553 617287",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Caley Farms",
+      "confidence": "high"
+    },
+    "00750218": {
+      "company": "ROSE HALL FARMS LIMITED",
+      "director": "",
+      "phone": "01945 780238",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Rose Hall Farms",
+      "confidence": "high"
+    },
+    "01867591": {
+      "company": "BARTON & CO. (FARMERS) LIMITED",
+      "director": "",
+      "phone": "01427 848662",
+      "email": "",
+      "website": "",
+      "source": "Google Places — W E Barton Ltd",
+      "confidence": "high"
+    },
+    "00903691": {
+      "company": "POLESWORTH GARAGE LIMITED",
+      "director": "",
+      "phone": "01827 895125",
+      "email": "",
+      "website": "https://www.polesworth-garage.com/",
+      "source": "Google Places — Polesworth Garage",
+      "confidence": "high"
+    },
+    "06173363": {
+      "company": "BRITTLEBANK LIMITED",
+      "director": "",
+      "phone": "01538 722293",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Brittlebank",
+      "confidence": "high"
+    },
+    "09007749": {
+      "company": "RIDINGS FARM LTD",
+      "director": "",
+      "phone": "01572 812206",
+      "email": "",
+      "website": "http://manorfarmliverycentre.co.uk/",
+      "source": "Google Places — Manor Farm Livery Centre",
+      "confidence": "medium"
+    },
+    "03092876": {
+      "company": "GLOVER FARMING (WEST DEREHAM) LIMITED",
+      "director": "",
+      "phone": "01366 500828",
+      "email": "",
+      "website": "http://www.gloveragriculture.co.uk/",
+      "source": "Google Places — Glover Agricultural Contractors",
+      "confidence": "high"
+    },
+    "00438070": {
+      "company": "KIDNER FARMING LIMITED",
+      "director": "",
+      "phone": "01508 494883",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Kidner Farming Ltd",
+      "confidence": "high"
+    },
+    "01408316": {
+      "company": "M. & R. KIRKHAM & SONS LIMITED",
+      "director": "",
+      "phone": "01676 532233",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Kirkham M & R & Sons",
+      "confidence": "high"
+    },
+    "00657076": {
+      "company": "J.A.WILLIS(NORTHALLERTON)LIMITED",
+      "director": "",
+      "phone": "01609 772482",
+      "email": "",
+      "website": "",
+      "source": "Google Places — S Willis & Sons",
+      "confidence": "high"
+    },
+    "09001046": {
+      "company": "ELAN VALLEY LIMITED",
+      "director": "",
+      "phone": "01597 810449",
+      "email": "",
+      "website": "https://elanvalley.org.uk/",
+      "source": "Google Places — Elan Valley (Cwm Elan)",
+      "confidence": "high"
+    },
+    "07192432": {
+      "company": "W H MIDDLETON LIMITED",
+      "director": "",
+      "phone": "01302 783231",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Middleton W H",
+      "confidence": "high"
+    },
+    "01797815": {
+      "company": "THOMPSONS NURSERY LIMITED",
+      "director": "",
+      "phone": "020 8302 2455",
+      "email": "",
+      "website": "https://www.thompsons-plants.co.uk/visit-us/chislehurst-thompsons",
+      "source": "Google Places — Thompson's Garden Centre - Chislehurst",
+      "confidence": "high"
+    },
+    "00715017": {
+      "company": "E C DRUMMOND (AGRICULTURE) LTD",
+      "director": "",
+      "phone": "0771 116 158",
+      "email": "",
+      "website": "",
+      "source": "Google Places — EC Drummond fruit",
+      "confidence": "high"
+    },
+    "00499332": {
+      "company": "UNWIN ESTATES LIMITED",
+      "director": "",
+      "phone": "01440 785621",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Unwin Estates Ltd",
+      "confidence": "high"
+    },
+    "03556610": {
+      "company": "VAUGHANS FARMS LTD",
+      "director": "",
+      "phone": "01568 708760",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Vaughan P D",
+      "confidence": "high"
+    },
+    "00449902": {
+      "company": "S.C.& J.H.BERRY LTD",
+      "director": "",
+      "phone": "01227 752205",
+      "email": "",
+      "website": "",
+      "source": "Google Places — S C & J H Berry Ltd",
+      "confidence": "high"
+    },
+    "01978291": {
+      "company": "WILLIAM ALEXANDER (SHOREHAM) LIMITED",
+      "director": "",
+      "phone": "01959 523219",
+      "email": "",
+      "website": "http://www.castlefarmkent.co.uk/",
+      "source": "Google Places — Castle Farm Lavender Fields",
+      "confidence": "high"
+    },
+    "00495822": {
+      "company": "J.W.E.BANKS,LIMITED",
+      "director": "",
+      "phone": "01733 210123",
+      "email": "",
+      "website": "",
+      "source": "Google Places — J. W. E. Banks Ltd",
+      "confidence": "high"
+    },
+    "00729404": {
+      "company": "BRIERS FARMS (STEEPLE MORDEN) LIMITED",
+      "director": "",
+      "phone": "01763 852159",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Briers Farms Steeple Morden",
+      "confidence": "high"
+    },
+    "00379922": {
+      "company": "COLE AMBROSE LIMITED",
+      "director": "",
+      "phone": "01353 662202",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Cole Ambrose",
+      "confidence": "high"
+    },
+    "03068911": {
+      "company": "WILLOW TREE FARMS LIMITED",
+      "director": "",
+      "phone": "07918 940019",
+      "email": "",
+      "website": "http://www.willowtreefarms.co.uk/",
+      "source": "Google Places — Willow Tree Farms Ltd",
+      "confidence": "high"
+    },
+    "00762134": {
+      "company": "E.H.MORRIS(STONEA)LIMITED",
+      "director": "",
+      "phone": "01354 680250",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Morris E H Stonea Ltd",
+      "confidence": "high"
+    },
+    "06706871": {
+      "company": "BOWE DAIRY FARMING COMPANY LIMITED",
+      "director": "",
+      "phone": "016973 31440",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Bowe J F & Sons",
+      "confidence": "medium"
+    },
+    "02569381": {
+      "company": "RYALL HOUSE LIMITED",
+      "director": "",
+      "phone": "01684 592013",
+      "email": "",
+      "website": "http://www.ryallhouse.co.uk/",
+      "source": "Google Places — Ryall House Ltd",
+      "confidence": "medium"
+    },
+    "03731570": {
+      "company": "RIVERFORD ORGANIC FARMERS LIMITED",
+      "director": "",
+      "phone": "01803 227227",
+      "email": "",
+      "website": "http://www.riverford.co.uk/",
+      "source": "Google Places — Riverford Organic Farmers Ltd",
+      "confidence": "high"
+    },
+    "03524502": {
+      "company": "REDWINGS HORSE SANCTUARY",
+      "director": "",
+      "phone": "01508 505246",
+      "email": "",
+      "website": "https://www.redwings.org.uk/",
+      "source": "Google Places — Redwings Horse Sanctuary (Admin only - not open to the public)",
+      "confidence": "high"
+    },
+    "00452161": {
+      "company": "GEORGE THOMPSON (GREAT OAKLEY) LIMITED",
+      "director": "",
+      "phone": "01255 880218",
+      "email": "",
+      "website": "",
+      "source": "Google Places — George Thompson (Great Oakley) Ltd",
+      "confidence": "high"
+    },
+    "06727508": {
+      "company": "WAYLAND FARMS LIMITED",
+      "director": "",
+      "phone": "01482 275000",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Cranswick Plc",
+      "confidence": "high"
+    },
+    "00399367": {
+      "company": "R.A. GIBSON (COLESDEN) LIMITED",
+      "director": "",
+      "phone": "01234 376284",
+      "email": "",
+      "website": "http://www.ragibson.co.uk/",
+      "source": "Google Places — R A Gibson Colesden Ltd",
+      "confidence": "high"
+    },
+    "04128490": {
+      "company": "CARR FARMERS MANAGEMENT LIMITED",
+      "director": "",
+      "phone": "01933 625735",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Carr Farmers",
+      "confidence": "high"
+    },
+    "02202142": {
+      "company": "ALLENSMORE NURSERIES LIMITED",
+      "director": "",
+      "phone": "01981 500940",
+      "email": "",
+      "website": "https://www.allensmore.co.uk/",
+      "source": "Google Places — Allensmore Nurseries",
+      "confidence": "high"
+    },
+    "01874885": {
+      "company": "B.B. FARMS LIMITED",
+      "director": "",
+      "phone": "01377 270228",
+      "email": "",
+      "website": "",
+      "source": "Google Places — A J",
+      "confidence": "high"
+    },
+    "03248221": {
+      "company": "K.P.2 LIMITED",
+      "director": "",
+      "phone": "01544 260405",
+      "email": "",
+      "website": "",
+      "source": "Google Places — K P 2 Ltd",
+      "confidence": "high"
+    },
+    "00760415": {
+      "company": "MICHAEL H KEENE & SON LIMITED",
+      "director": "",
+      "phone": "01531 820363",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Michael H Keene & Son",
+      "confidence": "high"
+    },
+    "00736229": {
+      "company": "TINSLEY (BRANSTON) FARMS LIMITED",
+      "director": "",
+      "phone": "01522 794411",
+      "email": "",
+      "website": "http://www.branston.com/",
+      "source": "Google Places — Branston Potatoes weighbridge",
+      "confidence": "medium"
+    },
+    "02647374": {
+      "company": "SEVERN GORGE COUNTRYSIDE TRUST",
+      "director": "",
+      "phone": "01952 433880",
+      "email": "",
+      "website": "http://www.severngorge.org.uk/",
+      "source": "Google Places — Severn Gorge Countryside Trust",
+      "confidence": "high"
+    },
+    "09525985": {
+      "company": "YOCKLETON GROWERS LTD",
+      "director": "",
+      "phone": "01743 821205",
+      "email": "",
+      "website": "",
+      "source": "Google Places — P F & M J Williams",
+      "confidence": "high"
+    },
+    "00574466": {
+      "company": "J.F.TEMPLE & SON LIMITED",
+      "director": "",
+      "phone": "01328 820224",
+      "email": "",
+      "website": "https://cmt361.wixsite.com/mrstemplescheese1",
+      "source": "Google Places — J F Temple & Son",
+      "confidence": "high"
+    },
+    "00350458": {
+      "company": "H.MUSTIN & SON LIMITED",
+      "director": "",
+      "phone": "01258 817771",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Mustin H & Son Ltd",
+      "confidence": "medium"
+    },
+    "00369847": {
+      "company": "RICHARD GRANT & SON (LEVERTON) LIMITED",
+      "director": "",
+      "phone": "01205 870236",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Richard Grant & Son Leverton Ltd",
+      "confidence": "high"
+    },
+    "03840814": {
+      "company": "CHARD & BURRIDGE FARMS LIMITED",
+      "director": "",
+      "phone": "01460 220262",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Chard & Burridge Farm Ltd",
+      "confidence": "medium"
+    },
+    "00657905": {
+      "company": "D. CHENNELLS LIMITED",
+      "director": "",
+      "phone": "01245 400215",
+      "email": "",
+      "website": "http://dchennellsltd.co.uk/",
+      "source": "Google Places — D Chennells Ltd",
+      "confidence": "high"
+    },
+    "00759342": {
+      "company": "ST.LAWRENCE HALL FARMS LIMITED",
+      "director": "",
+      "phone": "01986 781224",
+      "email": "",
+      "website": "",
+      "source": "Google Places — St Lawrence Hall Farms Ltd",
+      "confidence": "high"
+    },
+    "04257389": {
+      "company": "HURLEYFORD FARM LIMITED",
+      "director": "",
+      "phone": "01628 829009",
+      "email": "",
+      "website": "https://www.hurleyfordfarm.co.uk/",
+      "source": "Google Places — Hurleyford Farm",
+      "confidence": "high"
+    },
+    "01310346": {
+      "company": "R.A. LATTA (FARMS) LIMITED",
+      "director": "",
+      "phone": "01487 842036",
+      "email": "",
+      "website": "",
+      "source": "Google Places — R A Latta Farms",
+      "confidence": "high"
+    },
+    "07406127": {
+      "company": "BURLAND FARM LIMITED",
+      "director": "",
+      "phone": "07463 155243",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Burland Farm",
+      "confidence": "high"
+    },
+    "00483865": {
+      "company": "J.E.PICCAVER & CO. (GEDNEY MARSH)",
+      "director": "",
+      "phone": "01406 550555",
+      "email": "",
+      "website": "http://www.jepco.co.uk/",
+      "source": "Google Places — JEPCO",
+      "confidence": "high"
+    },
+    "06317436": {
+      "company": "BAUMBER PARK FARMS LIMITED",
+      "director": "",
+      "phone": "01507 578235",
+      "email": "",
+      "website": "http://www.baumberpark.com/",
+      "source": "Google Places — Baumber Park",
+      "confidence": "high"
+    },
+    "00486850": {
+      "company": "C. SLOOTEN LIMITED",
+      "director": "",
+      "phone": "07966 299213",
+      "email": "",
+      "website": "http://www.cslootenltd.co.uk/",
+      "source": "Google Places — C Slooten Ltd",
+      "confidence": "high"
+    },
+    "07718633": {
+      "company": "MILLS AGRICULTURAL LIMITED",
+      "director": "",
+      "phone": "01780 460465",
+      "email": "",
+      "website": "",
+      "source": "Google Places — R & R Mills Contractors Ltd",
+      "confidence": "medium"
+    },
+    "03471605": {
+      "company": "COLLACOMBE FARM LIMITED",
+      "director": "",
+      "phone": "07432 232131",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Collacombe Farm",
+      "confidence": "high"
+    },
+    "00535604": {
+      "company": "CHANDLER AND DICKMAN (FARMS) LIMITED",
+      "director": "",
+      "phone": "01664 569290",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Chandler & Dickman Farms",
+      "confidence": "high"
+    },
+    "06360791": {
+      "company": "WOODLAND TRUST FARMING LIMITED",
+      "director": "",
+      "phone": "0330 333 3300",
+      "email": "",
+      "website": "https://www.woodlandtrust.org.uk/",
+      "source": "Google Places — The Woodland Trust",
+      "confidence": "high"
+    },
+    "00699015": {
+      "company": "BODEN & DAVIES LIMITED",
+      "director": "",
+      "phone": "01942 882667",
+      "email": "",
+      "website": "http://www.bodensgroup.com/",
+      "source": "Google Places — Boden Group of Companies",
+      "confidence": "medium"
+    },
+    "00515366": {
+      "company": "WILLIAM ALLISON (FARMS) LIMITED",
+      "director": "",
+      "phone": "01277 365398",
+      "email": "",
+      "website": "https://www.mulberry-house.com/",
+      "source": "Google Places — Mulberry House - Wedding and Event Venue in Essex",
+      "confidence": "high"
+    },
+    "00517689": {
+      "company": "F.K.COE & SON LIMITED",
+      "director": "",
+      "phone": "01485 600334",
+      "email": "",
+      "website": "",
+      "source": "Google Places — F.K.Coe & Son Ltd",
+      "confidence": "high"
+    },
+    "00639167": {
+      "company": "BROWICK FARM LIMITED",
+      "director": "",
+      "phone": "01953 603061",
+      "email": "",
+      "website": "http://www.browickroadprimary.co.uk/",
+      "source": "Google Places — Browick Road Primary and Nursery School",
+      "confidence": "medium"
+    },
+    "00658076": {
+      "company": "THORNHAM FARMS (NORFOLK) LIMITED",
+      "director": "",
+      "phone": "01485 512092",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Thornham Farms (Norfolk) Ltd",
+      "confidence": "medium"
+    },
+    "07448588": {
+      "company": "HOWARD FARMS LIMITED",
+      "director": "",
+      "phone": "01780 444444",
+      "email": "",
+      "website": "http://www.pchoward.com/",
+      "source": "Google Places — PC Howard Ltd",
+      "confidence": "high"
+    },
+    "00519133": {
+      "company": "PETER TAYLOR (OLDCOTES) LIMITED",
+      "director": "",
+      "phone": "01909 590000",
+      "email": "",
+      "website": "http://www.frozenvegetables.co.uk/",
+      "source": "Google Places — K H Taylor Ltd",
+      "confidence": "high"
+    },
+    "08103064": {
+      "company": "J E SPENCE & SON FARMS LTD",
+      "director": "",
+      "phone": "01754 810243",
+      "email": "",
+      "website": "https://www.spenceplant.co.uk/",
+      "source": "Google Places — J E Spence & Son",
+      "confidence": "high"
+    },
+    "01099455": {
+      "company": "HUGH PULHAM FARMS LIMITED",
+      "director": "",
+      "phone": "07850 385914",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Hugh Pulham Farms Ltd",
+      "confidence": "high"
+    },
+    "00547233": {
+      "company": "W.D.SELLERS AND SONS LIMITED",
+      "director": "",
+      "phone": "01377 217226",
+      "email": "",
+      "website": "",
+      "source": "Google Places — W D Sellers & Sons Ltd",
+      "confidence": "high"
+    },
+    "08318738": {
+      "company": "THE BELMONT ESTATE (FARM) LIMITED",
+      "director": "",
+      "phone": "0117 970 6335",
+      "email": "",
+      "website": "http://www.belmont.estate/",
+      "source": "Google Places — Belmont Estate",
+      "confidence": "high"
+    },
+    "01360773": {
+      "company": "DUNGATES FARMS LIMITED",
+      "director": "",
+      "phone": "01737 844879",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Dungates Farms Ltd",
+      "confidence": "high"
+    },
+    "00567569": {
+      "company": "E.A.SHEARDOWN & COMPANY LIMITED",
+      "director": "",
+      "phone": "01400 250331",
+      "email": "",
+      "website": "",
+      "source": "Google Places — E.A. Sheardown & Co Ltd",
+      "confidence": "high"
+    },
+    "00696258": {
+      "company": "J.G.LITHERLAND(RHUBARB)",
+      "director": "",
+      "phone": "07976 426391",
+      "email": "",
+      "website": "",
+      "source": "Google Places — J G Litherland(Rhubarb)",
+      "confidence": "high"
+    },
+    "04357508": {
+      "company": "F F GOOSE & SONS LIMITED",
+      "director": "",
+      "phone": "01406 330318",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Goose F F & Sons",
+      "confidence": "high"
+    },
+    "04403334": {
+      "company": "NORTH WEST TURF LIMITED",
+      "director": "",
+      "phone": "01695 422144",
+      "email": "",
+      "website": "https://www.onlineturf.co.uk/",
+      "source": "Google Places — Online Turf",
+      "confidence": "high"
+    },
+    "00617191": {
+      "company": "R.PARSONS LIMITED",
+      "director": "",
+      "phone": "01522 581570",
+      "email": "",
+      "website": "https://www.swwtrust.co.uk/",
+      "source": "Google Places — SWW Trust Corporation",
+      "confidence": "high"
+    },
+    "00626896": {
+      "company": "T.W.FALKINGHAM LIMITED",
+      "director": "",
+      "phone": "01430 440393",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Falkingham J T & G M",
+      "confidence": "medium"
+    },
+    "07541165": {
+      "company": "WALSINGHAM ESTATE FARMING LIMITED",
+      "director": "",
+      "phone": "01328 820259",
+      "email": "",
+      "website": "https://www.walsinghamestate.co.uk/",
+      "source": "Google Places — Walsingham Estate",
+      "confidence": "medium"
+    },
+    "00512118": {
+      "company": "WORSTEAD FARMS LIMITED",
+      "director": "",
+      "phone": "01692 536226",
+      "email": "",
+      "website": "https://www.worsteadestate.com/",
+      "source": "Google Places — The Farm @ Worstead Estate",
+      "confidence": "high"
+    },
+    "03160770": {
+      "company": "THIMBLEBY FARMS LIMITED",
+      "director": "",
+      "phone": "01609 883205",
+      "email": "",
+      "website": "http://www.thimblebyshoot.com/",
+      "source": "Google Places — Thimbleby Farms Ltd",
+      "confidence": "high"
+    },
+    "01273679": {
+      "company": "W.H. JONES (FARMS) LIMITED",
+      "director": "",
+      "phone": "01978 780341",
+      "email": "",
+      "website": "",
+      "source": "Google Places — W H Jones Farms Ltd",
+      "confidence": "high"
+    },
+    "00815212": {
+      "company": "SHEDDEN FARMS LIMITED",
+      "director": "",
+      "phone": "01904 470771",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Shedden Farms Ltd",
+      "confidence": "high"
+    },
+    "06392363": {
+      "company": "MARSDENS FARMS LIMITED",
+      "director": "",
+      "phone": "01226 767483",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Marsdens Farms Ltd",
+      "confidence": "high"
+    },
+    "05099557": {
+      "company": "CWRT MALLE LIMITED",
+      "director": "",
+      "phone": "01267 238803",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Cwrt Malle Ltd",
+      "confidence": "high"
+    },
+    "00541059": {
+      "company": "LLYSDULAS ESTATE COMPANY LIMITED",
+      "director": "",
+      "phone": "01244 732920",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Llys Dulas Country Estate",
+      "confidence": "medium"
+    },
+    "00507145": {
+      "company": "JOHN DOBSON & SON (CARLTON) LIMITED",
+      "director": "",
+      "phone": "0113 282 7984",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Dobson John & Son",
+      "confidence": "high"
+    },
+    "00505362": {
+      "company": "L.WHEELER AND SONS(YALDING)LIMITED",
+      "director": "",
+      "phone": "01622 871225",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Wheeler L & Sons Ltd",
+      "confidence": "medium"
+    },
+    "01147745": {
+      "company": "TIMOTHY CLARK LIMITED",
+      "director": "",
+      "phone": "01353 720269",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Timothy Clark Ltd",
+      "confidence": "medium"
+    },
+    "00755084": {
+      "company": "R. EDWARDS & CO. (STAUNTON) LIMITED",
+      "director": "",
+      "phone": "01544 388481",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Edwards M P & R C S",
+      "confidence": "medium"
+    },
+    "00458217": {
+      "company": "GASKAINS LIMITED",
+      "director": "",
+      "phone": "01227 752239",
+      "email": "",
+      "website": "http://www.gaskains.co.uk/",
+      "source": "Google Places — Gaskains Ltd",
+      "confidence": "high"
+    },
+    "00183722": {
+      "company": "SAMUEL HARDING & SONS LIMITED",
+      "director": "",
+      "phone": "0116 262 2000",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Samuel Harding & Son Ltd",
+      "confidence": "high"
+    },
+    "04079321": {
+      "company": "K. FRESH LTD",
+      "director": "",
+      "phone": "01964 612271",
+      "email": "",
+      "website": "https://www.kfresh.co.uk/",
+      "source": "Google Places — K Fresh Ltd",
+      "confidence": "high"
+    },
+    "00531799": {
+      "company": "PHILIP C BATH LIMITED",
+      "director": "",
+      "phone": "01234 870385",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Philip C Bath Ltd",
+      "confidence": "medium"
+    },
+    "00389597": {
+      "company": "SEARS BROS. LIMITED",
+      "director": "",
+      "phone": "01354 680234",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Sears Bros Ltd",
+      "confidence": "high"
+    },
+    "00205738": {
+      "company": "FREDERICK HIAM,LIMITED",
+      "director": "",
+      "phone": "01842 815500",
+      "email": "",
+      "website": "https://www.frederickhiam.co.uk/",
+      "source": "Google Places — Frederick Hiam Foods",
+      "confidence": "high"
+    },
+    "01578784": {
+      "company": "KWS UK LIMITED",
+      "director": "",
+      "phone": "01763 207300",
+      "email": "",
+      "website": "http://www.kws-uk.com/",
+      "source": "Google Places — KWS UK Ltd",
+      "confidence": "high"
+    },
+    "00734560": {
+      "company": "H.S. PETCH & SONS LIMITED",
+      "director": "",
+      "phone": "01642 722282",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Petch H S & Sons Ltd",
+      "confidence": "high"
+    },
+    "03037681": {
+      "company": "D. S. THORNHILL (RUSHTON) LIMITED",
+      "director": "",
+      "phone": "01829 760321",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Thornhill D S Ltd",
+      "confidence": "medium"
+    },
+    "01492724": {
+      "company": "C.P. BUTTON LIMITED",
+      "director": "",
+      "phone": "01208 850200",
+      "email": "",
+      "website": "https://www.ewbutton.com/",
+      "source": "Google Places — EW Button and Son",
+      "confidence": "medium"
+    },
+    "08189696": {
+      "company": "PATTINSON FARMING COMPANY",
+      "director": "",
+      "phone": "016973 71287",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Pattinson",
+      "confidence": "medium"
+    },
+    "08651342": {
+      "company": "HIGHER FARM (MANSTON) LIMITED",
+      "director": "",
+      "phone": "020 8772 6770",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Manston Farmhouse",
+      "confidence": "medium"
+    },
+    "00682856": {
+      "company": "A.E. BECKETT & SONS LIMITED",
+      "director": "",
+      "phone": "01564 823402",
+      "email": "",
+      "website": "https://www.beckettsfarm.co.uk/",
+      "source": "Google Places — Becketts Farm",
+      "confidence": "high"
+    },
+    "02001625": {
+      "company": "FOREMORE LIMITED",
+      "director": "",
+      "phone": "01749 890309",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Foremore Ltd",
+      "confidence": "medium"
+    },
+    "00026233": {
+      "company": "WILKIN & SONS LIMITED",
+      "director": "",
+      "phone": "01621 815407",
+      "email": "",
+      "website": "http://www.tiptree.com/",
+      "source": "Google Places — Wilkin & Sons Ltd",
+      "confidence": "high"
+    },
+    "07174396": {
+      "company": "CORVE FARMING LIMITED",
+      "director": "",
+      "phone": "07791 351647",
+      "email": "",
+      "website": "http://www.corvebarnfarm.co.uk/",
+      "source": "Google Places — Corve Barn Farm Shop",
+      "confidence": "medium"
+    },
+    "00645715": {
+      "company": "H.W.CLOTHIER MILTON-WESTCOMBE FARMS LIMITED",
+      "director": "",
+      "phone": "01749 838033",
+      "email": "",
+      "website": "http://www.westcombedairy.com/",
+      "source": "Google Places — Westcombe Dairy",
+      "confidence": "high"
+    },
+    "00607141": {
+      "company": "G.B.TURNBULL LIMITED",
+      "director": "",
+      "phone": "01302 722538",
+      "email": "",
+      "website": "",
+      "source": "Google Places — GB Turnbull Ltd",
+      "confidence": "high"
+    },
+    "00493582": {
+      "company": "E T LEDGER & SON LIMITED",
+      "director": "",
+      "phone": "01795 842310",
+      "email": "",
+      "website": "",
+      "source": "Google Places — E T Ledger & Son Ltd",
+      "confidence": "high"
+    },
+    "00369915": {
+      "company": "J.& H.ROBINSON(IFORD FARMS)LIMITED",
+      "director": "",
+      "phone": "01273 474614",
+      "email": "",
+      "website": "http://www.ifordestate.com/",
+      "source": "Google Places — Iford Estate",
+      "confidence": "high"
+    },
+    "00531378": {
+      "company": "E.W.DAVIES FARMS LIMITED",
+      "director": "",
+      "phone": "01799 586216",
+      "email": "",
+      "website": "http://www.ewdaviesfarms.co.uk/",
+      "source": "Google Places — Davies E W",
+      "confidence": "high"
+    },
+    "04146824": {
+      "company": "KIT SPEAKMAN (BRAXTED) LIMITED",
+      "director": "",
+      "phone": "01621 892305",
+      "email": "",
+      "website": "https://www.braxtedpark.co.uk/",
+      "source": "Google Places — Braxted Park Estate",
+      "confidence": "medium"
+    },
+    "01095451": {
+      "company": "OLD ROAD SECURITIES LIMITED",
+      "director": "",
+      "phone": "01234 824126",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Old Road Securities PLC",
+      "confidence": "high"
+    },
+    "02710584": {
+      "company": "BOXBUSH FARM LIMITED",
+      "director": "",
+      "phone": "01452 760487",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Box Bush Farm",
+      "confidence": "high"
+    },
+    "01578316": {
+      "company": "J.R. CLARK LIMITED",
+      "director": "",
+      "phone": "01529 455249",
+      "email": "",
+      "website": "http://www.culverthorpe.com/",
+      "source": "Google Places — J R Clark Ltd",
+      "confidence": "high"
+    },
+    "02026020": {
+      "company": "L & C FARMING COMPANY LIMITED",
+      "director": "",
+      "phone": "01507 480787",
+      "email": "",
+      "website": "",
+      "source": "Google Places — L & C Farming Co Ltd",
+      "confidence": "high"
+    },
+    "01256715": {
+      "company": "ALAN HAWKES (FARMS) LIMITED",
+      "director": "",
+      "phone": "01790 752788",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Alan Hawkes Farms Ltd",
+      "confidence": "high"
+    },
+    "00658925": {
+      "company": "CONISHOLME FARMS LIMITED",
+      "director": "",
+      "phone": "01507 358508",
+      "email": "",
+      "website": "https://www.conisholmefarms.co.uk/",
+      "source": "Google Places — Conisholme Farms Ltd",
+      "confidence": "high"
+    },
+    "02104284": {
+      "company": "HARTLEY PARK FARMS LIMITED",
+      "director": "",
+      "phone": "01420 511521",
+      "email": "",
+      "website": "https://www.thelavenderfields.co.uk/",
+      "source": "Google Places — Hartley Park Farms Ltd",
+      "confidence": "medium"
+    },
+    "01238459": {
+      "company": "BERRY BROTHERS (FARMS) LIMITED",
+      "director": "",
+      "phone": "01744 28237",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Berry Bros Farms",
+      "confidence": "high"
+    },
+    "00754214": {
+      "company": "G.WHITFIELD & SON LIMITED",
+      "director": "",
+      "phone": "01952 604205",
+      "email": "",
+      "website": "",
+      "source": "Google Places — G Whitfield & Son Ltd",
+      "confidence": "high"
+    },
+    "00760934": {
+      "company": "S. AND S.MURRAY (FARMS) LIMITED",
+      "director": "",
+      "phone": "01902 700278",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Murray S & S Dairy Farm",
+      "confidence": "high"
+    },
+    "05631708": {
+      "company": "VALEFRESCO LIMITED",
+      "director": "",
+      "phone": "01386 45867",
+      "email": "",
+      "website": "http://www.valefresco.com/",
+      "source": "Google Places — ValeFresco",
+      "confidence": "high"
+    },
+    "06506474": {
+      "company": "BOWN & SON LIMITED",
+      "director": "",
+      "phone": "07813 148363",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Bown & Son ltd",
+      "confidence": "medium"
+    },
+    "06319343": {
+      "company": "SANDFIELDS FARMS LIMITED",
+      "director": "",
+      "phone": "01353 727200",
+      "email": "",
+      "website": "http://www.gs-fresh.com/",
+      "source": "Google Places — G's Fresh",
+      "confidence": "high"
+    },
+    "03501607": {
+      "company": "POGSON FARMERS LIMITED",
+      "director": "",
+      "phone": "01484 842454",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Pogson P D",
+      "confidence": "high"
+    },
+    "03241005": {
+      "company": "NAFFERTON WOLD FARMS LIMITED",
+      "director": "",
+      "phone": "01377 252662",
+      "email": "",
+      "website": "https://dewhirstfarming.co.uk/york-wold/",
+      "source": "Google Places — Yorkwold Pigpro Ltd",
+      "confidence": "high"
+    },
+    "00387706": {
+      "company": "J.F.D.HARGREAVES LIMITED",
+      "director": "",
+      "phone": "01469 532854",
+      "email": "",
+      "website": "",
+      "source": "Google Places — J F D Hargreaves Ltd",
+      "confidence": "medium"
+    },
+    "06470409": {
+      "company": "ABBOTSLEY FARMS LIMITED",
+      "director": "",
+      "phone": "01480 880600",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Abbotsley Farms Ltd",
+      "confidence": "high"
+    },
+    "08347249": {
+      "company": "RAMPLY FARMING LIMITED",
+      "director": "",
+      "phone": "01487 773555",
+      "email": "",
+      "website": "http://www.arfco.co.uk/",
+      "source": "Google Places — Abbots Ripton Farming Company",
+      "confidence": "medium"
+    },
+    "00676486": {
+      "company": "COLSTERWORTH POULTRY CO.LIMITED",
+      "director": "",
+      "phone": "01526 832815",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Colsterworth Poultry Co Ltd",
+      "confidence": "high"
+    },
+    "00717981": {
+      "company": "SPACE FOODS LIMITED",
+      "director": "",
+      "phone": "01664 484400",
+      "email": "",
+      "website": "https://www.samworthbrothers.co.uk/our-businesses/melton-foods/",
+      "source": "Google Places — Melton Foods",
+      "confidence": "medium"
+    },
+    "08195140": {
+      "company": "WEST HILL FARM LIMITED",
+      "director": "",
+      "phone": "01963 210578",
+      "email": "",
+      "website": "",
+      "source": "Google Places — J Lawrence West Hall Farm",
+      "confidence": "medium"
+    },
+    "01973773": {
+      "company": "W. ROBSON (FARM) LIMITED",
+      "director": "",
+      "phone": "01388 730572",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Robson W",
+      "confidence": "high"
+    },
+    "00577996": {
+      "company": "J.HOLE & SONS LIMITED",
+      "director": "",
+      "phone": "01246 590303",
+      "email": "",
+      "website": "",
+      "source": "Google Places — J Hole & Sons Ltd",
+      "confidence": "high"
+    },
+    "04539595": {
+      "company": "FOUR OAKS HORTICULTURE LIMITED",
+      "director": "",
+      "phone": "01477 571797",
+      "email": "",
+      "website": "http://www.fouroaks-nurseries.co.uk/",
+      "source": "Google Places — Four Oaks Cash & Carry",
+      "confidence": "high"
+    },
+    "06422220": {
+      "company": "DERBYSHIRE OVERTON ESTATE FARM LIMITED",
+      "director": "",
+      "phone": "07792 775134",
+      "email": "",
+      "website": "https://ashoverfamilyfarm.co.uk/",
+      "source": "Google Places — Ashover Family Farm",
+      "confidence": "medium"
+    },
+    "00602019": {
+      "company": "E.W.KISBY AND SONS LIMITED",
+      "director": "",
+      "phone": "01366 377363",
+      "email": "",
+      "website": "",
+      "source": "Google Places — E W Kisby & Sons Ltd",
+      "confidence": "high"
+    },
+    "06086936": {
+      "company": "BUNTINGS (AGRI) LIMITED",
+      "director": "",
+      "phone": "01623 752158",
+      "email": "",
+      "website": "http://www.buntingsagri.co.uk/",
+      "source": "Google Places — Buntings Agri Ltd",
+      "confidence": "high"
+    },
+    "00777786": {
+      "company": "ELMS FARM BULPHAN LIMITED",
+      "director": "",
+      "phone": "01375 892611",
+      "email": "",
+      "website": "https://richfabricationservices.co.uk/",
+      "source": "Google Places — Rich Fabrication Services Ltd",
+      "confidence": "high"
+    },
+    "00506752": {
+      "company": "JAMES FAIRLEY & SONS (FARMS) LIMITED",
+      "director": "",
+      "phone": "01255 870268",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Fairley James",
+      "confidence": "high"
+    },
+    "01435133": {
+      "company": "M.P. KEMP LIMITED",
+      "director": "",
+      "phone": "01603 452824",
+      "email": "",
+      "website": "",
+      "source": "Google Places — M P Kemp Ltd",
+      "confidence": "high"
+    },
+    "02834019": {
+      "company": "THE SOUTH PICKENHAM ESTATE COMPANY LIMITED",
+      "director": "",
+      "phone": "01760 756376",
+      "email": "",
+      "website": "https://southpickenham.co.uk/",
+      "source": "Google Places — South Pickenham Estate Co Ltd",
+      "confidence": "high"
+    },
+    "00361854": {
+      "company": "SHERWOOD FARMS,LIMITED",
+      "director": "",
+      "phone": "01949 81348",
+      "email": "",
+      "website": "http://www.sherwoodfarms.co.uk/",
+      "source": "Google Places — Sherwood Farms Ltd",
+      "confidence": "high"
+    },
+    "00410986": {
+      "company": "T.W.HAYES,LIMITED",
+      "director": "",
+      "phone": "01673 861608",
+      "email": "",
+      "website": "",
+      "source": "Google Places — T W Hayes Ltd",
+      "confidence": "medium"
+    },
+    "06133635": {
+      "company": "LITTYWOOD FARM LIMITED",
+      "director": "",
+      "phone": "01785 780924",
+      "email": "",
+      "website": "http://www.littywoodfarm.co.uk/contact/",
+      "source": "Google Places — Littywood Farm - NOT OPEN FOR 'PICK YOUR OWN'",
+      "confidence": "high"
+    },
+    "05505254": {
+      "company": "J.B. ADAMS & PARTNERS LIMITED",
+      "director": "",
+      "phone": "01384 221227",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Adams J B & Partners",
+      "confidence": "high"
+    },
+    "03449063": {
+      "company": "CHALDEAN ESTATE LIMITED",
+      "director": "",
+      "phone": "01279 843861",
+      "email": "",
+      "website": "https://chaldean.co.uk/estate/",
+      "source": "Google Places — Chaldean Estate Ltd",
+      "confidence": "high"
+    },
+    "00799412": {
+      "company": "L.C.F.ARTHEY & SONS LIMITED",
+      "director": "",
+      "phone": "01473 823850",
+      "email": "",
+      "website": "",
+      "source": "Google Places — L C F Arthey & Sons Ltd",
+      "confidence": "medium"
+    },
+    "00373005": {
+      "company": "WM.GRANT(PAULL)LIMITED",
+      "director": "",
+      "phone": "01964 670233",
+      "email": "",
+      "website": "",
+      "source": "Google Places — W M Grant Ltd Elm Farm",
+      "confidence": "high"
+    },
+    "00628074": {
+      "company": "SLATOR BROS.(FARMS)LIMITED",
+      "director": "",
+      "phone": "01775 630300",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Sly Bros Potatoes Ltd",
+      "confidence": "medium"
+    },
+    "00531130": {
+      "company": "G.C. MOWBRAY LIMITED",
+      "director": "",
+      "phone": "01775 750340",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Mowbray G C Ltd",
+      "confidence": "medium"
+    },
+    "05159146": {
+      "company": "A.A. READ (FARMS) LIMITED",
+      "director": "",
+      "phone": "01507 533601",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Read",
+      "confidence": "medium"
+    },
+    "01040514": {
+      "company": "J.R. PERCIVAL LIMITED",
+      "director": "",
+      "phone": "01858 467474",
+      "email": "",
+      "website": "https://www.berry.uk.com/",
+      "source": "Google Places — Berry Accountants",
+      "confidence": "high"
+    },
+    "05580475": {
+      "company": "BRANDRETH FARM LTD",
+      "director": "",
+      "phone": "01704 776970",
+      "email": "",
+      "website": "http://www.brandrethbarn.com/",
+      "source": "Google Places — Brandreth Barn Tearoom & Restaurant",
+      "confidence": "high"
+    },
+    "01204634": {
+      "company": "FROLESWORTH FARMS LIMITED",
+      "director": "",
+      "phone": "07943 598183",
+      "email": "",
+      "website": "https://frolesworthfarmsproduce.bigcartel.com/",
+      "source": "Google Places — Frolesworth Farms Produce",
+      "confidence": "high"
+    },
+    "00762931": {
+      "company": "JAMES MAHON & SONS LIMITED",
+      "director": "",
+      "phone": "01789 294055",
+      "email": "",
+      "website": "http://www.mahonandsons.co.uk/",
+      "source": "Google Places — James Mahon & Sons Ltd",
+      "confidence": "high"
+    },
+    "01292368": {
+      "company": "RHAL FARMS LIMITED",
+      "director": "",
+      "phone": "01845 537502",
+      "email": "",
+      "website": "",
+      "source": "Google Places — B Bosomworth & Sons",
+      "confidence": "high"
+    },
+    "07323834": {
+      "company": "S J PADLEY FARMS LIMITED",
+      "director": "",
+      "phone": "01526 831110",
+      "email": "",
+      "website": "",
+      "source": "Google Places — G W Padley Poultry Limited Office",
+      "confidence": "high"
+    },
+    "03934610": {
+      "company": "TOM GILMAN FARMS LIMITED",
+      "director": "",
+      "phone": "01572 850044",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Tom Gilman Farms Ltd",
+      "confidence": "high"
+    },
+    "02143273": {
+      "company": "G.F. COLE AND SON LIMITED",
+      "director": "",
+      "phone": "01953 860209",
+      "email": "",
+      "website": "",
+      "source": "Google Places — G F Cole & Son Ltd",
+      "confidence": "high"
+    },
+    "01262524": {
+      "company": "BURTON FIELDS FARMING LTD",
+      "director": "",
+      "phone": "07891 269251",
+      "email": "",
+      "website": "https://www.facebook.com/BurtonFieldsFarmingLtd/",
+      "source": "Google Places — Burton Fields Farming Ltd",
+      "confidence": "high"
+    },
+    "04230379": {
+      "company": "C.H. & E.I. BAMBRIDGE & SONS LIMITED",
+      "director": "",
+      "phone": "01953 881895",
+      "email": "",
+      "website": "",
+      "source": "Google Places — C H & E I Bambridge & Sons Ltd",
+      "confidence": "high"
+    },
+    "00718522": {
+      "company": "JOSEPH CAMM FARMS LIMITED",
+      "director": "",
+      "phone": "01777 703106",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Joseph Camm Farms",
+      "confidence": "high"
+    },
+    "09343614": {
+      "company": "CGMT LIMITED",
+      "director": "",
+      "phone": "01633 871122",
+      "email": "",
+      "website": "https://www.greenandco.com/?utm_source=google&utm_medium=organic&utm_campaign=gmb-listing",
+      "source": "Google Places — Green & Co Accountants and Tax Advisors",
+      "confidence": "high"
+    },
+    "09090315": {
+      "company": "R E WEAVER LIMITED",
+      "director": "",
+      "phone": "01785 813104",
+      "email": "",
+      "website": "",
+      "source": "Google Places — R E Weaver Ltd",
+      "confidence": "high"
+    },
+    "01590619": {
+      "company": "DICK SEAMAN FARMS LIMITED",
+      "director": "",
+      "phone": "01263 761266",
+      "email": "",
+      "website": "",
+      "source": "Google Places — T Seaman & Son",
+      "confidence": "medium"
+    },
+    "00516177": {
+      "company": "G.F. ROBERTS (FARMS) LIMITED",
+      "director": "",
+      "phone": "01902 766444",
+      "email": "",
+      "website": "",
+      "source": "Google Places — G F Roberts Farm Ltd",
+      "confidence": "high"
+    },
+    "05730781": {
+      "company": "D L FARMING LIMITED",
+      "director": "",
+      "phone": "01554 891227",
+      "email": "",
+      "website": "",
+      "source": "Google Places — D Gravell",
+      "confidence": "high"
+    },
+    "05774634": {
+      "company": "JENKINS AND REES CYF",
+      "director": "",
+      "phone": "01239 612025",
+      "email": "",
+      "website": "http://www.bvrees.com/",
+      "source": "Google Places — B V Rees Ltd",
+      "confidence": "medium"
+    },
+    "01943317": {
+      "company": "S AND R HOPLEY LIMITED",
+      "director": "",
+      "phone": "01785 760201",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Hopley S & R Ltd",
+      "confidence": "high"
+    },
+    "00830134": {
+      "company": "J. & E. MEDCALF LIMITED",
+      "director": "",
+      "phone": "01937 582538",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Medcalf J & E Ltd",
+      "confidence": "high"
+    },
+    "04699546": {
+      "company": "RAY DARLEY LIMITED",
+      "director": "",
+      "phone": "01944 758356",
+      "email": "",
+      "website": "http://www.raydarley.co.uk/",
+      "source": "Google Places — Ray Darley Ltd",
+      "confidence": "high"
+    },
+    "01313849": {
+      "company": "PARC-Y-MORFA FARMS LIMITED",
+      "director": "",
+      "phone": "01348 873346",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Parc Y Morfa Farms Ltd",
+      "confidence": "high"
+    },
+    "09482580": {
+      "company": "FELIN FARM LIMITED",
+      "director": "",
+      "phone": "",
+      "email": "",
+      "website": "http://www.penrhiwfarm.co.uk/",
+      "source": "Google Places — Penrhiw Farm",
+      "confidence": "medium"
+    },
+    "04661087": {
+      "company": "HARRISON FARMS (KILHAM) LIMITED",
+      "director": "",
+      "phone": "01944 738601",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Harrison Farms (Kilham) Ltd",
+      "confidence": "medium"
+    },
+    "00476593": {
+      "company": "LEVITT'S (FARMERS) LIMITED",
+      "director": "",
+      "phone": "01430 827228",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Levitt Farmers Ltd",
+      "confidence": "high"
+    },
+    "00772790": {
+      "company": "JOSHUA HOSIER AND SON LIMITED",
+      "director": "",
+      "phone": "01672 870632",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Joshua Hosier & Son Ltd",
+      "confidence": "medium"
+    },
+    "00567267": {
+      "company": "F.N.HUES AND SONS LIMITED",
+      "director": "",
+      "phone": "01380 828255",
+      "email": "",
+      "website": "http://www.poulshotlodgefarm.co.uk/",
+      "source": "Google Places — Hues M P",
+      "confidence": "medium"
+    },
+    "03176110": {
+      "company": "CROSSLANDS HILL FARMING COMPANY LIMITED",
+      "director": "",
+      "phone": "01845 591158",
+      "email": "",
+      "website": "https://thirsklodgebarns.com/",
+      "source": "Google Places — Thirsk Lodge Barns",
+      "confidence": "high"
+    },
+    "03080775": {
+      "company": "BRAES FARM LIMITED",
+      "director": "",
+      "phone": "01756 793400",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Bower House Farm",
+      "confidence": "medium"
+    },
+    "02087609": {
+      "company": "THE SUMMER BERRY COMPANY UK",
+      "director": "",
+      "phone": "01243 958600",
+      "email": "",
+      "website": "https://www.summerberry.co.uk/",
+      "source": "Google Places — The Summer Berry Company",
+      "confidence": "high"
+    },
+    "00678688": {
+      "company": "JACK MERRICKS FARMS (RYE) LIMITED",
+      "director": "",
+      "phone": "01424 814203",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Jack Merricks Farms Rye",
+      "confidence": "medium"
+    },
+    "03432649": {
+      "company": "HENRY FAIRLEY & SON LIMITED",
+      "director": "",
+      "phone": "01206 250229",
+      "email": "",
+      "website": "http://www.henryfairleyandson.com/",
+      "source": "Google Places — Henry Fairley & Son",
+      "confidence": "high"
+    },
+    "02953929": {
+      "company": "BOND HOLDINGS LIMITED",
+      "director": "",
+      "phone": "01503 240304",
+      "email": "",
+      "website": "http://www.whbond.co.uk/",
+      "source": "Google Places — WH Bond",
+      "confidence": "medium"
+    },
+    "02477268": {
+      "company": "HUGH LOWE FARMS LIMITED",
+      "director": "",
+      "phone": "01622 812229",
+      "email": "",
+      "website": "http://www.hughlowefarms.com/",
+      "source": "Google Places — Hugh Lowe Farms Ltd",
+      "confidence": "high"
+    },
+    "00741065": {
+      "company": "TATHWELL FARMS (LINCS) LIMITED",
+      "director": "",
+      "phone": "01507 602886",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Tathwell Farms Lincs Ltd",
+      "confidence": "medium"
+    },
+    "04687487": {
+      "company": "J & V CASEY AND SON LIMITED",
+      "director": "",
+      "phone": "01526 342039",
+      "email": "",
+      "website": "http://www.bombercountyproduce.co.uk/",
+      "source": "Google Places — J & V Casey & Son",
+      "confidence": "high"
+    },
+    "00774377": {
+      "company": "J.S.(FARMS)LIMITED",
+      "director": "",
+      "phone": "01205 290444",
+      "email": "",
+      "website": "",
+      "source": "Google Places — J S Farms Ltd",
+      "confidence": "medium"
+    },
+    "00619849": {
+      "company": "ABBOTS RIPTON FARMING COMPANY LIMITED",
+      "director": "",
+      "phone": "01487 773555",
+      "email": "",
+      "website": "http://www.arfco.co.uk/",
+      "source": "Google Places — Abbots Ripton Farming Company",
+      "confidence": "high"
+    },
+    "04160389": {
+      "company": "VERIS LIMITED",
+      "director": "",
+      "phone": "01354 656567",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Veris Ltd",
+      "confidence": "high"
+    },
+    "01329149": {
+      "company": "NORTHLANDS FARM (THORNEY) LIMITED",
+      "director": "",
+      "phone": "01945 440071",
+      "email": "",
+      "website": "http://www.hawthornefarmwisbech.co.uk/",
+      "source": "Google Places — Hawthorne Farm",
+      "confidence": "medium"
+    },
+    "04843520": {
+      "company": "CARBUTTS TURF LIMITED",
+      "director": "",
+      "phone": "01477 532594",
+      "email": "",
+      "website": "https://www.carbuttsturf.co.uk/",
+      "source": "Google Places — Carbutts Turf Limited",
+      "confidence": "high"
+    },
+    "03954007": {
+      "company": "BRADLEY ORCHARD FARMS LIMITED",
+      "director": "",
+      "phone": "01928 739869",
+      "email": "",
+      "website": "",
+      "source": "Google Places — Beardmore Adam K",
+      "confidence": "high"
+    },
+    "06503728": {
+      "company": "G.E. SYMMS & SON LIMITED",
+      "director": "",
+      "phone": "01935 851243",
+      "email": "",
+      "website": "http://www.symmsfabrication.co.uk/",
+      "source": "Google Places — Symms Fabrication",
+      "confidence": "high"
+    },
+    "01481962": {
+      "company": "GEESON HOLDINGS LIMITED",
+      "director": "",
+      "phone": "01629 828352",
+      "email": "",
+      "website": "http://www.birchoverreclamation.co.uk/",
+      "source": "Google Places — Birchover Reclamation Ltd",
+      "confidence": "high"
+    },
+    "00701959": {
+      "company": "SHELDRICK FARMING LIMITED",
+      "director": "",
+      "phone": "01763 247706",
+      "email": "",
+      "website": "https://www.lawfarming.com/",
+      "source": "Google Places — Law Farming",
+      "confidence": "medium"
     },
     "00363738": {
       "company": "EASTNOR CASTLE ESTATES COMPANY LIMITED",
@@ -29,24 +4862,6 @@
       "source": "Charity Commission register (Earl Fitzwilliam Charitable Trust, same estate office)",
       "confidence": "high"
     },
-    "01182857": {
-      "company": "L.J. FAIRBURN AND SON LIMITED",
-      "director": "Daniel Fairburn (Managing Director)",
-      "phone": "01507 490297",
-      "email": "",
-      "website": "https://www.fairburnseggs.co.uk",
-      "source": "Lincolnshire County Council directory; D&B for website",
-      "confidence": "high"
-    },
-    "00340076": {
-      "company": "GASCOINES GROUP LIMITED",
-      "director": "",
-      "phone": "01636 813245",
-      "email": "",
-      "website": "https://www.gascoines.co",
-      "source": "192.com business listing, 1 Church Street Southwell",
-      "confidence": "high"
-    },
     "01359468": {
       "company": "ALBANWISE LIMITED",
       "director": "Duncan Blyth (Farm Manager, Barton Bendish)",
@@ -63,24 +4878,6 @@
       "email": "",
       "website": "https://www.facebook.com/ALLEEFARMINGCO/",
       "source": "Companies House officers; Facebook page (no phone published)",
-      "confidence": "medium"
-    },
-    "03199614": {
-      "company": "THREE PROSPECTS FARM LIMITED",
-      "director": "",
-      "phone": "",
-      "email": "",
-      "website": "",
-      "source": "",
-      "confidence": "low"
-    },
-    "13018689": {
-      "company": "REDBROWN LIMITED",
-      "director": "",
-      "phone": "01245 363030",
-      "email": "info@spfarms.co.uk",
-      "website": "https://www.spfarms.co.uk",
-      "source": "Shares registered office with Strutt and Parker Farms (Unit 1, Old Park Farm, CM3 1LN)",
       "confidence": "medium"
     }
   }
