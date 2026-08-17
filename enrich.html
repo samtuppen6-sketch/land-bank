@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Contact Enricher — Land Bank</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0F1D18; --paper:#EFF2EE; --surface:#fff; --line:#D7DED8;
+    --muted:#5D6E66; --green:#1F6F4A; --amber:#B58900; --red:#A32E22; --blue:#1B5E8A;
+    --r:10px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  h1,h2,h3{font-family:"Space Grotesk",sans-serif;margin:0}
+  .num{font-variant-numeric:tabular-nums}
+  header{background:var(--ink);color:#fff;padding:14px 20px}
+  header .brand{font-family:"Space Grotesk";font-weight:700}
+  header .brand span{color:#7FC0A0}
+  .wrap{max-width:880px;margin:0 auto;padding:20px 16px 70px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-bottom:16px}
+  .card h3{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:14px}
+  .fld{margin-bottom:12px}
+  .fld label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:5px}
+  .fld input,.fld select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font:inherit}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+  .btn{padding:11px 20px;border:0;border-radius:8px;background:var(--green);color:#fff;font-weight:700;font-size:15px;cursor:pointer}
+  .btn.ghost{background:var(--surface);border:1px solid var(--line);color:var(--ink)}
+  .btn:disabled{opacity:.45;cursor:default}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .bar{height:9px;background:#E2E8E3;border-radius:99px;overflow:hidden;margin:14px 0 8px}
+  .bar i{display:block;height:100%;background:var(--green);width:0;transition:width .25s}
+  .stats{display:flex;gap:26px;flex-wrap:wrap;margin-top:6px}
+  .stat b{display:block;font-family:"Space Grotesk";font-size:22px}
+  .stat span{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  .log{max-height:340px;overflow:auto;border:1px solid var(--line);border-radius:8px;background:#FAFCFA}
+  .log div{padding:6px 11px;border-bottom:1px solid #EDF1EE;font-size:13px;display:flex;gap:9px}
+  .log .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .log .ph{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .ok{color:var(--green)} .no{color:#98A6A0} .er{color:var(--red)}
+  .warn{background:#FFF6E5;border:1px solid #E8D6A8;color:#6B4E12;padding:11px 14px;border-radius:8px;font-size:13.5px;margin-bottom:14px}
+  .note{font-size:13px;color:var(--muted);margin-top:10px}
+  code{background:#E7ECE8;padding:1px 5px;border-radius:4px;font-size:13px}
+</style>
+</head>
+<body>
+<header><div class="brand">Solpath <span>/ Contact Enricher</span></div></header>
+
+<div class="wrap">
+
+  <div class="warn">
+    Runs entirely in this browser. Your key is sent only to Google, never stored anywhere but this page's memory.
+    Progress is saved as you go, so you can close the tab and resume later.
+  </div>
+
+  <div class="card">
+    <h3>Settings</h3>
+    <div class="fld">
+      <label for="key">Google Maps API key</label>
+      <input id="key" type="password" placeholder="AIza..." autocomplete="off">
+    </div>
+    <div class="grid">
+      <div class="fld">
+        <label for="minLand">Minimum land parcels</label>
+        <select id="minLand">
+          <option value="10">10+ (biggest only)</option>
+          <option value="5" selected>5+ (recommended, ~1,193)</option>
+          <option value="3">3+ (~2,400)</option>
+          <option value="1">1+ (everything)</option>
+        </select>
+      </div>
+      <div class="fld">
+        <label for="cap">Stop after this many lookups</label>
+        <input id="cap" type="number" value="990" min="1" max="20000">
+      </div>
+      <div class="fld">
+        <label for="county">County (optional)</label>
+        <select id="county"><option value="">All counties</option></select>
+      </div>
+    </div>
+    <div class="note">
+      Google gives 1,000 free Enterprise calls a month; phone numbers bill at that tier.
+      990 keeps you inside it with room to spare. Above that it's about 3p per lookup.
+    </div>
+    <div class="row" style="margin-top:16px">
+      <button class="btn" id="go">Start</button>
+      <button class="btn ghost" id="pause" disabled>Pause</button>
+      <button class="btn ghost" id="download" disabled>Download contacts.json</button>
+      <button class="btn ghost" id="reset">Clear saved progress</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Progress</h3>
+    <div class="bar"><i id="barFill"></i></div>
+    <div class="stats">
+      <div class="stat"><b class="num" id="sDone">0</b><span>Looked up</span></div>
+      <div class="stat"><b class="num ok" id="sPhone">0</b><span>Phone found</span></div>
+      <div class="stat"><b class="num" id="sSite">0</b><span>Website</span></div>
+      <div class="stat"><b class="num no" id="sNone">0</b><span>No match</span></div>
+      <div class="stat"><b class="num er" id="sErr">0</b><span>Errors</span></div>
+      <div class="stat"><b class="num" id="sLeft">0</b><span>Remaining</span></div>
+    </div>
+    <div id="msg" class="note"></div>
+  </div>
+
+  <div class="card">
+    <h3>Results</h3>
+    <div class="log" id="log"></div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var FARMS_URL = "farms.json";
+  var EXISTING_URL = "contacts.json";
+  var STORE = "lb_enrich_v1";
+  var ENDPOINT = "https://places.googleapis.com/v1/places:searchText";
+  var FIELDS = "places.displayName,places.formattedAddress,places.nationalPhoneNumber,places.internationalPhoneNumber,places.websiteUri";
+
+  var farms = [], queue = [], results = {}, existing = {};
+  var running = false, idx = 0;
+  var stats = {done:0, phone:0, site:0, none:0, err:0};
+
+  function $(id){ return document.getElementById(id); }
+  function esc(s){
+    return String(s==null?"":s).replace(/[&<>"']/g,function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+    });
+  }
+  function norm(s){ return String(s||"").toUpperCase().replace(/[^A-Z0-9]/g,""); }
+
+  function clean(name){
+    return String(name||"")
+      .replace(/\b(LIMITED|LTD|LTD\.|PLC|LLP|COMPANY|CO\.|CO)\b/gi," ")
+      .replace(/[.,()]/g," ")
+      .replace(/\s+/g," ")
+      .trim();
+  }
+
+  function save(){
+    try{
+      localStorage.setItem(STORE, JSON.stringify({results:results, stats:stats, idx:idx}));
+    }catch(e){}
+  }
+  function load(){
+    try{
+      var raw = localStorage.getItem(STORE);
+      if(!raw) return;
+      var d = JSON.parse(raw);
+      results = d.results || {};
+      stats = d.stats || stats;
+      idx = d.idx || 0;
+    }catch(e){}
+  }
+
+  function paint(){
+    $("sDone").textContent = stats.done;
+    $("sPhone").textContent = stats.phone;
+    $("sSite").textContent = stats.site;
+    $("sNone").textContent = stats.none;
+    $("sErr").textContent = stats.err;
+    $("sLeft").textContent = Math.max(0, queue.length - idx);
+    var pct = queue.length ? Math.round(idx / queue.length * 100) : 0;
+    $("barFill").style.width = pct + "%";
+    $("download").disabled = !Object.keys(results).length;
+  }
+
+  function logLine(cls, name, detail){
+    var d = document.createElement("div");
+    d.innerHTML = '<span class="nm">' + esc(name) + '</span><span class="ph ' + cls + '">' + esc(detail) + '</span>';
+    $("log").insertBefore(d, $("log").firstChild);
+    while($("log").children.length > 400) $("log").removeChild($("log").lastChild);
+  }
+
+  /* ---------- data ---------- */
+  fetch(FARMS_URL).then(function(r){ return r.json(); }).then(function(p){
+    var f = p.fields;
+    farms = p.rows.map(function(r){
+      var o = {}; for(var i=0;i<f.length;i++) o[f[i]] = r[i]; return o;
+    });
+    var counties = {};
+    farms.forEach(function(o){ if(o.county) counties[o.county] = (counties[o.county]||0)+1; });
+    $("county").innerHTML = '<option value="">All counties</option>' +
+      Object.keys(counties).sort(function(a,b){ return counties[b]-counties[a]; })
+        .map(function(c){ return '<option value="'+esc(c)+'">'+esc(c)+' ('+counties[c]+')</option>'; }).join("");
+    load();
+    buildQueue();
+    $("msg").textContent = farms.length.toLocaleString() + " farms loaded." +
+      (Object.keys(results).length ? " Resuming — " + Object.keys(results).length + " already done." : "");
+  }).catch(function(e){
+    $("msg").innerHTML = '<span class="er">Could not load farms.json — make sure this page sits in the same folder. (' + esc(e.message) + ')</span>';
+  });
+
+  fetch(EXISTING_URL).then(function(r){ return r.ok ? r.json() : {contacts:{}}; })
+    .then(function(c){ existing = c.contacts || {}; })
+    .catch(function(){ existing = {}; });
+
+  function buildQueue(){
+    var minLand = parseInt($("minLand").value,10);
+    var county = $("county").value;
+    queue = farms.filter(function(o){
+      if((o.land||0) < minLand) return false;
+      if(county && o.county !== county) return false;
+      return true;
+    }).sort(function(a,b){ return (b.land||0) - (a.land||0); });
+    paint();
+  }
+  $("minLand").addEventListener("change", function(){ idx = 0; buildQueue(); });
+  $("county").addEventListener("change", function(){ idx = 0; buildQueue(); });
+
+  /* ---------- lookup ---------- */
+  function lookup(farm, key){
+    var q = clean(farm.name) + ", " + (farm.town ? farm.town + ", " : "") + (farm.pc || "");
+    return fetch(ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Goog-Api-Key": key,
+        "X-Goog-FieldMask": FIELDS
+      },
+      body: JSON.stringify({ textQuery: q, regionCode: "GB", maxResultCount: 3 })
+    }).then(function(r){
+      return r.json().then(function(j){
+        if(!r.ok) throw new Error((j.error && j.error.message) || ("HTTP " + r.status));
+        return j;
+      });
+    });
+  }
+
+  // Only accept a result we're reasonably sure is the same business.
+  function pick(farm, places){
+    if(!places || !places.length) return null;
+    var wantPc = norm(farm.pc);
+    var outward = wantPc.slice(0, wantPc.length - 3);
+    var nameTokens = clean(farm.name).toUpperCase().split(/\s+/).filter(function(t){ return t.length > 3; });
+
+    for(var i=0;i<places.length;i++){
+      var p = places[i];
+      var addr = norm(p.formattedAddress);
+      var disp = (p.displayName && p.displayName.text ? p.displayName.text : "").toUpperCase();
+      var pcHit = wantPc && addr.indexOf(wantPc) !== -1;
+      var outHit = outward && addr.indexOf(outward) !== -1;
+      var nameHit = nameTokens.some(function(t){ return disp.indexOf(t) !== -1; });
+      // full postcode match, or same outward code AND a name-word in common
+      if(pcHit || (outHit && nameHit)) return {place:p, exact:pcHit};
+    }
+    return null;
+  }
+
+  function step(){
+    if(!running) return;
+    if(idx >= queue.length){
+      running = false;
+      $("go").disabled = false; $("pause").disabled = true;
+      $("msg").textContent = "Finished. Download the file and upload it to GitHub.";
+      save(); paint();
+      return;
+    }
+    var cap = parseInt($("cap").value,10) || 990;
+    if(stats.done >= cap){
+      running = false;
+      $("go").disabled = false; $("pause").disabled = true;
+      $("msg").textContent = "Stopped at your cap of " + cap + " lookups. Download the file, then raise the cap or come back next month.";
+      save(); paint();
+      return;
+    }
+
+    var farm = queue[idx];
+    if(results[farm.no]){ idx++; paint(); return setTimeout(step, 0); }
+
+    lookup(farm, $("key").value.trim()).then(function(j){
+      var hit = pick(farm, j.places);
+      stats.done++;
+      if(hit){
+        var p = hit.place;
+        var phone = p.nationalPhoneNumber || p.internationalPhoneNumber || "";
+        var site  = p.websiteUri || "";
+        if(phone || site){
+          results[farm.no] = {
+            company: farm.name,
+            director: "",
+            phone: phone,
+            email: "",
+            website: site,
+            source: "Google Places — " + (p.displayName && p.displayName.text ? p.displayName.text : "match"),
+            confidence: hit.exact ? "high" : "medium"
+          };
+          if(phone) stats.phone++;
+          if(site)  stats.site++;
+          logLine(phone ? "ok" : "no", farm.name, phone || "website only");
+        } else {
+          stats.none++;
+          logLine("no", farm.name, "listed, no contact");
+        }
+      } else {
+        stats.none++;
+        logLine("no", farm.name, "no match");
+      }
+      idx++;
+      if(stats.done % 10 === 0) save();
+      paint();
+      setTimeout(step, 180);
+    }).catch(function(e){
+      stats.err++; stats.done++;
+      logLine("er", farm.name, e.message.slice(0,54));
+      idx++;
+      paint();
+      // back off on errors in case it's a rate limit or a bad key
+      if(stats.err > 6 && stats.phone === 0){
+        running = false;
+        $("go").disabled = false; $("pause").disabled = true;
+        $("msg").innerHTML = '<span class="er">Stopped — several errors and no successes. Check the key is right and that Places API (New) is enabled.</span>';
+        save(); return;
+      }
+      setTimeout(step, 900);
+    });
+  }
+
+  /* ---------- controls ---------- */
+  $("go").addEventListener("click", function(){
+    var k = $("key").value.trim();
+    if(!k){ alert("Paste your Google API key first."); return; }
+    if(!queue.length) buildQueue();
+    running = true;
+    $("go").disabled = true; $("pause").disabled = false;
+    $("msg").textContent = "Running… you can leave this tab open and come back.";
+    step();
+  });
+
+  $("pause").addEventListener("click", function(){
+    running = false;
+    $("go").disabled = false; $("pause").disabled = true;
+    $("msg").textContent = "Paused. Press Start to carry on.";
+    save();
+  });
+
+  $("reset").addEventListener("click", function(){
+    if(!confirm("Clear all saved progress and results?")) return;
+    results = {}; stats = {done:0,phone:0,site:0,none:0,err:0}; idx = 0;
+    try{ localStorage.removeItem(STORE); }catch(e){}
+    $("log").innerHTML = "";
+    $("msg").textContent = "Cleared.";
+    paint();
+  });
+
+  $("download").addEventListener("click", function(){
+    // merge: hand-researched entries win over anything Google returned
+    var merged = {};
+    Object.keys(results).forEach(function(k){ merged[k] = results[k]; });
+    Object.keys(existing).forEach(function(k){
+      var e = existing[k];
+      if(e && (e.phone || e.email || e.director)) merged[k] = e;
+    });
+    var out = {
+      generated: new Date().toISOString().slice(0,10),
+      note: "confidence: high = postcode matched exactly; medium = same area and name, worth confirming on the call.",
+      contacts: merged
+    };
+    var blob = new Blob([JSON.stringify(out, null, 2)], {type:"application/json"});
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "contacts.json";
+    a.click();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 3000);
+  });
+
+  paint();
+})();
+</script>
+</body>
+</html>
