@@ -12,60 +12,49 @@ Turn the current map-based prospecting CRM into a solar-land origination intelli
 5. What should Sam do next?
 6. What is the opportunity likely to be worth over 25 years?
 
-## Current foundation added
+## Current live state
 
-- `supabase/migrations/001_landbank_v2.sql`
-  - Sites
-  - Parcels/titles
-  - Organisations
-  - People/directors
-  - Site-party/ownership relationships
-  - Contact points + verification/provenance
-  - Opportunities
-  - Tasks / next actions
-  - Site assessments
-  - Financial scenarios
-  - Enrichment events
-  - Pipeline summary / needs-attention views
+The V2 schema is live in Supabase and the existing source universe has been imported:
 
-- `lib/scoring.js`
-  - Site feasibility score
-  - Sales readiness score
-  - Ownership confidence score
-  - Contactability score
-  - Commercial score
-  - Overall priority score
-  - Probability weighted value
-  - Stage probabilities
-  - Next-best-action rules
+- 6,425 organisations
+- 6,425 sites
+- 6,425 opportunities
+- 6,425 qualification records
+- 654 contact-ready opportunities
+- 5,771 identified / enrichment-needed opportunities
+- 668 phone/mobile contact records
+- 320 email records
+- 335 website records
+- 19,983 source land parcels represented
 
-## Build sequence
+See `README_V2_STATUS.md` for the current operational checkpoint.
 
-### 1 — CRM workflow upgrade
-Replace the broad legacy sales statuses with an opportunity pipeline:
+## Built and live
+
+- `supabase/migrations/001_landbank_v2.sql` — relational V2 + PostGIS foundation
+- `supabase/migrations/002_legacy_bridge_and_qualification.sql` — legacy bridge + qualification data
+- `supabase/migrations/003_contact_uniqueness_fix.sql` — shared farm contact handling
+- `supabase/migrations/004_upsert_keys.sql` — idempotent import keys
+- `supabase/migrations/005_import_snapshots.sql` — source snapshot provenance
+- `supabase/migrations/006_browser_permissions_and_workspace.sql` — browser workspace + reduced privileges
+- `supabase/migrations/007_site_score_function.sql` — authoritative evidence-aware site scoring
+- `lib/scoring.js` — transparent scoring engine; missing data is unknown, not zero
+- `v2.html` — compatibility V2 interface
+- `v2-live.html` — live Supabase-backed CRM interface
+- `supabase/functions/import-legacy/index.ts` — idempotent source importer
+- `supabase/functions/enrich-prospect/index.ts` — Companies House → Google Places → Hunter adapter
+- `supabase/functions/assess-site/index.ts` — PVGIS + Planning Data point screening
+- `.github/workflows/v2-smoke.yml` — JavaScript smoke checks
+
+## CRM workflow
+
+Opportunity pipeline:
 
 `identified` → `researching` → `contact_ready` → `outreach_started` → `connected` → `qualified_interest` → `site_data_requested` → `site_prescreen` → `commercial_assessment` → `proposal` → `site_visit` → `heads_of_terms` → `technical_dd` → `grid_planning` → `finance_approval` → `contracted` → `construction` → `commissioned` → `live`
 
-Every open opportunity must have:
-- owner
-- next action
-- next-action date
-- stage
-- probability
-- loss reason if closed
+Every open opportunity is designed to have an owner, stage, probability, next action, next-action date and a loss reason when closed.
 
-### 2 — Existing data migration
-Import the existing `farms.json` and `contacts.json` records into the v2 relational structure without deleting the current source data.
-
-Match:
-- company number → organisation
-- farm/company/location → site
-- directors → people + organisation_people
-- phones/emails/websites → contact_points
-- current pipeline metadata → opportunity
-
-### 3 — Contact enrichment waterfall
-Proposed provider order:
+## Contact enrichment waterfall
 
 1. Companies House — directors/company status/address
 2. Google Places — phone/domain/location confirmation
@@ -74,16 +63,13 @@ Proposed provider order:
 5. Clay fallback — only for high-value unresolved prospects
 6. Human verification queue for ambiguous matches
 
-Each discovered datum records:
-- provider
-- source URL/reference
-- discovery method
-- confidence
-- verification status
-- timestamp
+Each discovered datum should retain provider, source URL/reference, discovery method, confidence, verification status and timestamp.
 
-### 4 — Ownership intelligence
-Build a confidence ladder rather than assuming `director = landowner`:
+Provider credentials are not yet configured for live contact enrichment.
+
+## Ownership intelligence
+
+Use a confidence ladder rather than assuming `director = landowner`:
 
 - 100: title owner confirmed
 - 85: corporate/title relationship confirmed
@@ -91,23 +77,27 @@ Build a confidence ladder rather than assuming `director = landowner`:
 - 45: probable operator/occupier
 - 20: speculative match
 
-Data sources can include HM Land Registry/INSPIRE plus the existing company/title matching inputs.
+Target source layers include HM Land Registry/INSPIRE plus existing company/title matching inputs.
 
-### 5 — Site feasibility enrichment
-Add provider adapters for:
+## Technical enrichment
 
-- Grid / DNO capacity
-- Planning Data API
-- MAGIC / environmental constraints
+### Live now
+- PVGIS solar yield via server-side Edge Function
+- Planning Data point screening via server-side Edge Function
+
+### Next
+- bulk Planning Data/environmental spatial overlays in PostGIS for national portfolio screening
+- DNO/grid-capacity normalization and Grid Score
 - Agricultural Land Classification
-- PVGIS solar yield
-- Parcel geometry / usable acreage
-- Topography when a suitable dataset/provider is selected
+- environmental/MAGIC-style layers
+- parcel geometry / usable acreage
+- topography
 
-Persist raw responses plus a compact normalized assessment. Never overwrite source evidence with only a score.
+Point screening is triage only. Portfolio-scale constraint screening should use bulk datasets + PostGIS intersections rather than thousands of API calls.
 
-### 6 — Site scoring
-Current starting weights:
+## Site scoring
+
+Starting component weights:
 
 - Grid: 25%
 - Land: 20%
@@ -117,83 +107,30 @@ Current starting weights:
 - Solar resource: 10%
 - Ownership confidence: 10%
 
-Weights are deliberately configurable. They should be calibrated later from real project outcomes.
+Missing components are excluded from the denominator until evidence exists. Partial scores must be treated as partial intelligence, not full due diligence.
 
-### 7 — Commercial / finance engine
+## Commercial / finance engine
+
 Exact formulas must be agreed from the PE finance arrangement before being treated as production calculations.
 
-Target inputs:
-- usable acres
-- system MWp
-- expected annual generation MWh
-- site demand / annual consumption
-- self-consumption percentage
-- export percentage/value
-- system capex
-- finance rate/fees
-- repayment allocation (e.g. 100% vs 50%)
-- degradation
-- power price assumptions
-- 10% participation pool
-- Sam's contractual share of pool
+Target inputs include usable acres, system MWp, expected annual generation, site demand, self-consumption/export, capex, finance rate/fees, repayment allocation, degradation, power-price assumptions, participation-pool percentage and contractual share.
 
-Target outputs:
-- estimated repayment period
-- farmer income from commissioning
-- farmer 25-year economics
-- project 25-year economics
-- personal annual commission
-- personal 25-year commission
-- probability-weighted value
+Target outputs include repayment period, farmer income, farmer/project 25-year economics, personal annual commission, personal 25-year commission and probability-weighted value.
 
-### 8 — Dashboard
-Primary dashboard should show action/value, not vanity counts:
+## Dashboard / UI
 
-- weighted 25-year pipeline
-- potential MWp
-- qualified opportunities
-- callbacks/tasks due
-- stale opportunities
-- high-feasibility sites with missing contacts
-- high-value sites missing technical data
-- top opportunities by priority score
-- opportunities by stage
-- expected commission by stage / commissioning period
+The live V2 interface now contains live metrics, ranked opportunities, search/filtering, pipeline columns, intelligence map, data-gap queue and an editable opportunity workspace covering qualification and electricity-data fields.
 
-### 9 — Map modes
-Extend the current Leaflet map with switchable overlays/modes:
+Future dashboard additions include weighted 25-year pipeline, potential MWp, commissioning forecast, high-feasibility sites missing contacts, source/provider performance and stage-age analytics.
 
-- Sales stage
-- Site feasibility
-- Grid
-- Planning/environment
-- Commercial value
-- Ownership confidence
-- Contactability
+## AI assistant layer
 
-### 10 — AI assistant layer
-Only after structured data is reliable.
-
-Examples:
-- “Top 20 Lincolnshire opportunities not contacted.”
-- “High grid score sites missing a verified decision maker.”
-- “Show opportunities with >£250k estimated personal 25-year value.”
-- “What should I do today?”
-
-AI should query structured data and explain why records were prioritised; it should not invent technical assessments.
-
-## What needs external credentials/data access
-
-The code and integrations can be built in this repo, but live provider execution will require the relevant credentials/terms where applicable:
-
-- Companies House API key
-- Google Places API key
-- Hunter API key (if selected)
-- Clay account/API or webhook workflow (if selected)
-- Supabase project access for migrations/Edge Functions
-- Any DNO/grid data access chosen beyond open datasets
-
-PVGIS and several government/open datasets may not require private credentials.
+Only after structured data is reliable. It should query evidence-backed structured data and explain prioritisation; it must not invent technical assessments.
 
 ## Principle
+
 Do not build a generic CRM clone. Keep LandBank's advantage: land + ownership + grid/planning + solar economics + sales execution in one record.
+
+## Merge status
+
+Do not merge PR #1 yet. Continue development on `landbank-v2-foundation` while `main` remains untouched.
