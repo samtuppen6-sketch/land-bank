@@ -127,6 +127,13 @@
   .saved.on{opacity:1}
   #miniMap{height:230px;border-radius:8px;border:1px solid var(--line);background:#DDE4DE}
   .flagbox{background:#FFF6E5;border:1px solid #E8D6A8;color:#6B4E12;padding:10px 12px;border-radius:8px;font-size:13px;margin-top:12px}
+  .people{list-style:none;margin:0;padding:0}
+  .people li{display:flex;align-items:center;gap:11px;padding:11px 0;border-bottom:1px solid var(--line2)}
+  .people li:last-child{border-bottom:0}
+  .people .pn{font-weight:600;font-size:15.5px}
+  .people .pr{font-size:12px;color:var(--muted);background:#F1F5F2;padding:2px 9px;border-radius:99px}
+  .people .pfirst{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--green);background:var(--green-lt);padding:3px 9px;border-radius:99px}
+  .people .pick{margin-left:auto;padding:6px 13px;border:1px solid var(--line);background:var(--surface);border-radius:7px;font-size:13px;font-weight:600}
   .tl{list-style:none;margin:0;padding:0}
   .tl li{padding:11px 0 11px 14px;border-left:2px solid var(--line);position:relative}
   .tl li:before{content:"";position:absolute;left:-5px;top:16px;width:8px;height:8px;border-radius:50%;background:var(--green)}
@@ -317,10 +324,13 @@
   }
   function contactOf(no){
     var m = meta[no] || {}, s = seedContacts[no] || {};
+    var list = s.directors && s.directors.length ? s.directors
+             : (s.director ? [{name:s.director}] : []);
     return {
       phone:      m.phone         || s.phone    || "",
       email:      m.email         || s.email    || "",
       director:   m.director_name || s.director || "",
+      directors:  list,
       website:    s.website     || "",
       source:     s.source      || "",
       confidence: s.confidence  || "",
@@ -514,7 +524,8 @@
         '<div class="rank num">'+(i+1)+'</div>' +
         '<div class="co"><b>'+esc(o.name)+'</b>' +
           '<span>' + (c.director
-              ? '<b style="font-weight:600;color:#1F6F4A">'+esc(c.director.split(",")[0])+'</b> · '
+              ? '<b style="font-weight:600;color:#1F6F4A">'+esc(c.director)+'</b>' +
+                (c.directors.length > 1 ? ' <span style="color:#8A9992">+'+(c.directors.length-1)+'</span>' : '') + ' · '
               : '') +
             esc([o.town,o.county].filter(Boolean).join(", "))+(o.pc?' · '+esc(o.pc):'')+'</span></div>' +
         '<div class="ph">' + (c.phone
@@ -616,7 +627,6 @@
     var h = '<button class="back" id="dBack">← Back to prospects</button>' +
       '<div class="card dhead">' +
         '<h2>'+esc(o.name)+'</h2>' +
-        (c.director ? '<div class="meta" style="color:#1F6F4A;font-weight:600;font-size:15px;margin-top:5px">'+esc(c.director)+'</div>' : '') +
         '<div class="meta">'+esc([o.addr,o.town,o.pc].filter(Boolean).join(", "))+'</div>' +
         '<div class="meta">Company '+esc(no)+
           ' · <a href="https://find-and-update.company-information.service.gov.uk/company/'+esc(no)+'" target="_blank" rel="noopener">Companies House ↗</a>' +
@@ -639,6 +649,18 @@
         (o.areas?'<div class="meta" style="margin-top:12px">Land held in: '+esc(o.areas)+'</div>':'') +
         (o.sample?'<div class="meta" style="margin-top:4px">e.g. '+esc(o.sample)+'</div>':'') +
       '</div>' +
+
+      (c.directors.length ? '<div class="card"><h3>Who to ask for</h3><ul class="people">' +
+        c.directors.map(function(d, i){
+          return '<li>' +
+            '<span class="pn">'+esc(d.name)+'</span>' +
+            (d.role ? '<span class="pr">'+esc(d.role)+'</span>' : '') +
+            (i === 0 ? '<span class="pfirst">try first</span>' : '') +
+            '<button class="pick" data-pick="'+esc(d.name)+'">Use</button>' +
+          '</li>';
+        }).join("") + '</ul>' +
+        '<div style="font-size:12.5px;color:#5D6E66;margin-top:10px">Active directors at Companies House' +
+        (c.directors.length > 1 ? ' — on a family farm any of them may handle the land.' : '.') + '</div></div>' : '') +
 
       '<div class="card"><h3>Where the land sits</h3><div id="miniMap"></div></div>' +
 
@@ -681,6 +703,12 @@
     $("dBack").addEventListener("click", closeDetail);
     $("dSave").addEventListener("click", saveDetail);
     $("dLog").addEventListener("click", logNote);
+    Array.prototype.forEach.call($("dBody").querySelectorAll("[data-pick]"), function(b){
+      b.addEventListener("click", function(){
+        $("dDir").value = b.getAttribute("data-pick");
+        $("dDir").focus();
+      });
+    });
     drawMini(o);
   }
 

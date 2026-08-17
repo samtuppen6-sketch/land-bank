@@ -134,18 +134,35 @@
     });
   }
 
-  // Companies House gives "GODFREY, Robert John" — flip it to "Robert John Godfrey"
-  function tidyName(n){
-    if(!n) return "";
-    var parts = n.split(",");
-    if(parts.length < 2) return titleise(n);
-    var surname = titleise(parts[0].trim());
-    var rest = parts.slice(1).join(" ").trim();
-    return titleise(rest) + " " + surname;
+  // Companies House gives a display name like "HALES, Celestria Magdalen Mary, Lady"
+  // plus structured name_elements. Use the structured fields — the display string
+  // has a variable number of comma-separated parts and can't be parsed reliably.
+  var SHORT_TITLE = /^(sir|dame|lady|lord|dr|rev|revd|prof|professor|hon|the hon|mrs|mr|ms|miss|capt|major|col|brig|baroness|baron|viscount|viscountess|countess|earl|duke|duchess)\.?$/i;
+
+  function personName(o){
+    var e = o.name_elements || {};
+    var fore = titleise((e.forename || "").trim());
+    var sur  = titleise((e.surname  || "").trim());
+    var ttl  = (e.title || "").trim();
+
+    if(!fore && !sur){
+      // no structured fields — fall back to the display name, surname first
+      var p = String(o.name || "").split(",");
+      if(p.length >= 2) return titleise(p[1].trim().split(" ")[0]) + " " + titleise(p[0].trim());
+      return titleise(o.name || "");
+    }
+    var base = (fore + " " + sur).trim();
+    if(!ttl) return base;
+    // "Sir", "Lady", "Dr" read naturally in front; anything longer goes after the name
+    return SHORT_TITLE.test(ttl) ? titleise(ttl) + " " + base : base + ", " + titleise(ttl);
   }
   function titleise(s){
-    return String(s||"").toLowerCase().replace(/\b([a-z])/g, function(m,c){ return c.toUpperCase(); })
-      .replace(/\bMc([a-z])/g, function(m,c){ return "Mc"+c.toUpperCase(); });
+    return String(s||"").toLowerCase()
+      .replace(/\b([a-z])/g, function(m,c){ return c.toUpperCase(); })
+      .replace(/\bMc([a-z])/g, function(m,c){ return "Mc"+c.toUpperCase(); })
+      .replace(/\bO'([a-z])/g, function(m,c){ return "O'"+c.toUpperCase(); })
+      .replace(/\bOf\b/g, "of").replace(/\bThe\b/g, "the")
+      .replace(/\s+/g, " ").trim();
   }
 
   function save(){
@@ -227,11 +244,20 @@
       var role = (o.officer_role||"").toLowerCase();
       return role.indexOf("director") !== -1 && role.indexOf("corporate") === -1;
     });
-    // longest-serving first — usually the principal
     live.sort(function(a,b){
+      // whoever calls themselves a farmer is the one to ask for
+      var af = /farm|agricult|land/i.test(a.occupation||"") ? 0 : 1;
+      var bf = /farm|agricult|land/i.test(b.occupation||"") ? 0 : 1;
+      if(af !== bf) return af - bf;
       return new Date(a.appointed_on||"2100-01-01") - new Date(b.appointed_on||"2100-01-01");
     });
-    return live.slice(0, maxD).map(function(o){ return tidyName(o.name); }).filter(Boolean);
+    return live.slice(0, maxD).map(function(o){
+      var n = personName(o);
+      var occ = (o.occupation||"").trim();
+      return occ && !/^(none|director|company director)$/i.test(occ)
+        ? {name:n, role:titleise(occ)}
+        : {name:n};
+    }).filter(function(d){ return d.name; });
   }
 
   function step(){
@@ -247,9 +273,11 @@
       var names = pickDirectors(data, parseInt($("maxD").value,10) || 3);
       stats.done++;
       if(names.length){
-        found[farm.no] = names.join(", ");
+        found[farm.no] = names;
         stats.ok++;
-        logLine("ok", farm.name, names.join(", "));
+        logLine("ok", farm.name, names.map(function(d){
+          return d.name + (d.role ? " ("+d.role+")" : "");
+        }).join("  ·  "));
       } else {
         stats.none++;
         logLine("no", farm.name, "no active directors listed");
@@ -319,7 +347,9 @@
         var f = byNo[k] || {};
         merged[k] = {company:f.name||k, director:"", phone:"", email:"", website:"", source:"Companies House", confidence:"medium"};
       }
-      merged[k].director = found[k];
+      var list = found[k];
+      merged[k].directors = list;                       // full list, with roles
+      merged[k].director  = list.length ? list[0].name : "";   // primary contact
       if(!merged[k].source) merged[k].source = "Companies House";
     });
     var out = {
