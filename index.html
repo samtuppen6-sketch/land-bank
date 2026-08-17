@@ -10,22 +10,21 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0F1D18; --paper:#EFF2EE; --surface:#FFFFFF; --line:#D7DED8;
-    --muted:#5D6E66; --green:#1F6F4A; --green-dk:#164F35; --ochre:#A8541B;
-    --amber:#B58900; --red:#A32E22; --blue:#1B5E8A;
-    --r:10px; --shadow:0 1px 2px rgba(15,29,24,.07), 0 8px 24px rgba(15,29,24,.06);
+    --ink:#0F1D18; --paper:#EFF2EE; --surface:#FFFFFF; --line:#DAE1DB; --line2:#EBEFEC;
+    --muted:#5D6E66; --faint:#8A9992;
+    --green:#1F6F4A; --green-lt:#E4EFE8; --ochre:#A8541B; --amber:#B58900;
+    --red:#A32E22; --blue:#1B5E8A;
+    --r:10px; --shadow:0 1px 2px rgba(15,29,24,.06), 0 10px 28px rgba(15,29,24,.07);
   }
   *{box-sizing:border-box}
   html,body{height:100%}
-  body{
-    margin:0; background:var(--paper); color:var(--ink);
+  body{margin:0;background:var(--paper);color:var(--ink);
     font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3,.disp{font-family:"Space Grotesk",-apple-system,sans-serif;font-weight:700;letter-spacing:-.01em;margin:0}
+    -webkit-font-smoothing:antialiased}
+  h1,h2,h3,.disp{font-family:"Space Grotesk",-apple-system,sans-serif;font-weight:700;letter-spacing:-.015em;margin:0}
   .num{font-variant-numeric:tabular-nums}
   button,input,select,textarea{font:inherit;color:inherit}
   button{cursor:pointer}
@@ -34,8 +33,8 @@
   /* ---------- gate ---------- */
   #gate{position:fixed;inset:0;z-index:9000;background:var(--ink);display:flex;align-items:center;justify-content:center;padding:24px}
   #gate .box{width:100%;max-width:340px;text-align:center;color:#fff}
-  #gate .mark{font-family:"Space Grotesk";font-weight:700;font-size:13px;letter-spacing:.18em;text-transform:uppercase;opacity:.6}
-  #gate h1{font-size:30px;margin:10px 0 4px}
+  #gate .mark{font-family:"Space Grotesk";font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.55}
+  #gate h1{font-size:31px;margin:10px 0 4px}
   #gate p{color:#9DB3A9;font-size:14px;margin:0 0 22px}
   #gate input{width:100%;padding:13px 14px;border-radius:var(--r);border:1px solid #33463E;background:#16261F;color:#fff;text-align:center;letter-spacing:.3em;font-size:17px}
   #gate button{width:100%;margin-top:10px;padding:13px;border:0;border-radius:var(--r);background:var(--green);color:#fff;font-weight:700}
@@ -43,94 +42,99 @@
 
   /* ---------- shell ---------- */
   #app{display:none;height:100%;flex-direction:column}
-  header{
-    display:flex;align-items:center;gap:16px;padding:10px 18px;
-    background:var(--ink);color:#fff;flex:0 0 auto;
-  }
-  header .brand{font-family:"Space Grotesk";font-weight:700;font-size:16px;letter-spacing:-.01em}
+  header{display:flex;align-items:center;gap:14px;padding:10px 18px;background:var(--ink);color:#fff;flex:0 0 auto}
+  header .brand{font-family:"Space Grotesk";font-weight:700;font-size:16px}
   header .brand span{color:#7FC0A0}
   nav{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
-  nav button{
-    background:transparent;border:0;color:#A9BFB6;padding:8px 14px;border-radius:8px;font-weight:600;font-size:14px;
-  }
+  nav button{background:transparent;border:0;color:#A9BFB6;padding:8px 14px;border-radius:8px;font-weight:600;font-size:14px}
   nav button.on{background:#22352D;color:#fff}
-  nav button .pill{
-    display:inline-block;min-width:19px;padding:0 5px;margin-left:6px;border-radius:9px;
-    background:var(--red);color:#fff;font-size:11px;font-weight:700;line-height:19px;text-align:center
-  }
+  nav button .pill{display:inline-block;min-width:19px;padding:0 5px;margin-left:6px;border-radius:9px;background:var(--red);color:#fff;font-size:11px;font-weight:700;line-height:19px;text-align:center}
   main{flex:1 1 auto;min-height:0;position:relative}
   .view{position:absolute;inset:0;display:none;overflow:auto}
   .view.on{display:block}
   .view.flush{overflow:hidden}
 
-  /* ---------- filter bar ---------- */
-  .filters{
-    display:flex;gap:10px;align-items:center;flex-wrap:wrap;
-    padding:10px 14px;background:var(--surface);border-bottom:1px solid var(--line)
-  }
-  .filters label{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
-  .filters select,.filters input{
-    padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface)
-  }
-  .filters .count{margin-left:auto;font-size:13px;color:var(--muted)}
-  .filters .count b{color:var(--ink);font-size:15px}
+  /* ---------- toolbar ---------- */
+  .bar{display:flex;gap:9px;align-items:center;flex-wrap:wrap;padding:11px 16px;background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+  .bar select,.bar input{padding:8px 11px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+  .bar input[type=search]{min-width:210px}
+  .bar .lbl{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+  .bar .right{margin-left:auto;display:flex;align-items:center;gap:14px}
+  .bar .cnt{font-size:13px;color:var(--muted)}
+  .bar .cnt b{color:var(--ink);font-size:16px;font-family:"Space Grotesk"}
+
+  /* ---------- CRM list ---------- */
+  .listwrap{padding:0 0 40px}
+  .prow{display:grid;grid-template-columns:44px 1fr 150px 132px 128px 92px;gap:14px;align-items:center;
+    padding:13px 16px;background:var(--surface);border-bottom:1px solid var(--line2);cursor:pointer}
+  .prow:hover{background:#F5F8F5}
+  .prow .rank{font-family:"Space Grotesk";font-weight:700;color:var(--faint);text-align:right;font-size:14px}
+  .prow .co{min-width:0}
+  .prow .co b{display:block;font-size:15px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .prow .co span{color:var(--muted);font-size:12.5px}
+  .prow .ph a{font-weight:700;font-variant-numeric:tabular-nums;text-decoration:none;white-space:nowrap}
+  .prow .ph .none{color:var(--faint);font-size:13px}
+  .prow .land{font-family:"Space Grotesk";font-weight:700;font-size:16px}
+  .prow .land span{display:block;font-family:inherit;font-weight:400;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  .prow .nx{font-size:12.5px;color:var(--muted)}
+  .prow .nx.due{color:var(--red);font-weight:700}
+  .hdr{display:grid;grid-template-columns:44px 1fr 150px 132px 128px 92px;gap:14px;padding:9px 16px;
+    background:#E9EEEA;border-bottom:1px solid var(--line);position:sticky;top:57px;z-index:4}
+  .hdr div{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);cursor:pointer;user-select:none}
+  .hdr div:first-child{text-align:right}
+  .tag{display:inline-block;padding:3px 9px;border-radius:99px;font-size:11.5px;font-weight:700;white-space:nowrap}
+  .warnpip{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--amber);margin-left:5px;vertical-align:middle}
+  .more{display:block;width:calc(100% - 32px);margin:16px;padding:12px;border:1px dashed var(--line);border-radius:var(--r);background:var(--surface);color:var(--muted);font-weight:600}
 
   /* ---------- map ---------- */
   #mapWrap{position:absolute;inset:0;display:flex;flex-direction:column}
   #map{flex:1 1 auto;min-height:0;background:#DDE4DE}
-  .legend{
-    position:absolute;right:12px;bottom:24px;z-index:600;background:rgba(255,255,255,.95);
-    border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;font-size:12px;box-shadow:var(--shadow)
-  }
-  .legend b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px}
+  .legend{position:absolute;right:12px;bottom:22px;z-index:600;background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;font-size:12px;box-shadow:var(--shadow)}
+  .legend b{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px}
   .legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:middle}
-
-  .leaflet-popup-content{margin:12px 14px;min-width:220px}
+  .leaflet-popup-content{margin:12px 14px;min-width:210px}
   .pop h4{font-family:"Space Grotesk";font-size:15px;margin:0 0 2px}
   .pop .sub{color:var(--muted);font-size:12.5px;margin-bottom:8px}
   .pop dl{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;margin:0 0 10px;font-size:13px}
-  .pop dt{color:var(--muted)}
-  .pop dd{margin:0}
+  .pop dt{color:var(--muted)} .pop dd{margin:0}
   .pop .go{display:block;width:100%;text-align:center;padding:9px;border:0;border-radius:8px;background:var(--green);color:#fff;font-weight:700}
-
-  /* ---------- table ---------- */
-  table{width:100%;border-collapse:collapse;background:var(--surface)}
-  th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);font-size:14px}
-  th{position:sticky;top:0;background:var(--surface);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);z-index:2;cursor:pointer;white-space:nowrap}
-  tbody tr{cursor:pointer}
-  tbody tr:hover{background:#F5F8F5}
-  .tag{display:inline-block;padding:2px 8px;border-radius:99px;font-size:11.5px;font-weight:700;white-space:nowrap}
 
   /* ---------- detail ---------- */
   #detail{position:absolute;inset:0;background:var(--paper);display:none;overflow:auto;z-index:1200}
   #detail.on{display:block}
-  .dwrap{max-width:920px;margin:0 auto;padding:18px 16px 60px}
+  .dwrap{max-width:980px;margin:0 auto;padding:16px 16px 70px}
   .back{background:none;border:0;color:var(--muted);font-weight:600;padding:6px 0;margin-bottom:8px}
-  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:14px;box-shadow:var(--shadow)}
-  .card h3{font-size:13px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:12px}
-  .dhead h2{font-size:23px;line-height:1.2}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:17px;margin-bottom:14px;box-shadow:var(--shadow)}
+  .card h3{font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:13px}
+  .dhead h2{font-size:24px;line-height:1.2}
   .dhead .meta{color:var(--muted);font-size:13.5px;margin-top:4px}
-  .stats{display:flex;gap:26px;margin-top:14px;flex-wrap:wrap}
+  .callrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:15px}
+  .callbtn{display:inline-flex;align-items:center;gap:9px;padding:12px 20px;border-radius:9px;background:var(--green);color:#fff;
+    font-weight:700;text-decoration:none;font-size:17px;font-variant-numeric:tabular-nums}
+  .callbtn.off{background:#E4E9E5;color:var(--faint)}
+  .stats{display:flex;gap:24px;margin-top:15px;flex-wrap:wrap}
   .stat b{display:block;font-family:"Space Grotesk";font-size:21px}
-  .stat span{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
-  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
-  .fld label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:4px;font-weight:700}
+  .stat span{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px}
+  .fld label{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:4px;font-weight:700}
   .fld input,.fld select,.fld textarea{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
-  .fld textarea{min-height:78px;resize:vertical}
-  .btn{padding:10px 16px;border:0;border-radius:8px;background:var(--green);color:#fff;font-weight:700}
-  .btn.ghost{background:var(--surface);border:1px solid var(--line);color:var(--ink)}
+  .fld textarea{min-height:82px;resize:vertical}
+  .btn{padding:10px 17px;border:0;border-radius:8px;background:var(--green);color:#fff;font-weight:700}
+  .btn.ghost{background:var(--surface);border:1px solid var(--line);color:var(--ink);text-decoration:none;display:inline-block}
   .btn:disabled{opacity:.5}
   .row{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
   .saved{font-size:12.5px;color:var(--green);opacity:0;transition:opacity .2s}
   .saved.on{opacity:1}
-
+  #miniMap{height:230px;border-radius:8px;border:1px solid var(--line);background:#DDE4DE}
+  .flagbox{background:#FFF6E5;border:1px solid #E8D6A8;color:#6B4E12;padding:10px 12px;border-radius:8px;font-size:13px;margin-top:12px}
   .tl{list-style:none;margin:0;padding:0}
   .tl li{padding:11px 0 11px 14px;border-left:2px solid var(--line);position:relative}
   .tl li:before{content:"";position:absolute;left:-5px;top:16px;width:8px;height:8px;border-radius:50%;background:var(--green)}
   .tl .when{font-size:11.5px;color:var(--muted)}
   .tl .what{margin-top:2px;white-space:pre-wrap}
-  .tl .kind{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  .tl .kind{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
 
+  /* ---------- callbacks ---------- */
   .cb{display:flex;gap:12px;align-items:center;padding:13px 14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);margin-bottom:9px;cursor:pointer}
   .cb .when{font-family:"Space Grotesk";font-weight:700;min-width:118px}
   .cb.over{border-left:4px solid var(--red)}
@@ -139,14 +143,23 @@
   .cb .nt{color:var(--muted);font-size:13px}
   .cb .done{margin-left:auto;padding:7px 12px;border:1px solid var(--line);background:var(--surface);border-radius:8px;font-size:13px;font-weight:600}
 
-  .empty{padding:44px 20px;text-align:center;color:var(--muted)}
+  .empty{padding:46px 20px;text-align:center;color:var(--muted)}
   .empty b{display:block;font-family:"Space Grotesk";font-size:17px;color:var(--ink);margin-bottom:6px}
   .pad{padding:16px}
   .banner{background:#FFF6E5;border:1px solid #E8D6A8;color:#6B4E12;padding:9px 14px;font-size:13px}
-  @media (max-width:640px){
-    .filters{gap:7px;padding:8px 10px}
-    header{padding:9px 12px;gap:10px}
+
+  @media (max-width:900px){
+    .prow,.hdr{grid-template-columns:34px 1fr 128px 96px;gap:10px}
+    .prow .st,.hdr .st,.prow .nx,.hdr .nx{display:none}
+  }
+  @media (max-width:600px){
+    .prow,.hdr{grid-template-columns:1fr 118px}
+    .prow .rank,.hdr div:first-child,.prow .land,.hdr .ld{display:none}
+    .bar{padding:9px 11px;gap:7px}
+    .bar input[type=search]{min-width:140px;flex:1}
+    header{padding:9px 12px}
     nav button{padding:7px 10px;font-size:13px}
+    .hdr{top:96px}
   }
 </style>
 </head>
@@ -157,7 +170,7 @@
     <div class="mark">Solpath</div>
     <h1>Land Bank</h1>
     <p>Enter the access code to continue.</p>
-    <input id="code" type="password" inputmode="numeric" autocomplete="off" placeholder="••••••" aria-label="Access code">
+    <input id="code" type="password" inputmode="numeric" autocomplete="off" placeholder="••••" aria-label="Access code">
     <button id="codeGo">Unlock</button>
     <div class="err" id="codeErr"></div>
   </div>
@@ -167,63 +180,25 @@
   <header>
     <div class="brand">Solpath <span>/ Land Bank</span></div>
     <nav>
-      <button data-v="map" class="on">Map</button>
-      <button data-v="list">Pipeline</button>
+      <button data-v="list" class="on">Prospects</button>
       <button data-v="calls">Callbacks<span class="pill" id="cbCount" style="display:none">0</span></button>
+      <button data-v="map">Map</button>
     </nav>
   </header>
 
   <main>
-    <!-- MAP -->
-    <section class="view on flush" id="v-map">
-      <div id="mapWrap">
-        <div class="filters">
-          <label for="fCounty">County</label>
-          <select id="fCounty"><option value="">All</option></select>
-          <label for="fLand">Min land parcels</label>
-          <select id="fLand">
-            <option value="1">1+</option>
-            <option value="3" selected>3+</option>
-            <option value="5">5+</option>
-            <option value="10">10+</option>
-            <option value="0">Any (incl. none)</option>
-          </select>
-          <label for="fStatus">Status</label>
-          <select id="fStatus">
-            <option value="">All</option>
-            <option value="new">Not yet called</option>
-            <option value="interested">Interested</option>
-            <option value="warm">Warm</option>
-            <option value="handed_over">Handed over</option>
-            <option value="dead">Dead</option>
-          </select>
-          <label for="fContact">Contact</label>
-          <select id="fContact">
-            <option value="">Any</option>
-            <option value="phone">Has phone</option>
-            <option value="verified">Has phone (verified only)</option>
-            <option value="none">No phone yet</option>
-          </select>
-          <input id="fSearch" type="search" placeholder="Search name or postcode" style="min-width:190px">
-          <div class="count"><b id="shown" class="num">0</b> farms shown</div>
-        </div>
-        <div id="map"></div>
-        <div class="legend">
-          <b>Pin size = land parcels owned</b>
-          <div><i style="background:#1F6F4A"></i>Not yet called</div>
-          <div><i style="background:#B58900"></i>In progress</div>
-          <div><i style="background:#1B5E8A"></i>Handed to David</div>
-          <div><i style="background:#9AA8A1"></i>Dead / not interested</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- LIST -->
-    <section class="view" id="v-list">
-      <div class="filters">
-        <label for="lStatus">Status</label>
-        <select id="lStatus">
-          <option value="">All</option>
+    <!-- PROSPECTS (default) -->
+    <section class="view on" id="v-list">
+      <div class="bar">
+        <span class="lbl">Show</span>
+        <select id="fContact">
+          <option value="verified" selected>Ready to call</option>
+          <option value="phone">Any phone number</option>
+          <option value="none">No number yet</option>
+          <option value="">Everything</option>
+        </select>
+        <select id="fStatus">
+          <option value="">All statuses</option>
           <option value="new">Not yet called</option>
           <option value="called">Called</option>
           <option value="no_answer">No answer</option>
@@ -233,17 +208,62 @@
           <option value="not_interested">Not interested</option>
           <option value="dead">Dead</option>
         </select>
-        <label for="lCounty">County</label>
-        <select id="lCounty"><option value="">All</option></select>
-        <input id="lSearch" type="search" placeholder="Search name or postcode" style="min-width:190px">
-        <div class="count"><b id="lShown" class="num">0</b> rows</div>
+        <select id="fCounty"><option value="">All counties</option></select>
+        <select id="fLand">
+          <option value="0">Any size</option>
+          <option value="3">3+ parcels</option>
+          <option value="5">5+ parcels</option>
+          <option value="10">10+ parcels</option>
+        </select>
+        <input id="fSearch" type="search" placeholder="Search name, town or postcode">
+        <div class="right">
+          <div class="cnt"><b class="num" id="shown">0</b> prospects</div>
+        </div>
       </div>
-      <div id="tableWrap"></div>
+      <div class="hdr">
+        <div data-sort="score">#</div>
+        <div data-sort="name">Company</div>
+        <div data-sort="phone">Phone</div>
+        <div class="ld" data-sort="land">Land</div>
+        <div class="st" data-sort="status">Status</div>
+        <div class="nx" data-sort="next">Next</div>
+      </div>
+      <div class="listwrap" id="listwrap"></div>
     </section>
 
     <!-- CALLBACKS -->
     <section class="view" id="v-calls">
       <div class="pad" id="cbList"></div>
+    </section>
+
+    <!-- MAP -->
+    <section class="view flush" id="v-map">
+      <div id="mapWrap">
+        <div class="bar">
+          <span class="lbl">Show</span>
+          <select id="mContact">
+            <option value="verified">Ready to call</option>
+            <option value="phone">Any phone number</option>
+            <option value="">Everything</option>
+          </select>
+          <select id="mCounty"><option value="">All counties</option></select>
+          <select id="mLand">
+            <option value="0">Any size</option>
+            <option value="3" selected>3+ parcels</option>
+            <option value="5">5+ parcels</option>
+            <option value="10">10+ parcels</option>
+          </select>
+          <div class="right"><div class="cnt"><b class="num" id="mShown">0</b> on map</div></div>
+        </div>
+        <div id="map"></div>
+        <div class="legend">
+          <b>Pin size = land parcels</b>
+          <div><i style="background:#1F6F4A"></i>Not yet called</div>
+          <div><i style="background:#B58900"></i>In progress</div>
+          <div><i style="background:#1B5E8A"></i>Handed to David</div>
+          <div><i style="background:#9AA8A1"></i>Dead / not interested</div>
+        </div>
+      </div>
     </section>
 
     <!-- DETAIL -->
@@ -260,9 +280,10 @@
   /* ============ config ============ */
   var SUPA = "https://xdoqclrwdduncjaxtixp.supabase.co";
   var ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhkb3FjbHJ3ZGR1bmNqYXh0aXhwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwMjkyNjMsImV4cCI6MjA5NjYwNTI2M30.vLCzN7-eNJh32tvy0zySDGX5bp6X1v9WlST59BSmIkk";
-  var PASSCODE = "4472";               // change me: also change the note you keep
+  var PASSCODE = "4472";
   var DATA_URL = "farms.json";
   var CONTACTS_URL = "contacts.json";
+  var PAGE = 250;
 
   var STATUS = {
     new:            {label:"Not yet called", bg:"#E4EFE8", fg:"#1F6F4A", pin:"#1F6F4A"},
@@ -276,19 +297,17 @@
     dead:           {label:"Dead",           bg:"#ECEFED", fg:"#5D6E66", pin:"#9AA8A1"}
   };
   var STATUS_ORDER = ["new","called","no_answer","interested","warm","handed_over","live","not_interested","dead"];
+  var CONF_WEIGHT = {high:1.0, medium:0.75, check:0.35};
 
   /* ============ state ============ */
-  var farms = [];        // seed rows from farms.json
-  var byNo  = {};        // company_number -> farm
-  var meta  = {};        // company_number -> supabase row
-  var acts  = [];        // farm_activity rows
-  var seedContacts = {}; // company_number -> researched contact (from contacts.json)
-  var map, cluster, currentNo = null, sortKey = "land", sortDir = -1;
+  var farms = [], byNo = {}, meta = {}, acts = [], seedContacts = {};
+  var map, cluster, miniMap, currentNo = null;
+  var sortKey = "score", sortDir = -1, limit = PAGE;
 
   /* ============ helpers ============ */
   function $(id){ return document.getElementById(id); }
   function esc(s){
-    return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
+    return String(s==null?"":s).replace(/[&<>"']/g,function(c){
       return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
     });
   }
@@ -296,20 +315,34 @@
     var m = meta[no];
     return (m && m.pipeline_status) ? m.pipeline_status : "new";
   }
-  // Anything you type in the app wins; researched contacts fill the gaps.
   function contactOf(no){
     var m = meta[no] || {}, s = seedContacts[no] || {};
     return {
-      phone:    m.phone         || s.phone    || "",
-      email:    m.email         || s.email    || "",
-      director: m.director_name || s.director || "",
-      website:  s.website       || "",
-      source:   s.source        || "",
+      phone:      m.phone         || s.phone    || "",
+      email:      m.email         || s.email    || "",
+      director:   m.director_name || s.director || "",
+      website:    s.website     || "",
+      source:     s.source      || "",
       confidence: s.confidence  || "",
-      flag:     s.flag          || "",
-      emailStatus: s.email_status || "",
-      researched: !!(s.phone || s.email || s.director)
+      flag:       s.flag        || "",
+      emailStatus:s.email_status|| ""
     };
+  }
+  // Priority = size weighted by how callable it is.
+  function scoreOf(o){
+    var c = contactOf(o.no);
+    var w = c.phone ? (CONF_WEIGHT[c.confidence] != null ? CONF_WEIGHT[c.confidence] : 0.75) : 0.25;
+    return (o.land || 0) * w;
+  }
+  function nextDue(no){
+    var best = null;
+    for(var i=0;i<acts.length;i++){
+      var a = acts[i];
+      if(a.company_number === no && a.due_at && !a.done_at){
+        if(!best || new Date(a.due_at) < new Date(best)) best = a.due_at;
+      }
+    }
+    return best;
   }
   function tag(st){
     var s = STATUS[st] || STATUS.new;
@@ -317,72 +350,52 @@
   }
   function fmtDT(iso){
     if(!iso) return "";
-    try{
-      return new Date(iso).toLocaleString("en-GB",{weekday:"short",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
-    }catch(e){ return iso; }
+    try{ return new Date(iso).toLocaleString("en-GB",{weekday:"short",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"}); }
+    catch(e){ return iso; }
   }
-  function toLocalInput(iso){
-    var d = iso ? new Date(iso) : new Date();
-    var p = function(n){ return String(n).padStart(2,"0"); };
-    return d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate())+"T"+p(d.getHours())+":"+p(d.getMinutes());
+  function fmtShort(iso){
+    if(!iso) return "";
+    try{ return new Date(iso).toLocaleDateString("en-GB",{day:"numeric",month:"short"}); }
+    catch(e){ return iso; }
   }
 
-  /* ============ supabase REST ============ */
+  /* ============ supabase ============ */
   function api(path, opts){
     opts = opts || {};
-    var h = {
-      "apikey": ANON,
-      "Authorization": "Bearer " + ANON,
-      "Content-Type": "application/json"
-    };
-    if(opts.prefer) h["Prefer"] = opts.prefer;
+    var h = {apikey:ANON, Authorization:"Bearer "+ANON, "Content-Type":"application/json"};
+    if(opts.prefer) h.Prefer = opts.prefer;
     return fetch(SUPA + "/rest/v1/" + path, {
-      method: opts.method || "GET",
-      headers: h,
+      method: opts.method || "GET", headers: h,
       body: opts.body ? JSON.stringify(opts.body) : undefined
     }).then(function(r){
-      if(!r.ok) return r.text().then(function(t){ throw new Error(r.status + " " + t.slice(0,180)); });
+      if(!r.ok) return r.text().then(function(t){ throw new Error(r.status+" "+t.slice(0,170)); });
       return r.status === 204 ? null : r.json();
     });
   }
-
   function upsertProspect(no, patch){
     var f = byNo[no] || {};
     var row = Object.assign({
-      company_number: no,
-      company_name:   f.name || no,
-      county:         f.county || null,
-      postcode:       f.pc || null,
-      postcode_norm:  (f.pc||"").replace(/\s/g,"").toUpperCase() || null,
-      address_line:   f.addr || null,
-      town:           f.town || null,
-      sic_text:       f.sic || null,
-      lat:            f.lat != null ? f.lat : null,
-      lng:            f.lng != null ? f.lng : null,
-      title_count:    f.titles || 0,
-      land_title_count: f.land || 0,
-      land_counties:  f.areas || null,
-      sample_land:    f.sample || null
+      company_number:no, company_name:f.name || no, county:f.county || null,
+      postcode:f.pc || null, postcode_norm:(f.pc||"").replace(/\s/g,"").toUpperCase() || null,
+      address_line:f.addr || null, town:f.town || null, sic_text:f.sic || null,
+      lat:f.lat != null ? f.lat : null, lng:f.lng != null ? f.lng : null,
+      title_count:f.titles || 0, land_title_count:f.land || 0,
+      land_counties:f.areas || null, sample_land:f.sample || null
     }, meta[no] || {}, patch);
     delete row.id; delete row.created_at; delete row.updated_at;
     return api("farm_prospects?on_conflict=company_number", {
       method:"POST", body:[row], prefer:"resolution=merge-duplicates,return=representation"
-    }).then(function(res){
-      if(res && res[0]) meta[no] = res[0];
-      return meta[no];
-    });
+    }).then(function(res){ if(res && res[0]) meta[no] = res[0]; return meta[no]; });
   }
 
   /* ============ boot ============ */
   function unlock(){
-    var v = $("code").value.trim();
-    if(v === PASSCODE){
+    if($("code").value.trim() === PASSCODE){
       try{ localStorage.setItem("lb_ok","1"); }catch(e){}
       start();
     } else {
       $("codeErr").textContent = "That code isn't right.";
-      $("code").value = "";
-      $("code").focus();
+      $("code").value = ""; $("code").focus();
     }
   }
   $("codeGo").addEventListener("click", unlock);
@@ -396,29 +409,25 @@
 
   function loadAll(){
     fetch(DATA_URL).then(function(r){
-      if(!r.ok) throw new Error("Couldn't load farms.json (" + r.status + ")");
+      if(!r.ok) throw new Error("farms.json ("+r.status+")");
       return r.json();
     }).then(function(p){
       var f = p.fields;
       farms = p.rows.map(function(r){
-        var o = {};
-        for(var i=0;i<f.length;i++) o[f[i]] = r[i];
-        return o;
+        var o = {}; for(var i=0;i<f.length;i++) o[f[i]] = r[i]; return o;
       });
       farms.forEach(function(o){ byNo[o.no] = o; });
       buildCounties();
-      initMap();
       return fetch(CONTACTS_URL)
         .then(function(r){ return r.ok ? r.json() : {contacts:{}}; })
         .catch(function(){ return {contacts:{}}; })
         .then(function(c){ seedContacts = c.contacts || {}; return refreshCloud(); });
     }).then(function(){
-      applyFilters();
       renderList();
       renderCallbacks();
     }).catch(function(e){
       document.querySelector("main").insertAdjacentHTML("afterbegin",
-        '<div class="banner">Data didn\'t load: ' + esc(e.message) + '</div>');
+        '<div class="banner">Data didn\'t load: '+esc(e.message)+'</div>');
     });
   }
 
@@ -433,105 +442,158 @@
     });
   }
 
-  /* ============ filters ============ */
   function buildCounties(){
     var seen = {};
     farms.forEach(function(o){ if(o.county) seen[o.county] = (seen[o.county]||0)+1; });
-    var list = Object.keys(seen).sort(function(a,b){ return seen[b]-seen[a]; });
-    var html = '<option value="">All</option>' + list.map(function(c){
-      return '<option value="'+esc(c)+'">'+esc(c)+' ('+seen[c]+')</option>';
-    }).join("");
+    var html = '<option value="">All counties</option>' +
+      Object.keys(seen).sort(function(a,b){ return seen[b]-seen[a]; })
+        .map(function(c){ return '<option value="'+esc(c)+'">'+esc(c)+' ('+seen[c]+')</option>'; }).join("");
     $("fCounty").innerHTML = html;
-    $("lCounty").innerHTML = html;
+    $("mCounty").innerHTML = html;
   }
 
-  function matches(o, county, minLand, status, q, contact){
-    if(county && o.county !== county) return false;
-    if(minLand && (o.land||0) < minLand) return false;
-    if(contact){
-      var cc = contactOf(o.no);
-      if(contact === "phone"    && !cc.phone) return false;
-      if(contact === "none"     &&  cc.phone) return false;
-      if(contact === "verified" && (!cc.phone || cc.confidence === "check")) return false;
+  /* ============ filtering ============ */
+  function passes(o, opt){
+    if(opt.county && o.county !== opt.county) return false;
+    if(opt.minLand && (o.land||0) < opt.minLand) return false;
+    if(opt.contact){
+      var c = contactOf(o.no);
+      if(opt.contact === "phone"    && !c.phone) return false;
+      if(opt.contact === "none"     &&  c.phone) return false;
+      if(opt.contact === "verified" && (!c.phone || c.confidence === "check")) return false;
     }
-    if(status){
-      var st = statusOf(o.no);
-      if(status === "new"  && st !== "new") return false;
-      if(status === "dead" && st !== "dead" && st !== "not_interested") return false;
-      if(status !== "new" && status !== "dead" && st !== status) return false;
-    }
-    if(q){
-      var hay = (o.name + " " + o.pc + " " + (o.town||"")).toLowerCase();
-      if(hay.indexOf(q) === -1) return false;
-    }
+    if(opt.status && statusOf(o.no) !== opt.status) return false;
+    if(opt.q && (o.name+" "+o.pc+" "+(o.town||"")).toLowerCase().indexOf(opt.q) === -1) return false;
     return true;
   }
 
-  function applyFilters(){
-    var county  = $("fCounty").value;
-    var minLand = parseInt($("fLand").value, 10) || 0;
-    var status  = $("fStatus").value;
-    var q       = $("fSearch").value.trim().toLowerCase();
-    var contact = $("fContact").value;
-    var sel = farms.filter(function(o){ return matches(o, county, minLand, status, q, contact); });
-    $("shown").textContent = sel.length.toLocaleString();
-    drawPins(sel);
+  /* ============ CRM list ============ */
+  function selection(){
+    return farms.filter(function(o){
+      return passes(o, {
+        county:  $("fCounty").value,
+        minLand: parseInt($("fLand").value,10) || 0,
+        contact: $("fContact").value,
+        status:  $("fStatus").value,
+        q:       $("fSearch").value.trim().toLowerCase()
+      });
+    });
   }
-  ["fCounty","fLand","fStatus","fContact"].forEach(function(id){
-    $(id).addEventListener("change", applyFilters);
+
+  function renderList(){
+    var sel = selection();
+    sel.sort(function(a,b){
+      var x, y;
+      if(sortKey === "name")       { return a.name < b.name ? -sortDir : a.name > b.name ? sortDir : 0; }
+      else if(sortKey === "land")  { x = a.land||0;              y = b.land||0; }
+      else if(sortKey === "status"){ x = STATUS_ORDER.indexOf(statusOf(a.no)); y = STATUS_ORDER.indexOf(statusOf(b.no)); }
+      else if(sortKey === "phone") { x = contactOf(a.no).phone?1:0; y = contactOf(b.no).phone?1:0; }
+      else if(sortKey === "next")  {
+        var da = nextDue(a.no), db = nextDue(b.no);
+        x = da ? -new Date(da).getTime() : -Infinity;
+        y = db ? -new Date(db).getTime() : -Infinity;
+      }
+      else                         { x = scoreOf(a);             y = scoreOf(b); }
+      return (x - y) * sortDir;
+    });
+
+    $("shown").textContent = sel.length.toLocaleString();
+    var page = sel.slice(0, limit);
+
+    if(!sel.length){
+      $("listwrap").innerHTML = '<div class="empty"><b>Nothing matches</b>Try widening the filters — "Any phone number" or a different county.</div>';
+      return;
+    }
+
+    var now = Date.now(), h = "";
+    page.forEach(function(o, i){
+      var c = contactOf(o.no);
+      var due = nextDue(o.no);
+      var dueCls = due && new Date(due).getTime() < now ? "nx due" : "nx";
+      h += '<div class="prow" data-open="'+esc(o.no)+'">' +
+        '<div class="rank num">'+(i+1)+'</div>' +
+        '<div class="co"><b>'+esc(o.name)+'</b>' +
+          '<span>'+esc([o.town,o.county].filter(Boolean).join(", "))+(o.pc?' · '+esc(o.pc):'')+'</span></div>' +
+        '<div class="ph">' + (c.phone
+            ? '<a href="tel:'+esc(c.phone.replace(/\s/g,""))+'" onclick="event.stopPropagation()">'+esc(c.phone)+'</a>' +
+              (c.confidence === "check" ? '<span class="warnpip" title="check this one"></span>' : '')
+            : '<span class="none">—</span>') + '</div>' +
+        '<div class="land num">'+(o.land||0)+'<span>parcels</span></div>' +
+        '<div class="st">'+tag(statusOf(o.no))+'</div>' +
+        '<div class="'+dueCls+'">'+(due ? esc(fmtShort(due)) : '')+'</div>' +
+      '</div>';
+    });
+    if(sel.length > page.length){
+      h += '<button class="more" id="moreBtn">Show more — '+(sel.length - page.length).toLocaleString()+' left</button>';
+    }
+    $("listwrap").innerHTML = h;
+    var mb = $("moreBtn");
+    if(mb) mb.addEventListener("click", function(){ limit += PAGE; renderList(); });
+  }
+
+  ["fCounty","fLand","fContact","fStatus"].forEach(function(id){
+    $(id).addEventListener("change", function(){ limit = PAGE; renderList(); });
   });
-  $("fSearch").addEventListener("input", applyFilters);
+  $("fSearch").addEventListener("input", function(){ limit = PAGE; renderList(); });
+
+  Array.prototype.forEach.call(document.querySelectorAll(".hdr div[data-sort]"), function(d){
+    d.addEventListener("click", function(){
+      var k = d.getAttribute("data-sort");
+      if(sortKey === k) sortDir = -sortDir;
+      else { sortKey = k; sortDir = (k === "name") ? 1 : -1; }
+      limit = PAGE; renderList();
+    });
+  });
 
   /* ============ map ============ */
   function initMap(){
+    if(map) return;
     map = L.map("map", {preferCanvas:true}).setView([52.7,-1.0], 7);
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
-      attribution:'&copy; OpenStreetMap &copy; CARTO', maxZoom:19
-    }).addTo(map);
-    cluster = L.markerClusterGroup({
-      chunkedLoading:true, spiderfyOnMaxZoom:true, disableClusteringAtZoom:12, maxClusterRadius:48
-    });
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+      {attribution:'&copy; OpenStreetMap &copy; CARTO', maxZoom:19}).addTo(map);
+    cluster = L.markerClusterGroup({chunkedLoading:true, disableClusteringAtZoom:12, maxClusterRadius:48});
     map.addLayer(cluster);
   }
+  function radiusFor(n){ return n>=25?11 : n>=10?9 : n>=5?7.5 : n>=2?6 : 4.5; }
 
-  function radiusFor(land){
-    if(land >= 25) return 11;
-    if(land >= 10) return 9;
-    if(land >= 5)  return 7.5;
-    if(land >= 2)  return 6;
-    return 4.5;
-  }
-
-  function drawPins(sel){
-    cluster.clearLayers();
-    var marks = sel.map(function(o){
-      var st = statusOf(o.no);
-      var col = (STATUS[st] || STATUS.new).pin;
-      var m = L.circleMarker([o.lat, o.lng], {
-        radius: radiusFor(o.land||0),
-        color:"#fff", weight:1.5, fillColor:col, fillOpacity:.92
+  function drawMap(){
+    initMap();
+    var sel = farms.filter(function(o){
+      return passes(o, {
+        county:  $("mCounty").value,
+        minLand: parseInt($("mLand").value,10) || 0,
+        contact: $("mContact").value,
+        status:"", q:""
       });
-      m.bindPopup(popupHTML(o), {maxWidth:300});
-      return m;
     });
-    cluster.addLayers(marks);
+    $("mShown").textContent = sel.length.toLocaleString();
+    cluster.clearLayers();
+    cluster.addLayers(sel.map(function(o){
+      var col = (STATUS[statusOf(o.no)] || STATUS.new).pin;
+      var m = L.circleMarker([o.lat,o.lng], {
+        radius:radiusFor(o.land||0), color:"#fff", weight:1.5, fillColor:col, fillOpacity:.92
+      });
+      m.bindPopup(popupHTML(o), {maxWidth:290});
+      return m;
+    }));
   }
+  ["mCounty","mLand","mContact"].forEach(function(id){
+    $(id).addEventListener("change", drawMap);
+  });
 
   function popupHTML(o){
     var c = contactOf(o.no);
     return '<div class="pop">' +
-      '<h4>' + esc(o.name) + '</h4>' +
-      '<div class="sub">' + esc(o.town || "") + (o.pc ? " · " + esc(o.pc) : "") + '</div>' +
+      '<h4>'+esc(o.name)+'</h4>' +
+      '<div class="sub">'+esc(o.town||"")+(o.pc?" · "+esc(o.pc):"")+'</div>' +
       '<dl>' +
-        '<dt>Land parcels</dt><dd class="num"><b>' + (o.land||0) + '</b> of ' + (o.titles||0) + ' titles</dd>' +
-        '<dt>Farming</dt><dd>' + esc(o.sic || "—") + '</dd>' +
-        (c.director ? '<dt>Contact</dt><dd>' + esc(c.director) + '</dd>' : '') +
-        '<dt>Phone</dt><dd>' + (c.phone ? '<a href="tel:'+esc(c.phone.replace(/\s/g,""))+'"><b>'+esc(c.phone)+'</b></a>' : '<span style="color:#8A9992">not found yet</span>') + '</dd>' +
-        '<dt>Email</dt><dd>' + (c.email ? '<a href="mailto:'+esc(c.email)+'">'+esc(c.email)+'</a>' : '<span style="color:#8A9992">not found yet</span>') + '</dd>' +
-        '<dt>Status</dt><dd>' + tag(statusOf(o.no)) + '</dd>' +
+        '<dt>Land parcels</dt><dd class="num"><b>'+(o.land||0)+'</b> of '+(o.titles||0)+'</dd>' +
+        (c.director?'<dt>Contact</dt><dd>'+esc(c.director)+'</dd>':'') +
+        '<dt>Phone</dt><dd>'+(c.phone?'<a href="tel:'+esc(c.phone.replace(/\s/g,""))+'"><b>'+esc(c.phone)+'</b></a>':'<span style="color:#8A9992">none yet</span>')+'</dd>' +
+        '<dt>Status</dt><dd>'+tag(statusOf(o.no))+'</dd>' +
       '</dl>' +
-      (c.flag ? '<div style="background:#FFF6E5;border:1px solid #E8D6A8;color:#6B4E12;padding:7px 9px;border-radius:7px;font-size:12px;margin-bottom:9px">⚠ ' + esc(c.flag) + '</div>' : '') +
-      '<button class="go" data-open="' + esc(o.no) + '">Open record</button>' +
+      (c.flag?'<div style="background:#FFF6E5;border:1px solid #E8D6A8;color:#6B4E12;padding:7px 9px;border-radius:7px;font-size:12px;margin-bottom:9px">⚠ '+esc(c.flag)+'</div>':'') +
+      '<button class="go" data-open="'+esc(o.no)+'">Open record</button>' +
     '</div>';
   }
 
@@ -540,127 +602,73 @@
     if(b) openDetail(b.getAttribute("data-open"));
   });
 
-  /* ============ pipeline table ============ */
-  function renderList(){
-    var county = $("lCounty").value;
-    var status = $("lStatus").value;
-    var q = $("lSearch").value.trim().toLowerCase();
-    var sel = farms.filter(function(o){
-      if(county && o.county !== county) return false;
-      if(status && statusOf(o.no) !== status) return false;
-      if(q && (o.name + " " + o.pc + " " + (o.town||"")).toLowerCase().indexOf(q) === -1) return false;
-      return true;
-    });
-    sel.sort(function(a,b){
-      var x, y;
-      if(sortKey === "name"){ x = a.name; y = b.name; return x < y ? sortDir : x > y ? -sortDir : 0; }
-      if(sortKey === "status"){ x = STATUS_ORDER.indexOf(statusOf(a.no)); y = STATUS_ORDER.indexOf(statusOf(b.no)); }
-      else { x = a[sortKey] || 0; y = b[sortKey] || 0; }
-      return (x - y) * sortDir;
-    });
-    $("lShown").textContent = sel.length.toLocaleString();
-
-    var head = [["name","Company"],["county","County"],["land","Land parcels"],["titles","Titles"],["status","Status"],["phone","Phone"]];
-    var h = '<table><thead><tr>' + head.map(function(c){
-      return '<th data-sort="'+c[0]+'">'+c[1]+(sortKey===c[0]?(sortDir>0?" ▲":" ▼"):"")+'</th>';
-    }).join("") + '</tr></thead><tbody>';
-
-    var cap = sel.slice(0, 600);
-    cap.forEach(function(o){
-      var m = contactOf(o.no);
-      h += '<tr data-open="'+esc(o.no)+'">' +
-        '<td><b>'+esc(o.name)+'</b><br><span style="color:#5D6E66;font-size:12.5px">'+esc(o.town||"")+' · '+esc(o.pc||"")+'</span></td>' +
-        '<td>'+esc(o.county||"")+'</td>' +
-        '<td class="num">'+(o.land||0)+'</td>' +
-        '<td class="num">'+(o.titles||0)+'</td>' +
-        '<td>'+tag(statusOf(o.no))+'</td>' +
-        '<td>'+(m.phone ? esc(m.phone) : '<span style="color:#9AA8A1">—</span>')+'</td>' +
-      '</tr>';
-    });
-    h += '</tbody></table>';
-    if(sel.length > cap.length){
-      h += '<div class="pad" style="color:#5D6E66;font-size:13px">Showing the first '+cap.length+' of '+sel.length.toLocaleString()+'. Narrow the filters to see the rest.</div>';
-    }
-    if(!sel.length){
-      h = '<div class="empty"><b>Nothing matches those filters</b>Try widening the county or status.</div>';
-    }
-    $("tableWrap").innerHTML = h;
-    Array.prototype.forEach.call($("tableWrap").querySelectorAll("th[data-sort]"), function(th){
-      th.addEventListener("click", function(){
-        var k = th.getAttribute("data-sort");
-        if(sortKey === k) sortDir = -sortDir; else { sortKey = k; sortDir = (k === "name") ? 1 : -1; }
-        renderList();
-      });
-    });
-  }
-  ["lCounty","lStatus"].forEach(function(id){ $(id).addEventListener("change", renderList); });
-  $("lSearch").addEventListener("input", renderList);
-
   /* ============ detail ============ */
   function openDetail(no){
     currentNo = no;
     var o = byNo[no];
     if(!o) return;
-    var m = meta[no] || {};
     var c = contactOf(no);
     var mine = acts.filter(function(a){ return a.company_number === no; });
 
-    var h = '<button class="back" id="dBack">← Back</button>' +
+    var h = '<button class="back" id="dBack">← Back to prospects</button>' +
       '<div class="card dhead">' +
-        '<h2>' + esc(o.name) + '</h2>' +
-        '<div class="meta">' + esc([o.addr,o.town,o.pc].filter(Boolean).join(", ")) + '</div>' +
-        '<div class="meta">Company ' + esc(no) +
-          ' · <a href="https://find-and-update.company-information.service.gov.uk/company/' + esc(no) + '" target="_blank" rel="noopener">Companies House ↗</a>' +
-          ' · <a href="https://www.google.com/search?q=' + encodeURIComponent(o.name + " " + (o.town||"") + " farm contact") + '" target="_blank" rel="noopener">Find contact ↗</a>' +
+        '<h2>'+esc(o.name)+'</h2>' +
+        '<div class="meta">'+esc([o.addr,o.town,o.pc].filter(Boolean).join(", "))+'</div>' +
+        '<div class="meta">Company '+esc(no)+
+          ' · <a href="https://find-and-update.company-information.service.gov.uk/company/'+esc(no)+'" target="_blank" rel="noopener">Companies House ↗</a>' +
+          ' · <a href="https://www.google.com/search?q='+encodeURIComponent(o.name+" "+(o.town||"")+" farm")+'" target="_blank" rel="noopener">Search ↗</a>' +
+          (c.website?' · <a href="'+esc(c.website)+'" target="_blank" rel="noopener">Website ↗</a>':'') +
         '</div>' +
+        '<div class="callrow">' +
+          (c.phone
+            ? '<a class="callbtn" href="tel:'+esc(c.phone.replace(/\s/g,""))+'">📞 '+esc(c.phone)+'</a>'
+            : '<span class="callbtn off">No number yet</span>') +
+          (c.email?'<a class="btn ghost" href="mailto:'+esc(c.email)+'">Email</a>':'') +
+        '</div>' +
+        (c.flag?'<div class="flagbox">⚠ '+esc(c.flag)+'</div>':'') +
         '<div class="stats">' +
-          '<div class="stat"><b class="num">' + (o.land||0) + '</b><span>Land parcels</span></div>' +
-          '<div class="stat"><b class="num">' + (o.titles||0) + '</b><span>Total titles</span></div>' +
-          '<div class="stat"><b>' + esc(o.county||"—") + '</b><span>County</span></div>' +
-          '<div class="stat"><b style="font-size:14px;font-weight:600">' + esc(o.sic||"—") + '</b><span>Farm type</span></div>' +
+          '<div class="stat"><b class="num">'+(o.land||0)+'</b><span>Land parcels</span></div>' +
+          '<div class="stat"><b class="num">'+(o.titles||0)+'</b><span>Total titles</span></div>' +
+          '<div class="stat"><b>'+esc(o.county||"—")+'</b><span>County</span></div>' +
+          '<div class="stat"><b style="font-size:14px;font-weight:600">'+esc(o.sic||"—")+'</b><span>Farm type</span></div>' +
         '</div>' +
-        (o.areas ? '<div class="meta" style="margin-top:12px">Land held in: ' + esc(o.areas) + '</div>' : '') +
-        (o.sample ? '<div class="meta" style="margin-top:4px">e.g. ' + esc(o.sample) + '</div>' : '') +
+        (o.areas?'<div class="meta" style="margin-top:12px">Land held in: '+esc(o.areas)+'</div>':'') +
+        (o.sample?'<div class="meta" style="margin-top:4px">e.g. '+esc(o.sample)+'</div>':'') +
       '</div>' +
+
+      '<div class="card"><h3>Where the land sits</h3><div id="miniMap"></div></div>' +
 
       '<div class="card">' +
         '<h3>Contact &amp; status <span class="saved" id="savedFlag">Saved</span></h3>' +
         '<div class="grid2">' +
-          '<div class="fld"><label for="dDir">Person in charge</label><input id="dDir" value="' + esc(c.director) + '" placeholder="Director / farm manager"></div>' +
-          '<div class="fld"><label for="dPhone">Phone</label><input id="dPhone" value="' + esc(c.phone) + '" placeholder="01xxx xxxxxx"></div>' +
-          '<div class="fld"><label for="dEmail">Email</label><input id="dEmail" value="' + esc(c.email) + '" placeholder="name@farm.co.uk"></div>' +
-          '<div class="fld"><label for="dAcres">Acres available (ask on the call)</label><input id="dAcres" type="number" min="0" value="' + esc(m.acreage_est||"") + '" placeholder="5"></div>' +
+          '<div class="fld"><label for="dDir">Person in charge</label><input id="dDir" value="'+esc(c.director)+'" placeholder="Director / farm manager"></div>' +
+          '<div class="fld"><label for="dPhone">Phone</label><input id="dPhone" value="'+esc(c.phone)+'" placeholder="01xxx xxxxxx"></div>' +
+          '<div class="fld"><label for="dEmail">Email</label><input id="dEmail" value="'+esc(c.email)+'" placeholder="name@farm.co.uk"></div>' +
+          '<div class="fld"><label for="dAcres">Acres available</label><input id="dAcres" type="number" min="0" value="'+esc((meta[no]||{}).acreage_est||"")+'" placeholder="ask on the call"></div>' +
           '<div class="fld"><label for="dStatus">Status</label><select id="dStatus">' +
             STATUS_ORDER.map(function(k){
               return '<option value="'+k+'"'+(statusOf(no)===k?" selected":"")+'>'+esc(STATUS[k].label)+'</option>';
-            }).join("") +
-          '</select></div>' +
+            }).join("") + '</select></div>' +
         '</div>' +
-        '<div class="row" style="margin-top:12px"><button class="btn" id="dSave">Save details</button>' +
-          (c.website ? '<a class="btn ghost" href="' + esc(c.website) + '" target="_blank" rel="noopener" style="text-decoration:none">Open website ↗</a>' : '') +
-        '</div>' +
-        (c.flag ? '<div style="margin-top:12px;background:#FFF6E5;border:1px solid #E8D6A8;color:#6B4E12;padding:10px 12px;border-radius:8px;font-size:13px">⚠ ' + esc(c.flag) + '</div>' : '') +
-        (c.emailStatus ? '<div style="margin-top:8px;font-size:12.5px;color:#5D6E66">Email: ' + esc(c.emailStatus) + '</div>' : '') +
-        (c.source ? '<div style="margin-top:10px;font-size:12.5px;color:#5D6E66">Found via ' + esc(c.source) + ' · confidence ' + esc(c.confidence) + ' — worth confirming on the call.</div>' : '') +
+        '<div class="row" style="margin-top:12px"><button class="btn" id="dSave">Save details</button></div>' +
+        (c.emailStatus?'<div style="margin-top:10px;font-size:12.5px;color:#5D6E66">Email: '+esc(c.emailStatus)+'</div>':'') +
+        (c.source?'<div style="margin-top:6px;font-size:12.5px;color:#5D6E66">Found via '+esc(c.source)+' · confidence '+esc(c.confidence)+'</div>':'') +
       '</div>' +
 
       '<div class="card">' +
         '<h3>Log a call or note</h3>' +
-        '<div class="fld"><label for="dNote">What happened</label><textarea id="dNote" placeholder="Spoke to… interested in 12 acres behind the barn…"></textarea></div>' +
+        '<div class="fld"><label for="dNote">What happened</label><textarea id="dNote" placeholder="Spoke to… 12 acres behind the barn, three-phase in the yard…"></textarea></div>' +
         '<div class="row" style="margin-top:12px">' +
-          '<div class="fld" style="flex:1 1 200px"><label for="dWhen">Set a callback (optional)</label><input id="dWhen" type="datetime-local"></div>' +
+          '<div class="fld" style="flex:1 1 210px"><label for="dWhen">Set a callback (optional)</label><input id="dWhen" type="datetime-local"></div>' +
           '<button class="btn" id="dLog">Save note</button>' +
         '</div>' +
       '</div>' +
 
-      '<div class="card">' +
-        '<h3>History</h3>' +
+      '<div class="card"><h3>History</h3>' +
         (mine.length ? '<ul class="tl">' + mine.map(function(a){
-          return '<li>' +
-            '<div class="kind">' + esc(a.type) + (a.due_at ? " · callback " + esc(fmtDT(a.due_at)) : "") + '</div>' +
-            '<div class="when">' + esc(fmtDT(a.created_at)) + '</div>' +
-            '<div class="what">' + esc(a.body||"") + '</div>' +
-          '</li>';
+          return '<li><div class="kind">'+esc(a.type)+(a.due_at?" · callback "+esc(fmtDT(a.due_at)):"")+'</div>' +
+            '<div class="when">'+esc(fmtDT(a.created_at))+'</div>' +
+            '<div class="what">'+esc(a.body||"")+'</div></li>';
         }).join("") + '</ul>' : '<div style="color:#5D6E66">Nothing logged yet.</div>') +
       '</div>';
 
@@ -669,21 +677,30 @@
     $("dBack").addEventListener("click", closeDetail);
     $("dSave").addEventListener("click", saveDetail);
     $("dLog").addEventListener("click", logNote);
+    drawMini(o);
+  }
+
+  function drawMini(o){
+    if(miniMap){ miniMap.remove(); miniMap = null; }
+    if(o.lat == null) return;
+    miniMap = L.map("miniMap", {scrollWheelZoom:false, attributionControl:false}).setView([o.lat,o.lng], 13);
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",{maxZoom:19}).addTo(miniMap);
+    L.circleMarker([o.lat,o.lng],{radius:10,color:"#fff",weight:2,fillColor:"#1F6F4A",fillOpacity:.95})
+      .addTo(miniMap).bindPopup(esc(o.name));
+    setTimeout(function(){ if(miniMap) miniMap.invalidateSize(); }, 120);
   }
 
   function closeDetail(){
     $("detail").classList.remove("on");
+    if(miniMap){ miniMap.remove(); miniMap = null; }
     currentNo = null;
-    applyFilters();
-    renderList();
-    renderCallbacks();
+    renderList(); renderCallbacks();
+    if($("v-map").classList.contains("on")) drawMap();
   }
 
   function saveDetail(){
-    var no = currentNo;
-    var btn = $("dSave");
+    var no = currentNo, btn = $("dSave"), acres = $("dAcres").value;
     btn.disabled = true;
-    var acres = $("dAcres").value;
     upsertProspect(no, {
       director_name: $("dDir").value.trim() || null,
       phone:         $("dPhone").value.trim() || null,
@@ -693,42 +710,23 @@
       enrichment_status: ($("dPhone").value.trim() || $("dEmail").value.trim()) ? "enriched" : "pending"
     }).then(function(){
       btn.disabled = false;
-      $("savedFlag").classList.add("on");
-      setTimeout(function(){ var f=$("savedFlag"); if(f) f.classList.remove("on"); }, 1600);
-    }).catch(function(e){
-      btn.disabled = false;
-      alert("Couldn't save: " + e.message);
-    });
+      var f = $("savedFlag"); if(f){ f.classList.add("on"); setTimeout(function(){ f.classList.remove("on"); }, 1600); }
+    }).catch(function(e){ btn.disabled = false; alert("Couldn't save: "+e.message); });
   }
 
   function logNote(){
-    var no = currentNo;
-    var body = $("dNote").value.trim();
-    var when = $("dWhen").value;
+    var no = currentNo, body = $("dNote").value.trim(), when = $("dWhen").value;
     if(!body && !when){ alert("Add a note or a callback time first."); return; }
-    var btn = $("dLog");
-    btn.disabled = true;
-    var row = {
-      company_number: no,
-      type: when ? "callback" : "note",
-      body: body || null,
-      due_at: when ? new Date(when).toISOString() : null,
-      created_by: "sam"
-    };
-    api("farm_activity", {method:"POST", body:[row], prefer:"return=representation"})
-      .then(function(res){
-        if(res && res[0]) acts.unshift(res[0]);
-        return upsertProspect(no, {pipeline_status: $("dStatus").value});
-      })
-      .then(function(){
-        btn.disabled = false;
-        openDetail(no);
-        renderCallbacks();
-      })
-      .catch(function(e){
-        btn.disabled = false;
-        alert("Couldn't save the note: " + e.message);
-      });
+    var btn = $("dLog"); btn.disabled = true;
+    api("farm_activity", {method:"POST", prefer:"return=representation", body:[{
+      company_number:no, type: when?"callback":"note", body: body||null,
+      due_at: when ? new Date(when).toISOString() : null, created_by:"sam"
+    }]}).then(function(res){
+      if(res && res[0]) acts.unshift(res[0]);
+      return upsertProspect(no, {pipeline_status: $("dStatus").value});
+    }).then(function(){
+      btn.disabled = false; openDetail(no); renderCallbacks();
+    }).catch(function(e){ btn.disabled = false; alert("Couldn't save the note: "+e.message); });
   }
 
   /* ============ callbacks ============ */
@@ -737,14 +735,13 @@
                   .sort(function(a,b){ return new Date(a.due_at) - new Date(b.due_at); });
     var now = Date.now();
     var overdue = due.filter(function(a){ return new Date(a.due_at) < now; }).length;
-
     var pill = $("cbCount");
-    if(due.length){ pill.style.display = "inline-block"; pill.textContent = due.length; }
+    if(due.length){ pill.style.display="inline-block"; pill.textContent = due.length; }
     else pill.style.display = "none";
     pill.style.background = overdue ? "#A32E22" : "#B58900";
 
     if(!due.length){
-      $("cbList").innerHTML = '<div class="empty"><b>No callbacks booked</b>Set one from any farm record and it will appear here.</div>';
+      $("cbList").innerHTML = '<div class="empty"><b>No callbacks booked</b>Set one from any prospect and it will appear here.</div>';
       return;
     }
     $("cbList").innerHTML = due.map(function(a){
@@ -752,27 +749,22 @@
       var t = new Date(a.due_at).getTime();
       var cls = t < now ? "cb over" : (t - now < 864e5 ? "cb soon" : "cb");
       return '<div class="'+cls+'" data-open="'+esc(a.company_number)+'">' +
-        '<div class="when">' + esc(fmtDT(a.due_at)) + '</div>' +
-        '<div><div class="nm">' + esc(f.name || a.company_number) + '</div>' +
-        '<div class="nt">' + esc(a.body || "No note") + '</div></div>' +
-        '<button class="done" data-done="'+esc(a.id)+'">Mark done</button>' +
-      '</div>';
+        '<div class="when">'+esc(fmtDT(a.due_at))+'</div>' +
+        '<div><div class="nm">'+esc(f.name || a.company_number)+'</div>' +
+        '<div class="nt">'+esc(a.body||"No note")+'</div></div>' +
+        '<button class="done" data-done="'+esc(a.id)+'">Mark done</button></div>';
     }).join("");
 
     Array.prototype.forEach.call($("cbList").querySelectorAll("[data-done]"), function(b){
       b.addEventListener("click", function(e){
         e.stopPropagation();
-        var id = b.getAttribute("data-done");
-        b.disabled = true;
-        api("farm_activity?id=eq." + encodeURIComponent(id), {
-          method:"PATCH", body:{done_at:new Date().toISOString()}, prefer:"return=representation"
+        var id = b.getAttribute("data-done"); b.disabled = true;
+        api("farm_activity?id=eq."+encodeURIComponent(id), {
+          method:"PATCH", prefer:"return=representation", body:{done_at:new Date().toISOString()}
         }).then(function(){
           acts.forEach(function(a){ if(a.id === id) a.done_at = new Date().toISOString(); });
-          renderCallbacks();
-        }).catch(function(err){
-          b.disabled = false;
-          alert("Couldn't update: " + err.message);
-        });
+          renderCallbacks(); renderList();
+        }).catch(function(err){ b.disabled = false; alert("Couldn't update: "+err.message); });
       });
     });
   }
@@ -784,9 +776,9 @@
       b.classList.add("on");
       var v = b.getAttribute("data-v");
       Array.prototype.forEach.call(document.querySelectorAll(".view"), function(s){ s.classList.remove("on"); });
-      $("v-" + v).classList.add("on");
+      $("v-"+v).classList.add("on");
       $("detail").classList.remove("on");
-      if(v === "map" && map) setTimeout(function(){ map.invalidateSize(); }, 60);
+      if(v === "map"){ drawMap(); setTimeout(function(){ if(map) map.invalidateSize(); }, 60); }
       if(v === "list") renderList();
       if(v === "calls") renderCallbacks();
     });
