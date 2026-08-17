@@ -66,6 +66,10 @@ Important: the planning result is a point screen, not parcel-level due diligence
 
 Missing intelligence is **unknown**, not zero. Weighted scores use only components with actual evidence and become more complete as grid, planning, land, agricultural, topography, solar and ownership layers are populated.
 
+## Automated checks
+
+GitHub Actions workflow `LandBank V2 smoke check` parses the shared scoring engine and the live V2 page JavaScript. The checked V2 head completed successfully.
+
 ## Next technical blocks
 
 1. Bulk Planning Data / environmental spatial overlays in PostGIS for national screening.
