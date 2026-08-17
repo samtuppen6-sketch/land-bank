@@ -408,7 +408,7 @@
   }
 
   function loadAll(){
-    fetch(DATA_URL).then(function(r){
+    fetch(DATA_URL, {cache:"no-cache"}).then(function(r){
       if(!r.ok) throw new Error("farms.json ("+r.status+")");
       return r.json();
     }).then(function(p){
@@ -418,7 +418,7 @@
       });
       farms.forEach(function(o){ byNo[o.no] = o; });
       buildCounties();
-      return fetch(CONTACTS_URL)
+      return fetch(CONTACTS_URL, {cache:"no-cache"})
         .then(function(r){ return r.ok ? r.json() : {contacts:{}}; })
         .catch(function(){ return {contacts:{}}; })
         .then(function(c){ seedContacts = c.contacts || {}; return refreshCloud(); });
@@ -513,7 +513,10 @@
       h += '<div class="prow" data-open="'+esc(o.no)+'">' +
         '<div class="rank num">'+(i+1)+'</div>' +
         '<div class="co"><b>'+esc(o.name)+'</b>' +
-          '<span>'+esc([o.town,o.county].filter(Boolean).join(", "))+(o.pc?' · '+esc(o.pc):'')+'</span></div>' +
+          '<span>' + (c.director
+              ? '<b style="font-weight:600;color:#1F6F4A">'+esc(c.director.split(",")[0])+'</b> · '
+              : '') +
+            esc([o.town,o.county].filter(Boolean).join(", "))+(o.pc?' · '+esc(o.pc):'')+'</span></div>' +
         '<div class="ph">' + (c.phone
             ? '<a href="tel:'+esc(c.phone.replace(/\s/g,""))+'" onclick="event.stopPropagation()">'+esc(c.phone)+'</a>' +
               (c.confidence === "check" ? '<span class="warnpip" title="check this one"></span>' : '')
@@ -613,6 +616,7 @@
     var h = '<button class="back" id="dBack">← Back to prospects</button>' +
       '<div class="card dhead">' +
         '<h2>'+esc(o.name)+'</h2>' +
+        (c.director ? '<div class="meta" style="color:#1F6F4A;font-weight:600;font-size:15px;margin-top:5px">'+esc(c.director)+'</div>' : '') +
         '<div class="meta">'+esc([o.addr,o.town,o.pc].filter(Boolean).join(", "))+'</div>' +
         '<div class="meta">Company '+esc(no)+
           ' · <a href="https://find-and-update.company-information.service.gov.uk/company/'+esc(no)+'" target="_blank" rel="noopener">Companies House ↗</a>' +
