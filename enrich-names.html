@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Director Finder — Land Bank</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#0F1D18;--paper:#EFF2EE;--surface:#fff;--line:#D7DED8;--muted:#5D6E66;
+        --green:#1F6F4A;--amber:#B58900;--red:#A32E22;--r:10px}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  h1,h3{font-family:"Space Grotesk",sans-serif;margin:0}
+  .num{font-variant-numeric:tabular-nums}
+  header{background:var(--ink);color:#fff;padding:14px 20px}
+  header .brand{font-family:"Space Grotesk";font-weight:700}
+  header .brand span{color:#7FC0A0}
+  .wrap{max-width:880px;margin:0 auto;padding:20px 16px 70px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-bottom:16px}
+  .card h3{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:14px}
+  .fld{margin-bottom:12px}
+  .fld label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:5px}
+  .fld input,.fld select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font:inherit}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+  .btn{padding:11px 20px;border:0;border-radius:8px;background:var(--green);color:#fff;font-weight:700;font-size:15px;cursor:pointer}
+  .btn.ghost{background:var(--surface);border:1px solid var(--line);color:var(--ink)}
+  .btn:disabled{opacity:.45;cursor:default}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .bar{height:9px;background:#E2E8E3;border-radius:99px;overflow:hidden;margin:14px 0 8px}
+  .bar i{display:block;height:100%;background:var(--green);width:0;transition:width .25s}
+  .stats{display:flex;gap:26px;flex-wrap:wrap;margin-top:6px}
+  .stat b{display:block;font-family:"Space Grotesk";font-size:22px}
+  .stat span{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  .log{max-height:340px;overflow:auto;border:1px solid var(--line);border-radius:8px;background:#FAFCFA}
+  .log div{padding:6px 11px;border-bottom:1px solid #EDF1EE;font-size:13px;display:flex;gap:10px}
+  .log .nm{flex:0 0 43%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted)}
+  .log .dr{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}
+  .ok{color:var(--green)} .no{color:#98A6A0} .er{color:var(--red)}
+  .warn{background:#FFF6E5;border:1px solid #E8D6A8;color:#6B4E12;padding:11px 14px;border-radius:8px;font-size:13.5px;margin-bottom:14px}
+  .note{font-size:13px;color:var(--muted);margin-top:10px}
+</style>
+</head>
+<body>
+<header><div class="brand">Solpath <span>/ Director Finder</span></div></header>
+<div class="wrap">
+
+  <div class="warn">
+    Reads director names straight from Companies House. Free, no billing. Your key stays in this page
+    and is sent only to Companies House. Progress saves as you go — you can close the tab and resume.
+  </div>
+
+  <div class="card">
+    <h3>Settings</h3>
+    <div class="fld">
+      <label for="key">Companies House API key (Web type)</label>
+      <input id="key" type="password" placeholder="paste your key" autocomplete="off">
+    </div>
+    <div class="grid">
+      <div class="fld">
+        <label for="scope">Which prospects</label>
+        <select id="scope">
+          <option value="verified" selected>Ready to call (has verified phone)</option>
+          <option value="phone">Anyone with a phone</option>
+          <option value="land5">All with 5+ parcels</option>
+          <option value="all">Everything (6,425 — slow)</option>
+        </select>
+      </div>
+      <div class="fld">
+        <label for="cap">Stop after</label>
+        <input id="cap" type="number" value="1000" min="1" max="7000">
+      </div>
+      <div class="fld">
+        <label for="maxD">Directors per company</label>
+        <select id="maxD">
+          <option value="1">Just the first</option>
+          <option value="3" selected>Up to 3</option>
+          <option value="6">Up to 6</option>
+        </select>
+      </div>
+    </div>
+    <div class="note">
+      Companies House allows 600 requests every 5 minutes, so this paces itself at about
+      2 a second. Roughly 6 minutes for 650 companies.
+    </div>
+    <div class="row" style="margin-top:16px">
+      <button class="btn" id="go">Start</button>
+      <button class="btn ghost" id="pause" disabled>Pause</button>
+      <button class="btn ghost" id="download" disabled>Download contacts.json</button>
+      <button class="btn ghost" id="reset">Clear saved progress</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Progress</h3>
+    <div class="bar"><i id="barFill"></i></div>
+    <div class="stats">
+      <div class="stat"><b class="num" id="sDone">0</b><span>Checked</span></div>
+      <div class="stat"><b class="num ok" id="sFound">0</b><span>Names found</span></div>
+      <div class="stat"><b class="num no" id="sNone">0</b><span>None listed</span></div>
+      <div class="stat"><b class="num er" id="sErr">0</b><span>Errors</span></div>
+      <div class="stat"><b class="num" id="sLeft">0</b><span>Remaining</span></div>
+    </div>
+    <div id="msg" class="note"></div>
+  </div>
+
+  <div class="card">
+    <h3>Results</h3>
+    <div class="log" id="log"></div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var FARMS_URL = "farms.json";
+  var CONTACTS_URL = "contacts.json";
+  var STORE = "lb_names_v1";
+  var BASE = "https://api.company-information.service.gov.uk/company/";
+
+  var farms = [], byNo = {}, contacts = {}, found = {}, queue = [];
+  var running = false, idx = 0;
+  var stats = {done:0, ok:0, none:0, err:0};
+
+  function $(id){ return document.getElementById(id); }
+  function esc(s){
+    return String(s==null?"":s).replace(/[&<>"']/g,function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+    });
+  }
+
+  // Companies House gives "GODFREY, Robert John" — flip it to "Robert John Godfrey"
+  function tidyName(n){
+    if(!n) return "";
+    var parts = n.split(",");
+    if(parts.length < 2) return titleise(n);
+    var surname = titleise(parts[0].trim());
+    var rest = parts.slice(1).join(" ").trim();
+    return titleise(rest) + " " + surname;
+  }
+  function titleise(s){
+    return String(s||"").toLowerCase().replace(/\b([a-z])/g, function(m,c){ return c.toUpperCase(); })
+      .replace(/\bMc([a-z])/g, function(m,c){ return "Mc"+c.toUpperCase(); });
+  }
+
+  function save(){
+    try{ localStorage.setItem(STORE, JSON.stringify({found:found, stats:stats, idx:idx})); }catch(e){}
+  }
+  function load(){
+    try{
+      var raw = localStorage.getItem(STORE); if(!raw) return;
+      var d = JSON.parse(raw);
+      found = d.found || {}; stats = d.stats || stats; idx = d.idx || 0;
+    }catch(e){}
+  }
+
+  function paint(){
+    $("sDone").textContent = stats.done;
+    $("sFound").textContent = stats.ok;
+    $("sNone").textContent = stats.none;
+    $("sErr").textContent = stats.err;
+    $("sLeft").textContent = Math.max(0, queue.length - idx);
+    $("barFill").style.width = (queue.length ? Math.round(idx/queue.length*100) : 0) + "%";
+    $("download").disabled = !Object.keys(found).length;
+  }
+
+  function logLine(cls, name, detail){
+    var d = document.createElement("div");
+    d.innerHTML = '<span class="nm">'+esc(name)+'</span><span class="dr '+cls+'">'+esc(detail)+'</span>';
+    $("log").insertBefore(d, $("log").firstChild);
+    while($("log").children.length > 400) $("log").removeChild($("log").lastChild);
+  }
+
+  /* ---------- load data ---------- */
+  Promise.all([
+    fetch(FARMS_URL).then(function(r){ return r.json(); }),
+    fetch(CONTACTS_URL).then(function(r){ return r.ok ? r.json() : {contacts:{}}; }).catch(function(){ return {contacts:{}}; })
+  ]).then(function(res){
+    var p = res[0], f = p.fields;
+    farms = p.rows.map(function(r){ var o={}; for(var i=0;i<f.length;i++) o[f[i]]=r[i]; return o; });
+    farms.forEach(function(o){ byNo[o.no] = o; });
+    contacts = res[1].contacts || {};
+    load();
+    buildQueue();
+    $("msg").textContent = farms.length.toLocaleString() + " farms loaded, " +
+      Object.keys(contacts).length + " with contact details." +
+      (Object.keys(found).length ? " Resuming — " + Object.keys(found).length + " names already found." : "");
+  }).catch(function(e){
+    $("msg").innerHTML = '<span class="er">Could not load the data files — this page must sit in the same folder as farms.json. ('+esc(e.message)+')</span>';
+  });
+
+  function buildQueue(){
+    var scope = $("scope").value;
+    queue = farms.filter(function(o){
+      var c = contacts[o.no] || {};
+      if(scope === "verified") return c.phone && c.confidence !== "check";
+      if(scope === "phone")    return !!c.phone;
+      if(scope === "land5")    return (o.land||0) >= 5;
+      return true;
+    }).sort(function(a,b){ return (b.land||0) - (a.land||0); });
+    paint();
+  }
+  $("scope").addEventListener("change", function(){ idx = 0; buildQueue(); });
+
+  /* ---------- lookup ---------- */
+  function officers(no, key){
+    return fetch(BASE + encodeURIComponent(no) + "/officers?items_per_page=35", {
+      headers: { "Authorization": "Basic " + btoa(key + ":") }
+    }).then(function(r){
+      if(r.status === 429) { var e = new Error("rate limited"); e.rate = true; throw e; }
+      if(r.status === 401 || r.status === 403){ var a = new Error("key rejected ("+r.status+")"); a.fatal = true; throw a; }
+      if(r.status === 404) return {items:[]};
+      if(!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    });
+  }
+
+  function pickDirectors(data, maxD){
+    var items = (data && data.items) || [];
+    var live = items.filter(function(o){
+      if(o.resigned_on) return false;
+      var role = (o.officer_role||"").toLowerCase();
+      return role.indexOf("director") !== -1 && role.indexOf("corporate") === -1;
+    });
+    // longest-serving first — usually the principal
+    live.sort(function(a,b){
+      return new Date(a.appointed_on||"2100-01-01") - new Date(b.appointed_on||"2100-01-01");
+    });
+    return live.slice(0, maxD).map(function(o){ return tidyName(o.name); }).filter(Boolean);
+  }
+
+  function step(){
+    if(!running) return;
+    if(idx >= queue.length){ stop("Finished. Download the file and upload it to GitHub."); return; }
+    var cap = parseInt($("cap").value,10) || 1000;
+    if(stats.done >= cap){ stop("Stopped at your cap of " + cap + "."); return; }
+
+    var farm = queue[idx];
+    if(found[farm.no]){ idx++; paint(); return setTimeout(step, 0); }
+
+    officers(farm.no, $("key").value.trim()).then(function(data){
+      var names = pickDirectors(data, parseInt($("maxD").value,10) || 3);
+      stats.done++;
+      if(names.length){
+        found[farm.no] = names.join(", ");
+        stats.ok++;
+        logLine("ok", farm.name, names.join(", "));
+      } else {
+        stats.none++;
+        logLine("no", farm.name, "no active directors listed");
+      }
+      idx++;
+      if(stats.done % 10 === 0) save();
+      paint();
+      setTimeout(step, 520);          // ~2/sec, inside the 600-per-5-min limit
+    }).catch(function(e){
+      if(e.fatal){
+        stop("Key rejected. Check it's a Web-type key and that the JavaScript domain is set to https://samtuppen6-sketch.github.io");
+        return;
+      }
+      if(e.rate){
+        logLine("er", farm.name, "rate limited — waiting 60s");
+        setTimeout(step, 60000);
+        return;
+      }
+      stats.err++; stats.done++;
+      logLine("er", farm.name, e.message.slice(0,44));
+      idx++; paint();
+      if(stats.err > 8 && stats.ok === 0){
+        stop("Stopped — lots of errors and no successes. Check the key and the JavaScript domain.");
+        return;
+      }
+      setTimeout(step, 900);
+    });
+  }
+
+  function stop(message){
+    running = false;
+    $("go").disabled = false; $("pause").disabled = true;
+    $("msg").textContent = message;
+    save(); paint();
+  }
+
+  /* ---------- controls ---------- */
+  $("go").addEventListener("click", function(){
+    if(!$("key").value.trim()){ alert("Paste your Companies House key first."); return; }
+    if(!queue.length) buildQueue();
+    running = true;
+    $("go").disabled = true; $("pause").disabled = false;
+    $("msg").textContent = "Running… leave this tab open.";
+    step();
+  });
+
+  $("pause").addEventListener("click", function(){
+    running = false;
+    $("go").disabled = false; $("pause").disabled = true;
+    $("msg").textContent = "Paused. Press Start to carry on.";
+    save();
+  });
+
+  $("reset").addEventListener("click", function(){
+    if(!confirm("Clear all saved director results?")) return;
+    found = {}; stats = {done:0,ok:0,none:0,err:0}; idx = 0;
+    try{ localStorage.removeItem(STORE); }catch(e){}
+    $("log").innerHTML = ""; $("msg").textContent = "Cleared."; paint();
+  });
+
+  $("download").addEventListener("click", function(){
+    var merged = {};
+    // start from existing contacts so phones/emails/websites are preserved
+    Object.keys(contacts).forEach(function(k){ merged[k] = Object.assign({}, contacts[k]); });
+    Object.keys(found).forEach(function(k){
+      if(!merged[k]){
+        var f = byNo[k] || {};
+        merged[k] = {company:f.name||k, director:"", phone:"", email:"", website:"", source:"Companies House", confidence:"medium"};
+      }
+      merged[k].director = found[k];
+      if(!merged[k].source) merged[k].source = "Companies House";
+    });
+    var out = {
+      generated: new Date().toISOString().slice(0,10),
+      note: "confidence: high = postcode matched exactly; medium = area+name match or shared office; check = probable wrong match, verify before calling. Director names from Companies House, longest-serving first.",
+      contacts: merged
+    };
+    var blob = new Blob([JSON.stringify(out, null, 1)], {type:"application/json"});
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "contacts.json";
+    a.click();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 3000);
+  });
+
+  paint();
+})();
+</script>
+</body>
+</html>
