@@ -2,7 +2,7 @@ name: LandBank V2 smoke check
 
 on:
   push:
-    branches: [landbank-v2-foundation]
+    branches: [landbank-v2-foundation, main]
   pull_request:
     branches: [main]
 
