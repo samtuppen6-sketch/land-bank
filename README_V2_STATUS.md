@@ -1,128 +1,87 @@
 # LandBank V2 — Live Build Status
 
-## Live Supabase state
+## Product goal
+LandBank is a lean solar-origination sales system: identify the highest-value farms, find the right decision maker, qualify genuine interest, capture the required land/commercial information, and hand a clean opportunity to the downstream project company. Contracting, formal grid applications, survey/design, planning due diligence and title/legal due diligence sit downstream.
 
-Project: `solar-canvass-proxy` (`xdoqclrwdduncjaxtixp`)
+The commercial proposition is 100% grid-export solar for income, not onsite self-consumption.
 
-Current source universe:
-- 6,425 organisations
-- 6,425 sites
-- 6,425 opportunities
-- 6,425 qualification records
-- 654 contact-ready opportunities
-- 5,771 identified / enrichment-needed opportunities
-- 668 phone/mobile records
-- 320 email records
-- 335 website records
-- 19,983 source land parcels represented
+## Live portfolio
+- 6,425 sites / organisations / opportunities.
+- Solar PVGIS screening: 6,425 / 6,425.
+- Flood screening: 6,425 / 6,425.
+- Usable grid intelligence: 6,392 / 6,425 (99.49%).
+  - 4,099 sites have published capacity/headroom-style numeric evidence.
+  - 2,293 have explicitly lower-confidence same-DNO/high-voltage proximity evidence.
+  - 33 remain without meaningful grid evidence.
+- HMLR CCOD strong ownership relationship: 1,159 sites at 85/100, backed by 1,549 unique titles.
+- Remaining ownership relationships stay provisional rather than being overstated.
 
-Source snapshots are retained in `lb_import_snapshots` for provenance and are not browser-readable.
+## Live screeners
+England planning/environment point screening is active against Planning Data datasets including Green Belt, SSSI, SPA, SAC, Ramsar, ancient woodland, scheduled monuments, National Landscapes/AONB, National Parks, NNR/LNR, battlefield, listed building, conservation area and heritage coast. Results are labelled origination point screens, not parcel-level planning due diligence.
 
-## Commercial model
+Agricultural Land Classification is populated from the complete 585-feature Planning Data England layer and the Welsh Government predictive ALC layer.
 
-The current solar proposition is **100% grid export for farm income**. The core financial model must not use self-consumption or electricity-bill-offset savings as project revenue.
+Welsh environmental screening uses DataMapWales / NRW / Cadw data for protected environmental and heritage constraints.
 
-The later financial engine will model:
-`MWp -> annual MWh -> grid export price -> gross generation revenue -> finance repayment allocation -> farmer income -> long-term participation / commission`.
+Topography screening is active using official Environment Agency 2m LIDAR DTM in England and Welsh Government 1m national LIDAR DTM in Wales. The score uses a 200m terrain window around the stored farm pin and records median slope, p90 slope and local relief. It is an origination ranking signal, not array design.
 
-Export-price assumptions must remain adjustable scenarios, not guaranteed forecasts.
+## Origination scoring
+LandBank now separates:
+- Site Potential
+- Contactability
+- Call Priority
+- Enrichment Priority
+- evidence completeness / confidence
 
-## Live V2 application layer
+Lower-confidence grid proximity evidence is deliberately weakened and cannot masquerade as published headroom.
 
-The V2 Supabase-backed CRM includes:
-- dashboard metrics
-- priority-ranked opportunities
-- pipeline
-- intelligence map
-- callbacks and activity history
-- data-gap workflow
-- opportunity workspace
-- stage / probability / next-action management
-- decision-maker and qualification capture
-- acreage and land notes
-- technical scores and evidence coverage
+Views include:
+- `lb_top_100_to_call`
+- `lb_enrichment_queue`
+- `lb_grid_evidence`
+- `lb_sales_workspace`
+- `lb_sales_dashboard_metrics`
+- `lb_handover_queue`
 
-The browser can read V2 workspace data and update intended CRM/qualification workflow records, but cannot delete opportunities, edit source site records or read raw import snapshots.
+Each opportunity carries a human-readable `why_calling` evidence list.
 
-## Task 1 — CCOD / HMLR corporate ownership: COMPLETE
+## Sales workflow
+`sales.html` is the lean sales desk. It provides:
+- Today / Top 100 to call
+- all-farm ranked search
+- targeted enrichment queue
+- qualified handover queue
+- direct call / email / website / Companies House / map links
+- Site Potential / Call Priority / Contactability / Ownership scores
+- grid / solar / flood / planning / ALC / terrain evidence
+- short origination qualification capture
+- call / note / callback logging
+- next-action capture
+- gated `Qualify & Hand Over` action
 
-The August 2026 HMLR CCOD full file was screened against the LandBank universe and then exact-verified in Supabase using normalized Companies House number + farm postcode.
+A lead becomes handover-ready only when genuine solar-income interest, an authorised decision maker, available land and consent to share are captured.
 
-Permanent result:
-- 1,159 sites with strong HMLR-backed corporate ownership relationship evidence
-- 1,549 unique HMLR titles stored
-- 1,549 ownership-evidence records
-- 1,159 probable-owner site-party links
-- ownership score 85/100 for the strong cohort
-- remaining 5,266 sites remain provisional rather than being falsely upgraded
+## Export-only value model
+The export model activates once available/usable acreage is captured. It uses:
+- 4 acres/MW conservative capacity density
+- 3 acres/MW base
+- 2 acres/MW high-density
+- the site's own PVGIS annual yield
+- illustrative £50 / £70 / £90 per MWh export-value scenarios
+- 25-year constant-price gross illustration
+- provisional 10% participation pool and 20% personal share of that pool
 
-`85/100` means a strong corporate/title relationship. It is **not** the same as proving that the target solar field lies inside that exact registered title.
+These are origination illustrations only and not a PPA, CfD, finance, farmer-income or contractual quote. Exact finance/waterfall logic will replace assumptions when definitive terms are supplied.
 
-## Task 2 — HMLR spatial ownership: IN PROGRESS
+## Targeted enrichment
+The top 1,000 enrichment opportunities are queued in `lb_enrichment_queue_jobs`. The persistence worker is deployed but is intentionally not scheduled until provider credentials exist. It supports Companies House, Google Places and Hunter, records provenance, updates directors/company data, and promotes stronger contact points without blindly overwriting existing contacts.
 
-LandBank now has a targeted HMLR INSPIRE spatial worker for the 1,159 strong CCOD sites.
+Required provider secrets (not configured yet):
+- `COMPANIES_HOUSE_API_KEY`
+- `GOOGLE_PLACES_API_KEY`
+- `HUNTER_API_KEY`
 
-Architecture:
-1. Query the open HMLR INSPIRE WMS around the stored LandBank point.
-2. Parse returned KML polygons.
-3. Use PostGIS for exact point/polygon intersection.
-4. Store the INSPIRE polygon geometry and identifier as supporting spatial evidence.
-5. Keep ownership at 85 unless the INSPIRE identifier is separately resolved to a registered title number that matches the same CCOD corporate proprietor.
-6. Only that full chain can promote a site to 100/100 ownership confidence.
+## CI / merge
+Both LandBank V2 and LandBank Sales JavaScript smoke checks pass on the current development branch.
 
-Important limitation: the current LandBank coordinate can represent a farmhouse, office or company location. A point intersection therefore does **not** prove that every agricultural field represented by the aggregate farm record is owned by the same party or suitable for solar. The original source contains title/land counts and sample descriptions, not the underlying parcel geometries.
-
-The automated INSPIRE queue is active in Supabase. After clean larger-batch testing it is currently scheduled at 10 strong-ownership sites per minute.
-
-Frontend workspace data now exposes:
-- ownership status
-- CCOD title count
-- INSPIRE point-hit count
-- resolved spatial-title count
-- HMLR title references
-- INSPIRE identifiers
-
-### Exact-title dependency
-
-The open INSPIRE feed does not publish title numbers. The full HMLR National Polygon Service does, but is a paid licensed dataset. HMLR Business e-services / Business Gateway can return title numbers by property description for approved customers. LandBank already has `lb_inspire_title_resolution` and `lb_apply_inspire_title_resolutions()` ready so any legitimate title-resolution source can be plugged in without changing the ownership model.
-
-A third-party address/title-boundary lookup should not automatically be treated as proof of the intended solar field if the stored LandBank point is only a farmhouse or office location.
-
-## Ownership confidence ladder
-
-- 45: provisional legacy farm/company relationship
-- 70: supporting open INSPIRE point/polygon evidence (does not override stronger evidence)
-- 85: strong HMLR CCOD company + property-postcode relationship
-- 100: exact registered title + corporate proprietor + spatial polygon chain confirmed
-
-## Technical screening status
-
-LandBank has live workers / data structures for:
-- PVGIS solar yield
-- exact-point flood screening
-- Planning Data bulk constraints
-- DNO/grid normalization and multiple DNO adapters
-- technical evidence completeness
-
-Missing intelligence is **unknown**, not zero. A high partial score must be read with its evidence coverage rather than treated as complete due diligence.
-
-## Contact enrichment
-
-`enrich-prospect` provides a server-side waterfall for Companies House, Google Places and Hunter. Provider credentials still need to be configured before paid/provider enrichment is run at scale. Enrichment should be targeted at the best opportunities after technical ranking rather than blindly spent across all 6,425 sites.
-
-## Remaining build order
-
-1. Finish Task 2 open spatial screening and choose the pragmatic exact-title resolution route.
-2. Complete national DNO/grid coverage.
-3. Complete planning, Agricultural Land Classification, environmental and topography screening.
-4. Re-score the full 6,425-site universe on populated evidence.
-5. Targeted contact enrichment for the best opportunities.
-6. Build the 100%-export Farmer Proposition / No-Brainer engine.
-7. Build scenario-based financial forecasting and farmer/participation value.
-8. Build farmer proposal output and risk/responsibility matrix.
-9. Run a 50–100-farm sales pilot.
-10. Final parity/acceptance test, then merge V2 deliberately.
-
-## Merge status
-
-Do not merge PR #1 yet. `main` remains untouched while V2 continues on `landbank-v2-foundation`.
+PR #1 remains deliberately unmerged. `main` stays untouched until the national screeners have matured, enrichment has run on the selected portfolio, the sales desk has been acceptance-tested and the final parity/launch check is complete.
