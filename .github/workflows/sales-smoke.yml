@@ -1,7 +1,7 @@
 name: LandBank Sales smoke check
 on:
   push:
-    branches: [landbank-v2-foundation]
+    branches: [landbank-v2-foundation, main]
     paths:
       - 'sales.html'
       - '.github/workflows/sales-smoke.yml'
