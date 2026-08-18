@@ -1,0 +1,29 @@
+name: LandBank Sales smoke check
+on:
+  push:
+    branches: [landbank-v2-foundation, main]
+    paths:
+      - 'sales.html'
+      - '.github/workflows/sales-smoke.yml'
+  pull_request:
+    paths:
+      - 'sales.html'
+      - '.github/workflows/sales-smoke.yml'
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compile inline sales JavaScript
+        run: |
+          node <<'NODE'
+          const fs=require('fs');
+          const html=fs.readFileSync('sales.html','utf8');
+          const scripts=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].map(m=>m[1]).filter(s=>s.trim());
+          if(!scripts.length) throw new Error('No inline script found');
+          for(const [i,src] of scripts.entries()) { try { new Function(src); } catch(e) { throw new Error(`Script ${i+1}: ${e.message}`); } }
+          console.log(`Compiled ${scripts.length} inline script(s)`);
+          NODE
