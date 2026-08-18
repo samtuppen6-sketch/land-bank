@@ -47,7 +47,6 @@ jobs:
           grep -q "LandBank V2" v2-app.html
 
   foursquare-enrichment:
-    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
