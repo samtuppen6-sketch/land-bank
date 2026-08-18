@@ -1,7 +1,7 @@
 name: LandBank Sales Pro smoke check
 on:
   push:
-    branches: [landbank-v2-foundation]
+    branches: [landbank-v2-foundation, main]
     paths:
       - 'sales-pro.html'
       - '.github/workflows/sales-pro-smoke.yml'
@@ -35,3 +35,4 @@ jobs:
           grep -q "annual_gross_value_base" sales-pro.html
           grep -q "Qualify & Hand Over" sales-pro.html
           grep -q "Why we are calling" sales-pro.html
+          grep -q "phone_trust_label" sales-pro.html
