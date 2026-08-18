@@ -82,6 +82,12 @@ Frontend workspace data now exposes:
 - HMLR title references
 - INSPIRE identifiers
 
+### Exact-title dependency
+
+The open INSPIRE feed does not publish title numbers. The full HMLR National Polygon Service does, but is a paid licensed dataset. HMLR Business e-services / Business Gateway can return title numbers by property description for approved customers. LandBank already has `lb_inspire_title_resolution` and `lb_apply_inspire_title_resolutions()` ready so any legitimate title-resolution source can be plugged in without changing the ownership model.
+
+A third-party address/title-boundary lookup should not automatically be treated as proof of the intended solar field if the stored LandBank point is only a farmhouse or office location.
+
 ## Ownership confidence ladder
 
 - 45: provisional legacy farm/company relationship
