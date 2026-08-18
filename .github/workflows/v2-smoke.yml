@@ -45,37 +45,3 @@ jobs:
           grep -q "logActivity" v2-app.html
           grep -q "renderCallbacks" v2-app.html
           grep -q "LandBank V2" v2-app.html
-
-  foursquare-enrichment:
-    if: github.event_name == 'push'
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    env:
-      FOURSQUARE_OS_ACCESS_TOKEN: ${{ secrets.FOURSQUARE_OS_ACCESS_TOKEN }}
-      SUPABASE_URL: https://xdoqclrwdduncjaxtixp.supabase.co
-      SUPABASE_PUBLISHABLE_KEY: sb_publishable_XWKfHKR1EdB_P2w1siERDg_37RWY3Nu
-      FSQ_BATCH_SIZE: '100'
-      FSQ_MAX_BATCHES: '2'
-    steps:
-      - uses: actions/checkout@v4
-      - name: Check Foursquare secret
-        id: fsq-secret
-        shell: bash
-        run: |
-          if [ -n "$FOURSQUARE_OS_ACCESS_TOKEN" ]; then
-            echo "ready=true" >> "$GITHUB_OUTPUT"
-            echo "Foursquare OS token is configured."
-          else
-            echo "ready=false" >> "$GITHUB_OUTPUT"
-            echo "FOURSQUARE_OS_ACCESS_TOKEN is not configured in GitHub Actions; enrichment will be skipped."
-          fi
-      - uses: actions/setup-python@v5
-        if: steps.fsq-secret.outputs.ready == 'true'
-        with:
-          python-version: '3.12'
-      - name: Install DuckDB
-        if: steps.fsq-secret.outputs.ready == 'true'
-        run: python -m pip install --disable-pip-version-check 'duckdb==1.4.0'
-      - name: Run Foursquare OS enrichment
-        if: steps.fsq-secret.outputs.ready == 'true'
-        run: python scripts/foursquare_enrich.py
