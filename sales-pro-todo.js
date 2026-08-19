@@ -3,7 +3,7 @@ const scripts=[...document.scripts].map(s=>s.textContent||'').join('\n');
 const supaMatch=scripts.match(/const SUPA='([^']+)'/),anonMatch=scripts.match(/ANON='([^']+)'/);
 if(!supaMatch||!anonMatch)return;
 const SUPA=supaMatch[1],ANON=anonMatch[1];
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 async function api(path,opt={}){const h={apikey:ANON,Authorization:'Bearer '+ANON,'Content-Type':'application/json'};if(opt.prefer)h.Prefer=opt.prefer;const r=await fetch(SUPA+'/rest/v1/'+path,{method:opt.method||'GET',headers:h,body:opt.body==null?undefined:JSON.stringify(opt.body)});const t=await r.text();if(!r.ok)throw new Error(r.status+' '+t.slice(0,300));return t?JSON.parse(t):null}
 function startOfDay(d=new Date()){const x=new Date(d);x.setHours(0,0,0,0);return x}
 function bucket(r){const d=new Date(r.due_at),s=startOfDay(),e=new Date(s);e.setDate(e.getDate()+1);return d<s?'overdue':d<e?'today':'upcoming'}
