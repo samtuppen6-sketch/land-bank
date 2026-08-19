@@ -1,0 +1,33 @@
+name: Patch Sales Pro To-Do
+
+on:
+  push:
+    branches: [sales-pro-todo]
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: sales-pro-todo
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Patch Sales Pro
+        run: python scripts/patch_sales_pro_todo.py
+      - name: Commit patched page
+        run: |
+          if git diff --quiet; then
+            echo "No patch changes"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sales-pro.html
+          git commit -m "Implement Sales Pro To-Do tab"
+          git push
