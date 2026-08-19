@@ -54,3 +54,5 @@ jobs:
           git add -A
           git commit -m "Add preferred handover contact fields to Sales Pro"
           git push
+
+# trigger: 2
