@@ -4,10 +4,12 @@ on:
     branches: [landbank-v2-foundation, main]
     paths:
       - 'sales-pro.html'
+      - 'sales-pro-todo.js'
       - '.github/workflows/sales-pro-smoke.yml'
   pull_request:
     paths:
       - 'sales-pro.html'
+      - 'sales-pro-todo.js'
       - '.github/workflows/sales-pro-smoke.yml'
 jobs:
   syntax:
@@ -17,15 +19,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Compile inline Sales Pro JavaScript
+      - name: Compile Sales Pro JavaScript
         run: |
           node <<'NODE'
           const fs=require('fs');
           const html=fs.readFileSync('sales-pro.html','utf8');
           const scripts=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].map(m=>m[1]).filter(s=>s.trim());
           if(!scripts.length) throw new Error('No inline script found');
-          scripts.forEach((src,i)=>{ try { new Function(src); } catch(e) { throw new Error(`Script ${i+1}: ${e.message}`); } });
-          console.log(`Compiled ${scripts.length} inline script(s)`);
+          scripts.forEach((src,i)=>{ try { new Function(src); } catch(e) { throw new Error(`Inline script ${i+1}: ${e.message}`); } });
+          const todo=fs.readFileSync('sales-pro-todo.js','utf8');
+          try { new Function(todo); } catch(e) { throw new Error(`To-Do script: ${e.message}`); }
+          console.log(`Compiled ${scripts.length} inline script(s) plus To-Do controller`);
           NODE
       - name: Check sales markers
         run: |
@@ -36,3 +40,9 @@ jobs:
           grep -q "Qualify & Hand Over" sales-pro.html
           grep -q "Why we are calling" sales-pro.html
           grep -q "phone_trust_label" sales-pro.html
+          grep -q 'data-v="todo"' sales-pro.html
+          grep -q 'id="v-todo"' sales-pro.html
+          grep -q 'sales-pro-todo.js' sales-pro.html
+          grep -q 'window.lbOpenRec=openRec' sales-pro.html
+          grep -q 'lb_sales_todo' sales-pro-todo.js
+          grep -q 'completed_at' sales-pro-todo.js
