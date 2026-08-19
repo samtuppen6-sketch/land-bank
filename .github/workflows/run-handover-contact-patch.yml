@@ -1,17 +1,17 @@
 name: Run preferred contact UI patch
 
 on:
-  push:
+  pull_request:
     branches:
       - main
-    paths:
-      - .github/workflows/run-handover-contact-patch.yml
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: write
 
 jobs:
   patch:
+    if: github.head_ref == 'ui-handover-preferred-contact'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -51,5 +51,3 @@ jobs:
           git add sales-pro.html
           git commit -m "Add preferred handover contact fields to Sales Pro"
           git push origin HEAD:ui-handover-preferred-contact
-
-# registered-trigger: 2
