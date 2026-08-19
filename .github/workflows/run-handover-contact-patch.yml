@@ -51,3 +51,5 @@ jobs:
           git add sales-pro.html
           git commit -m "Add preferred handover contact fields to Sales Pro"
           git push origin HEAD:ui-handover-preferred-contact
+
+# registered-trigger: 2
