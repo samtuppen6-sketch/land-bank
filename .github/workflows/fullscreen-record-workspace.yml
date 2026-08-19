@@ -1,0 +1,59 @@
+name: Fullscreen record workspace patch
+
+on:
+  push:
+    branches:
+      - ui-fullscreen-record-workspace
+    paths:
+      - .github/workflows/fullscreen-record-workspace.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ui-fullscreen-record-workspace
+      - name: Apply full-screen workspace patch
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          p = Path('sales-pro.html')
+          s = p.read_text()
+
+          old_css = '.drawer{display:none;position:fixed;inset:0;background:rgba(5,16,11,.5);z-index:50}.drawer.on{display:block}.panel{position:absolute;right:0;top:0;bottom:0;width:min(940px,98vw);background:var(--paper);overflow:auto}.paneltop{position:sticky;top:0;background:var(--nav);color:white;padding:12px 16px;display:flex;align-items:center;z-index:3}.paneltop b{font-size:15px}.paneltop button{margin-left:auto;background:none;border:0;color:white;font-size:24px}.body{padding:14px}'
+          new_css = '.drawer{display:none;position:fixed;inset:0;background:var(--paper);z-index:50}.drawer.on{display:block}.panel{position:absolute;inset:0;width:100vw;max-width:none;background:var(--paper);overflow:auto}.paneltop{position:sticky;top:0;background:var(--nav);color:white;padding:12px 18px;display:flex;align-items:center;gap:14px;z-index:3}.paneltop b{font-size:15px}.paneltop .backbtn{margin:0;background:#1a3729;border:1px solid #365246;color:white;border-radius:8px;padding:8px 11px;font-size:13px;font-weight:800}.paneltop .backbtn:hover{background:#244936}.body{max-width:1660px;margin:0 auto;padding:18px}'
+          if old_css not in s:
+              raise SystemExit('Expected workspace CSS not found')
+          s = s.replace(old_css, new_css, 1)
+
+          old_markup = '<div class="drawer" id="drawer"><div class="panel"><div class="paneltop"><b>Opportunity workspace</b><button id="close">×</button></div><div class="body" id="body"></div></div></div>'
+          new_markup = '<div class="drawer" id="drawer"><div class="panel"><div class="paneltop"><button id="close" class="backbtn" type="button">← Back to dashboard</button><b>Opportunity workspace</b></div><div class="body" id="body"></div></div></div>'
+          if old_markup not in s:
+              raise SystemExit('Expected workspace header markup not found')
+          s = s.replace(old_markup, new_markup, 1)
+
+          old_js = "$('close').onclick=()=>$('drawer').classList.remove('on');$('enter').onclick="
+          new_js = "$('close').onclick=()=>$('drawer').classList.remove('on');document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('drawer').classList.contains('on'))$('drawer').classList.remove('on')});$('enter').onclick="
+          if old_js not in s:
+              raise SystemExit('Expected close handler not found')
+          s = s.replace(old_js, new_js, 1)
+
+          p.write_text(s)
+          wf = Path('.github/workflows/fullscreen-record-workspace.yml')
+          if wf.exists():
+              wf.unlink()
+          PY
+      - name: Commit patched Sales Pro file
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Make Sales Pro record workspace full screen"
+          git push origin HEAD:ui-fullscreen-record-workspace
