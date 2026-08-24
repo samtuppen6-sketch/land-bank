@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0e2118">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="LandBank Pro">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="manifest" href="./sales-pro.webmanifest">
+  <link rel="icon" href="./sales-pro-icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./sales-pro-icon.svg">
+  <title>LandBank Sales Pro</title>
+  <style>
+    :root{color-scheme:light;--nav:#0e2118;--green:#65bd91;--paper:#edf2ee}
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%;background:var(--paper);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+    .boot{position:fixed;inset:0;display:grid;place-items:center;background:var(--nav);color:#fff;padding:24px;text-align:center}
+    .boot b{display:block;font-size:32px;letter-spacing:-.03em}.boot b span{color:var(--green)}.boot p{color:#a7bbb0;max-width:340px}
+    .spinner{width:34px;height:34px;border:3px solid #294638;border-top-color:var(--green);border-radius:50%;margin:18px auto 0;animation:spin .8s linear infinite}
+    .error{display:none;color:#ffd7d0;max-width:420px;line-height:1.5}
+    .error button{margin-top:14px;border:0;border-radius:9px;padding:12px 18px;background:var(--green);color:#102019;font-weight:800}
+    @keyframes spin{to{transform:rotate(360deg)}}
+  </style>
+</head>
+<body>
+  <div class="boot" id="boot">
+    <div>
+      <b>Land<span>Bank</span></b>
+      <p>Opening Sales Pro mobile workspace…</p>
+      <div class="spinner" id="spinner"></div>
+      <div class="error" id="error">The app shell could not load. Check your connection and try again.<br><button type="button" onclick="location.reload()">Try again</button></div>
+    </div>
+  </div>
+<script>
+(() => {
+  'use strict';
+  const mobileCss = `
+@media(max-width:700px){
+  html{background:var(--paper)}
+  body{font-size:15px;padding-bottom:calc(64px + env(safe-area-inset-bottom));-webkit-tap-highlight-color:transparent}
+  button,a,input,select,textarea{touch-action:manipulation}
+  input,select,textarea{font-size:16px!important}
+  .gate{padding:18px;padding-top:calc(18px + env(safe-area-inset-top));padding-bottom:calc(18px + env(safe-area-inset-bottom))}
+  .gatebox{width:min(100%,380px)}
+  .gatebox h1{font-size:34px}
+  .gatebox input,.gatebox button{min-height:48px}
+  .top{height:54px;padding:0 12px;padding-top:env(safe-area-inset-top);gap:8px}
+  .brand{font-size:18px;white-space:nowrap}
+  .live{margin-left:auto;font-size:10px;white-space:nowrap}
+  .tabs{position:fixed;left:0;right:0;bottom:0;z-index:45;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:2px;overflow:visible;background:var(--nav);padding:5px 4px calc(5px + env(safe-area-inset-bottom));box-shadow:0 -6px 24px rgba(0,0,0,.16)}
+  .tabs button{min-width:0;min-height:48px;padding:7px 2px;border-radius:7px;font-size:10px;line-height:1.1;white-space:normal}
+  main{padding:10px}
+  .section{margin-top:10px}
+  .sectionhead{align-items:flex-start;gap:8px}.sectionhead h2{font-size:18px}.sectionhead p{font-size:11px}
+  .metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.metric{padding:11px}.metric b{font-size:23px}
+  .todoSummary{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.todoSummary .metric{padding:9px}.todoSummary .metric b{font-size:21px}
+  .todoItem{grid-template-columns:1fr;gap:8px;padding:12px}.todoActions{display:grid;grid-template-columns:1fr 1fr;gap:7px}.todoActions button{min-height:44px}
+  .toolbar{display:grid;grid-template-columns:1fr 1fr;gap:7px}.toolbar input{grid-column:1/-1;min-width:0;width:100%}.toolbar input,.toolbar select{width:100%;min-height:44px}.toolbar #shown{grid-column:1/-1}
+  .tablewrap{overflow:visible;border:0;background:transparent;box-shadow:none}
+  table{min-width:0;width:100%;display:block}thead{display:none}tbody{display:block}
+  tbody tr{display:block;background:#fff;border:1px solid var(--line);border-radius:12px;margin:0 0 9px;padding:11px;box-shadow:var(--shadow)}
+  tbody tr.click:active{transform:scale(.995);background:#f5f9f6}
+  tbody td{display:none;border:0;padding:3px 0!important}
+  #v-today tbody td:nth-child(2),#v-today tbody td:nth-child(3),#v-today tbody td:nth-child(4),#v-today tbody td:nth-child(8),#v-today tbody td:nth-child(9){display:block}
+  #v-today tbody td:nth-child(2){font-size:15px;padding-bottom:7px!important}
+  #v-today tbody td:nth-child(3),#v-today tbody td:nth-child(4){display:inline-flex;align-items:center;gap:5px;margin-right:12px}
+  #v-today tbody td:nth-child(3)::before{content:'Call';font-size:9px;text-transform:uppercase;color:var(--muted);font-weight:850}
+  #v-today tbody td:nth-child(4)::before{content:'Site';font-size:9px;text-transform:uppercase;color:var(--muted);font-weight:850}
+  #v-today tbody td:nth-child(8){margin-top:6px;color:var(--muted);font-size:12px}
+  #v-today tbody td:nth-child(9){margin-top:6px;font-size:14px}
+  #v-all tbody td:nth-child(2),#v-all tbody td:nth-child(3),#v-all tbody td:nth-child(4),#v-all tbody td:nth-child(8),#v-all tbody td:nth-child(9){display:block}
+  #v-all tbody td:nth-child(2){font-size:15px;padding-bottom:7px!important}
+  #v-all tbody td:nth-child(3),#v-all tbody td:nth-child(4){display:inline-flex;align-items:center;gap:5px;margin-right:12px}
+  #v-all tbody td:nth-child(3)::before{content:'Call';font-size:9px;text-transform:uppercase;color:var(--muted);font-weight:850}
+  #v-all tbody td:nth-child(4)::before{content:'Site';font-size:9px;text-transform:uppercase;color:var(--muted);font-weight:850}
+  #v-all tbody td:nth-child(8){margin-top:6px}#v-all tbody td:nth-child(9){margin-top:6px;color:var(--muted);font-size:12px}
+  #v-enrich tbody td:nth-child(2),#v-enrich tbody td:nth-child(3),#v-enrich tbody td:nth-child(4),#v-enrich tbody td:nth-child(7),#v-enrich tbody td:nth-child(8){display:block}
+  #v-enrich tbody td:nth-child(2){font-size:15px;padding-bottom:7px!important}
+  #v-enrich tbody td:nth-child(3),#v-enrich tbody td:nth-child(4){display:inline-flex;align-items:center;gap:5px;margin-right:12px}
+  #v-enrich tbody td:nth-child(7),#v-enrich tbody td:nth-child(8){margin-top:6px}
+  #v-handover tbody td:nth-child(1),#v-handover tbody td:nth-child(2),#v-handover tbody td:nth-child(3),#v-handover tbody td:nth-child(4),#v-handover tbody td:nth-child(5),#v-handover tbody td:nth-child(6){display:block}
+  #v-handover tbody td:nth-child(1){font-size:15px;padding-bottom:7px!important}
+  #v-handover tbody td:nth-child(2),#v-handover tbody td:nth-child(3),#v-handover tbody td:nth-child(4){display:inline-flex;align-items:center;gap:5px;margin-right:10px}
+  .drawer{z-index:60}.panel{padding-bottom:76px}.paneltop{padding:9px 10px;padding-top:calc(9px + env(safe-area-inset-top));gap:9px}.paneltop .backbtn{min-height:42px;padding:8px 10px}.paneltop b{font-size:13px}
+  .body{padding:10px 10px 88px}.hero{padding:12px}.hero h2{font-size:22px;line-height:1.15}.meta{font-size:12px;margin-top:5px}
+  .quick{display:grid;grid-template-columns:1fr 1fr;gap:7px}.quick a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:8px;text-align:center}
+  .scoregrid{grid-template-columns:1fr 1fr;gap:6px}.scorebox{padding:8px}.scorebox b{font-size:20px}
+  .grid2,.fields{grid-template-columns:1fr}.fld.full{grid-column:auto}.fld input,.fld select,.fld textarea{min-height:44px;padding:10px}.fld textarea{min-height:92px}
+  .evidence,.valuegrid{grid-template-columns:1fr 1fr}.valueintro{display:block}.valueintro>div{text-align:left!important;margin-top:8px}.valueintro .big{font-size:25px}
+  .buttons{position:fixed;left:0;right:0;bottom:0;z-index:70;background:rgba(237,242,238,.98);padding:8px 10px calc(8px + env(safe-area-inset-bottom));display:grid;grid-template-columns:1fr 1fr;box-shadow:0 -6px 20px rgba(22,45,33,.12)}
+  .buttons button{min-height:48px;padding:8px}.buttons .msg{grid-column:1/-1;text-align:center;font-size:11px}
+  .pwaInstall{border:1px solid #365246!important;background:#1a3729!important;color:#fff!important;min-height:36px!important;padding:7px 9px!important;font-size:10px!important;white-space:nowrap}
+}
+@media(max-width:380px){
+  .live{display:none}.brand{font-size:17px}.tabs button{font-size:9px}.quick{grid-template-columns:1fr}.todoSummary{grid-template-columns:1fr 1fr 1fr}.todoSummary .metric small{font-size:8px}.todoSummary .metric b{font-size:19px}
+}
+`;
+
+  const headInject = `
+<meta name="theme-color" content="#0e2118">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="LandBank Pro">
+<link rel="manifest" href="./sales-pro.webmanifest">
+<link rel="icon" href="./sales-pro-icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./sales-pro-icon.svg">
+<style>${mobileCss}</style>`;
+
+  const bridgeInject = '<script src="./sales-pro-pwa-bridge.js"><\\/script>';
+
+  async function boot(){
+    try{
+      if('serviceWorker' in navigator){navigator.serviceWorker.register('./sales-pro-sw.js').catch(()=>{});}
+      const response = await fetch('./sales-pro.html', {cache:'no-store'});
+      if(!response.ok) throw new Error('HTTP '+response.status);
+      let html = await response.text();
+      html = html.replace('</head>', headInject + '</head>');
+      html = html.replace('</body>', bridgeInject + '</body>');
+      document.open();
+      document.write(html);
+      document.close();
+    }catch(err){
+      document.getElementById('spinner').style.display='none';
+      document.getElementById('error').style.display='block';
+      console.error('LandBank PWA boot failed', err);
+    }
+  }
+  boot();
+})();
+</script>
+</body>
+</html>
