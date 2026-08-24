@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">LandBank Sales Pro</title>
+  <desc id="desc">Dark green LandBank app icon with LB monogram.</desc>
+  <rect width="512" height="512" rx="112" fill="#0e2118"/>
+  <path d="M116 126h68v210h112v58H116V126Z" fill="#ffffff"/>
+  <path d="M256 126h73c44 0 76 21 76 62 0 27-14 45-38 54 31 8 49 30 49 66 0 54-41 86-102 86h-58V126Zm68 105c20 0 32-11 32-29 0-17-12-27-32-27h-19v56h19Zm8 113c24 0 36-12 36-33 0-20-12-31-36-31h-27v64h27Z" fill="#65bd91"/>
+</svg>
