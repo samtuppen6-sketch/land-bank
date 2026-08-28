@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>LandBank - Solar Site Details</title>
+<style>
+:root{--ink:#102019;--muted:#66786e;--green:#1f7a50;--green2:#2d8b5f;--paper:#edf2ee;--card:#fff;--line:#d7e0da;--nav:#0e2118;--red:#a44234}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}.top{background:var(--nav);color:#fff;padding:22px 18px}.brand{max-width:760px;margin:auto;font-size:25px;font-weight:900;letter-spacing:-.03em}.brand span{color:#65bd91}.wrap{max-width:760px;margin:20px auto;padding:0 14px 40px}.card{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:18px;box-shadow:0 8px 28px rgba(22,45,33,.06);margin-bottom:12px}.intro h1{font-size:27px;line-height:1.15;margin:0 0 8px}.intro p{margin:8px 0;color:#405449}.site{background:#e6f2ea;border:1px solid #cbe2d2;border-radius:11px;padding:12px;margin-top:14px}.site b,.site small{display:block}.site small{color:var(--muted);margin-top:3px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field.full{grid-column:1/-1}.field label{display:block;font-size:12px;font-weight:850;margin:0 0 5px}.field .hint{display:block;color:var(--muted);font-size:11px;font-weight:500;margin-top:2px}.field input,.field select,.field textarea{width:100%;border:1px solid #cbd7cf;border-radius:9px;background:#fff;padding:11px;color:var(--ink);font:inherit}.field textarea{min-height:92px;resize:vertical}.consent{display:flex;gap:10px;align-items:flex-start;background:#f3f6f4;border-radius:10px;padding:12px}.consent input{margin-top:4px;transform:scale(1.2)}button{width:100%;border:0;border-radius:10px;background:var(--green2);color:#fff;font:inherit;font-weight:900;padding:13px 16px;margin-top:14px;cursor:pointer}button:disabled{opacity:.55;cursor:wait}.note{font-size:11px;color:var(--muted);margin-top:10px}.status{padding:18px;text-align:center}.status b{display:block;font-size:20px;margin-bottom:6px}.err{color:var(--red)}.done{color:var(--green)}.badge{display:inline-block;background:#e6f2ea;color:var(--green);border-radius:99px;padding:5px 9px;font-size:11px;font-weight:850;margin-bottom:10px}@media(max-width:650px){.grid{grid-template-columns:1fr}.field.full{grid-column:auto}.intro h1{font-size:23px}.card{padding:15px}}
+</style>
+</head>
+<body>
+<div class="top"><div class="brand">Land<span>Bank</span></div></div>
+<div class="wrap">
+  <div id="loading" class="card status"><b>Loading your site details...</b><span>Please wait a moment.</span></div>
+  <div id="invalid" class="card status" hidden><b class="err">This link is invalid or has expired.</b><span>Please contact Sam for a fresh link.</span></div>
+  <form id="form" hidden>
+    <div class="card intro">
+      <span class="badge" id="submittedBadge" hidden>Previous answers saved</span>
+      <h1 id="hello">A few details to assess the solar opportunity</h1>
+      <p>Following your conversation with Sam, this short form captures the practical land information needed to decide whether the site is worth progressing to the next stage.</p>
+      <p>It is not a contract, planning application or commitment to proceed.</p>
+      <div class="site"><b id="siteName"></b><small id="siteAddress"></small></div>
+    </div>
+
+    <div class="card">
+      <div class="grid">
+        <div class="field">
+          <label>Would you like this land assessed for ground-mounted solar?</label>
+          <select id="interest" required><option value="">Select...</option><option value="true">Yes</option><option value="false">No</option></select>
+        </div>
+        <div class="field">
+          <label>Are you authorised to discuss/progress the land?</label>
+          <select id="authorised" required><option value="">Select...</option><option value="true">Yes</option><option value="false">No / another person is needed</option></select>
+        </div>
+        <div class="field">
+          <label>Approx. land available (hectares)</label>
+          <input id="hectares" type="number" min="0" step="0.1" required>
+          <span class="hint">The figure discussed can be approximate at this stage.</span>
+        </div>
+        <div class="field">
+          <label>Approx. usable hectares</label>
+          <input id="usable" type="number" min="0" step="0.1" placeholder="If different from total">
+        </div>
+        <div class="field">
+          <label>Is the land one continuous block?</label>
+          <select id="contiguous"><option value="">Unknown</option><option value="true">Yes</option><option value="false">No</option></select>
+        </div>
+        <div class="field">
+          <label>Your position on the land</label>
+          <select id="occupier"><option value="">Select...</option><option>Owner / owner-occupier</option><option>Owner with tenant</option><option>Tenant / occupier</option><option>Agent / manager</option><option>Other</option></select>
+        </div>
+        <div class="field full">
+          <label>Current use of the land</label>
+          <input id="landUse" placeholder="e.g. arable, grazing, fallow, low-grade/unused ground">
+        </div>
+        <div class="field">
+          <label>Can large construction/HGV vehicles access the land?</label>
+          <select id="access"><option value="">Unknown</option><option value="true">Yes</option><option value="false">No / restricted</option></select>
+        </div>
+        <div class="field">
+          <label>Any mortgage or charge over the land?</label>
+          <select id="mortgage"><option value="">Unknown</option><option value="true">Yes</option><option value="false">No</option></select>
+        </div>
+        <div class="field full">
+          <label>Access notes</label>
+          <textarea id="accessNotes" placeholder="Gate width, road access, restrictions, neighbouring access, etc."></textarea>
+        </div>
+        <div class="field">
+          <label>Lender name, if relevant</label>
+          <input id="lender" placeholder="Optional">
+        </div>
+        <div class="field">
+          <label>Would you consider a site visit?</label>
+          <select id="visit"><option value="">Not sure yet</option><option value="true">Yes</option><option value="false">No</option></select>
+        </div>
+        <div class="field full">
+          <label>Existing solar / renewable / option / exclusivity arrangements</label>
+          <textarea id="existing" placeholder="Please mention anything already installed, proposed, under option or being discussed with another party."></textarea>
+        </div>
+        <div class="field full">
+          <label>Best time to contact you</label>
+          <input id="contactTime" placeholder="e.g. weekdays after 4pm">
+        </div>
+        <div class="field full">
+          <label>Anything else we should know?</label>
+          <textarea id="notes" placeholder="Optional"></textarea>
+        </div>
+        <div class="field full">
+          <label class="consent"><input id="consent" type="checkbox" required><span>I consent to LandBank sharing these site and contact details with its project/development partner solely for assessing and progressing this solar opportunity.</span></label>
+        </div>
+      </div>
+      <button id="submit" type="submit">Save site details</button>
+      <div class="note">Your answers are used only to assess this opportunity and can be reviewed with you before any formal next step.</div>
+    </div>
+  </form>
+  <div id="success" class="card status" hidden><b class="done">Thank you - your details have been saved.</b><span>Sam can now review the information and progress the site if it meets the next-stage criteria.</span></div>
+</div>
+<script>
+(()=>{'use strict';
+const SUPA='https://xdoqclrwdduncjaxtixp.supabase.co';
+const ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhkb3FjbHJ3ZGR1bmNqYXh0aXhwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwMjkyNjMsImV4cCI6MjA5NjYwNTI2M30.vLCzN7-eNJh32tvy0zySDGX5bp6X1v9WlST59BSmIkk';
+const token=new URLSearchParams(location.search).get('token');
+const $=id=>document.getElementById(id);
+async function rpc(name,body){const r=await fetch(SUPA+'/rest/v1/rpc/'+name,{method:'POST',headers:{apikey:ANON,Authorization:'Bearer '+ANON,'Content-Type':'application/json'},body:JSON.stringify(body)});const text=await r.text();if(!r.ok)throw new Error(text||('HTTP '+r.status));return text?JSON.parse(text):null}
+function setBool(id,v){if(v===true)$(id).value='true';else if(v===false)$(id).value='false';}
+function bool(id){const v=$(id).value;return v===''?null:v==='true'}
+function num(id){const v=$(id).value;return v===''?null:Number(v)}
+async function load(){if(!token){$('loading').hidden=true;$('invalid').hidden=false;return}try{const rows=await rpc('lb_public_qualification_get',{p_token:token});const d=Array.isArray(rows)?rows[0]:null;if(!d){$('loading').hidden=true;$('invalid').hidden=false;return}if(d.contact_name)$('hello').textContent='Hi '+d.contact_name+', a few details to assess the solar opportunity';$('siteName').textContent=d.company_name||d.site_name||'Solar site';$('siteAddress').textContent=[d.address_line,d.town,d.county,d.postcode].filter(Boolean).join(', ');if(d.submitted)$('submittedBadge').hidden=false;setBool('interest',d.interested_in_solar_income);setBool('authorised',d.authorised_decision_maker);if(d.hectares_available!=null)$('hectares').value=d.hectares_available;if(d.usable_hectares!=null)$('usable').value=d.usable_hectares;setBool('contiguous',d.contiguous);$('occupier').value=d.occupier_or_tenant||'';$('landUse').value=d.current_land_use||'';setBool('access',d.large_vehicle_access);$('accessNotes').value=d.access_notes||'';setBool('mortgage',d.mortgage_or_charge);$('lender').value=d.lender_name||'';$('existing').value=d.existing_solar_or_renewables||'';setBool('visit',d.site_visit_interest);$('contactTime').value=d.preferred_contact_time||'';$('consent').checked=d.consent_to_share===true;$('loading').hidden=true;$('form').hidden=false}catch(e){console.error(e);$('loading').hidden=true;$('invalid').hidden=false}}
+$('form').addEventListener('submit',async e=>{e.preventDefault();const b=$('submit');b.disabled=true;b.textContent='Saving...';try{await rpc('lb_public_qualification_submit',{p_token:token,p_interested_in_solar_income:bool('interest'),p_authorised_decision_maker:bool('authorised'),p_hectares_available:num('hectares'),p_usable_hectares:num('usable'),p_contiguous:bool('contiguous'),p_occupier_or_tenant:$('occupier').value||null,p_current_land_use:$('landUse').value||null,p_large_vehicle_access:bool('access'),p_access_notes:$('accessNotes').value||null,p_mortgage_or_charge:bool('mortgage'),p_lender_name:$('lender').value||null,p_existing_solar_or_renewables:$('existing').value||null,p_site_visit_interest:bool('visit'),p_consent_to_share:$('consent').checked,p_preferred_contact_time:$('contactTime').value||null,p_additional_notes:$('notes').value||null});$('form').hidden=true;$('success').hidden=false;window.scrollTo({top:0,behavior:'smooth'})}catch(err){console.error(err);alert('We could not save the form. Please try again or contact Sam.');b.disabled=false;b.textContent='Save site details'}});
+load();
+})();
+</script>
+</body>
+</html>
