@@ -1,0 +1,22 @@
+{
+  "name": "LandBank Sales Pro",
+  "short_name": "LandBank Pro",
+  "description": "LandBank mobile origination CRM and live sales intelligence workspace.",
+  "id": "sales-pro-mobile",
+  "start_url": "./sales-pro-mobile.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#edf2ee",
+  "theme_color": "#0e2118",
+  "lang": "en-GB",
+  "categories": ["business", "productivity"],
+  "icons": [
+    {
+      "src": "./sales-pro-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
