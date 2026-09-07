@@ -3,12 +3,19 @@ name: LandBank Foursquare enrichment
 on:
   workflow_dispatch:
   schedule:
-    - cron: '17 * * * *'
+    - cron: '17 4 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: landbank-foursquare-enrichment
+  cancel-in-progress: true
 
 jobs:
   enrich:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 15
     env:
       FOURSQUARE_OS_ACCESS_TOKEN: ${{ secrets.FOURSQUARE_OS_ACCESS_TOKEN }}
       SUPABASE_URL: https://xdoqclrwdduncjaxtixp.supabase.co
@@ -16,19 +23,19 @@ jobs:
       FSQ_BATCH_SIZE: '100'
       FSQ_MAX_BATCHES: '2'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Check Foursquare secret
         id: fsq-secret
         shell: bash
         run: |
           if [ -n "$FOURSQUARE_OS_ACCESS_TOKEN" ]; then
             echo "ready=true" >> "$GITHUB_OUTPUT"
-            echo "Foursquare OS token is configured."
+            echo "Foursquare H3 Hub token is configured."
           else
             echo "ready=false" >> "$GITHUB_OUTPUT"
             echo "FOURSQUARE_OS_ACCESS_TOKEN is not configured; enrichment will be skipped."
           fi
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         if: steps.fsq-secret.outputs.ready == 'true'
         with:
           python-version: '3.12'
