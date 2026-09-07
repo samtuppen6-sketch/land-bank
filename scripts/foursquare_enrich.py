@@ -4,6 +4,7 @@ import math
 import os
 import re
 import sys
+import urllib.error
 import urllib.parse
 import urllib.request
 from urllib.parse import urlparse
@@ -116,7 +117,6 @@ def attach_catalog():
         "ATTACH 'places' AS places (TYPE iceberg, SECRET iceberg_secret, "
         f"ENDPOINT '{CATALOG_ENDPOINT}');"
     )
-    # Fast fail if auth/catalog/table access is wrong.
     con.execute('SELECT fsq_place_id FROM places.datasets.places_os LIMIT 1').fetchone()
     return con
 
@@ -143,7 +143,6 @@ def rows_near_job(con, job):
     lat, lng = job.get('lat'), job.get('lng')
     if lat is None or lng is None:
         return []
-    # Roughly a 3–4 km box in Great Britain. This is fallback only.
     dlat, dlng = 0.035, 0.055
     sql = """
         SELECT fsq_place_id,name,latitude,longitude,address,locality,region,postcode,country,
@@ -172,7 +171,6 @@ def candidate_score(job, cand):
     dist = haversine_km(job.get('lat'), job.get('lng'), cand.get('latitude'), cand.get('longitude'))
     domain_match = bool(job.get('domain') and host(job.get('domain')) and host(job.get('domain')) == host(cand.get('website')))
 
-    # Require identity evidence; rural postcodes often contain several unrelated POIs.
     if not (exact_name or ov >= 0.34 or domain_match):
         return -1, dist, ov
 
@@ -263,13 +261,21 @@ def process_batch(con, jobs):
 
 def main():
     if not FSQ_TOKEN:
-        print('FOURSQUARE_OS_ACCESS_TOKEN is not configured in GitHub Actions; skipping Foursquare enrichment.')
+        print('Foursquare enrichment skipped: no access token is configured.')
         return 0
     if not SUPABASE_URL or not SUPABASE_KEY:
         raise RuntimeError('SUPABASE_URL/SUPABASE_PUBLISHABLE_KEY missing')
 
     print('Connecting to Foursquare OS Places Iceberg catalog…')
-    con = attach_catalog()
+    try:
+        con = attach_catalog()
+    except (urllib.error.HTTPError, duckdb.Error) as exc:
+        text = str(exc)
+        if '401' in text or '403' in text or 'Unauthorized' in text or 'Forbidden' in text:
+            print('Foursquare enrichment skipped: configured H3 Hub token is not currently authorised. Replace FOURSQUARE_OS_ACCESS_TOKEN with a valid H3 Hub access token, then rerun manually.')
+            return 0
+        raise
+
     total_jobs = total_contacts = 0
     for n in range(MAX_BATCHES):
         jobs = fetch_jobs(BATCH_SIZE)
