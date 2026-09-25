@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>LandBank — Lower Longwood Acquisition Details</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:#000;font:16px/1.45 Arial,Helvetica,sans-serif}
+header{border-bottom:2px solid #000;padding:20px}
+.brand{max-width:760px;margin:auto;font-size:26px;font-weight:800}
+.wrap{max-width:760px;margin:0 auto;padding:24px 16px 48px}
+h1{font-size:26px;line-height:1.2;margin:0 0 10px}
+p{margin:8px 0}
+.rule{border-top:1px solid #000;margin:22px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field.full{grid-column:1/-1}
+label,.legend{display:block;font-weight:700;margin:0 0 6px}
+input[type=text],input[type=number],input[type=email],textarea{width:100%;border:1px solid #000;border-radius:0;background:#fff;color:#000;padding:11px;font:inherit}
+input[readonly]{background:#f6f6f6}
+textarea{min-height:88px;resize:vertical}
+fieldset{border:0;padding:0;margin:0}
+.radioRow{display:flex;flex-wrap:wrap;gap:14px 20px;padding:8px 0}
+.radioRow label{font-weight:400;margin:0;display:flex;align-items:center;gap:7px}
+.radioRow input{accent-color:#000}
+button{width:100%;border:2px solid #000;border-radius:0;background:#000;color:#fff;font:inherit;font-weight:800;padding:13px 16px;margin-top:18px;cursor:pointer}
+button.secondary{background:#fff;color:#000}
+.status{border:1px solid #000;padding:16px;margin-top:16px}
+.note{font-size:12px;margin-top:10px}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.field.full{grid-column:auto}h1{font-size:23px}}
+</style>
+</head>
+<body>
+<header><div class="brand">LandBank</div></header>
+<div class="wrap">
+  <h1>Lower Longwood — acquisition details</h1>
+  <p>Following your conversation with Sam, please confirm the points below so the acquisition side can be reviewed before the contract is prepared.</p>
+  <p>This form is for information only and does not commit either party to a sale or contract.</p>
+
+  <div class="rule"></div>
+
+  <form id="form">
+    <div class="grid">
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" type="text" value="Ben Bailey" readonly>
+      </div>
+      <div class="field">
+        <label for="farm">Farm / holding</label>
+        <input id="farm" type="text" value="Lower Longwood" readonly>
+      </div>
+      <div class="field">
+        <label for="phone">Mobile</label>
+        <input id="phone" type="text" value="07532 105871" readonly>
+      </div>
+      <div class="field">
+        <label for="acres">Approx. total acreage</label>
+        <input id="acres" type="number" value="100" readonly>
+      </div>
+
+      <div class="field full">
+        <fieldset>
+          <span class="legend">Are you the legal owner / authorised person able to progress a sale or acquisition discussion?</span>
+          <div class="radioRow">
+            <label><input type="radio" name="authority" value="Yes" required> Yes</label>
+            <label><input type="radio" name="authority" value="No"> No</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="field full">
+        <fieldset>
+          <span class="legend">Would you consider LandBank / its project partner acquiring the land if the commercial terms are suitable?</span>
+          <div class="radioRow">
+            <label><input type="radio" name="sale" value="Yes" required> Yes</label>
+            <label><input type="radio" name="sale" value="Possibly"> Possibly / discuss</label>
+            <label><input type="radio" name="sale" value="No"> No</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="field full">
+        <fieldset>
+          <span class="legend">Is the 100 acres one continuous block?</span>
+          <div class="radioRow">
+            <label><input type="radio" name="contiguous" value="Yes"> Yes</label>
+            <label><input type="radio" name="contiguous" value="No"> No</label>
+            <label><input type="radio" name="contiguous" value="Not sure"> Not sure</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="field full">
+        <label for="use">Current use of the land</label>
+        <input id="use" type="text" placeholder="e.g. grazing, arable, mixed, unused">
+      </div>
+
+      <div class="field full">
+        <label for="occupation">Any tenant, occupier or third party currently using any part of the land?</label>
+        <textarea id="occupation" placeholder="If none, write 'None'."></textarea>
+      </div>
+
+      <div class="field full">
+        <label for="rights">Any existing solar, battery, wind, option, exclusivity or other development agreement affecting the land?</label>
+        <textarea id="rights" placeholder="Please include anything currently in place or being discussed."></textarea>
+      </div>
+
+      <div class="field full">
+        <label for="access">Access / practical points we should know</label>
+        <textarea id="access" placeholder="Road access, gates, neighbouring access, restrictions, etc."></textarea>
+      </div>
+
+      <div class="field full">
+        <label for="price">Indicative price expectation, if you have one</label>
+        <input id="price" type="text" placeholder="Optional — leave blank if you would rather discuss">
+      </div>
+
+      <div class="field full">
+        <label for="notes">Anything else relevant before we prepare the next-stage paperwork?</label>
+        <textarea id="notes" placeholder="Optional"></textarea>
+      </div>
+    </div>
+
+    <button type="submit">Email completed details to Sam</button>
+    <button type="button" class="secondary" id="copy">Copy answers instead</button>
+    <div class="note">No login or access code is required. Your answers stay on your device until you choose to email or copy them.</div>
+  </form>
+
+  <div id="status" class="status" hidden></div>
+</div>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id);
+function checked(name){return document.querySelector('input[name="'+name+'"]:checked')?.value || 'Not answered';}
+function summary(){
+  return [
+    'LANDBANK — LOWER LONGWOOD ACQUISITION DETAILS',
+    '',
+    'Name: Ben Bailey',
+    'Farm / holding: Lower Longwood',
+    'Mobile: 07532 105871',
+    'Approx. total acreage: 100',
+    '',
+    'Legal owner / authorised to progress: '+checked('authority'),
+    'Would consider acquisition: '+checked('sale'),
+    'One continuous block: '+checked('contiguous'),
+    'Current land use: '+($('use').value.trim()||'Not answered'),
+    'Tenant / occupier / third party use: '+($('occupation').value.trim()||'Not answered'),
+    'Existing renewable / option / exclusivity rights: '+($('rights').value.trim()||'Not answered'),
+    'Access / practical points: '+($('access').value.trim()||'Not answered'),
+    'Indicative price expectation: '+($('price').value.trim()||'Not stated'),
+    'Other relevant information: '+($('notes').value.trim()||'None stated')
+  ].join('\n');
+}
+function show(msg){$('status').hidden=false;$('status').textContent=msg;}
+$('form').addEventListener('submit',e=>{
+  e.preventDefault();
+  if(!document.querySelector('input[name="authority"]:checked') || !document.querySelector('input[name="sale"]:checked')){
+    show('Please answer the two required questions before continuing.');
+    return;
+  }
+  const subject='Lower Longwood — LandBank acquisition details';
+  const body=summary();
+  location.href='mailto:sam@landbank.energy?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+  show('Your email app should now open with the completed details. Please press Send.');
+});
+$('copy').addEventListener('click',async()=>{
+  try{await navigator.clipboard.writeText(summary());show('Answers copied. Paste them into a reply to Sam.');}
+  catch{show('Copy was blocked by your browser. Select the answers on screen or use the email button instead.');}
+});
+})();
+</script>
+</body>
+</html>
