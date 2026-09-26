@@ -29,3 +29,12 @@
 - Verify title before offers.
 - Verify grid before valuation.
 - Verify planning before commitment.
+
+
+## Deal approach
+- Screen before outreach.
+- Agent route: acquisition enquiry.
+- Owner route: confidential discussion.
+- Project route: rights/SPV/JV.
+- Offers remain subject to DD.
+- Never price unverified upside.
