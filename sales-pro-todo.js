@@ -52,9 +52,10 @@ async function showCallbackDialog(opportunityId,previousTaskId=null){return new 
   const form=overlay.querySelector('#lbCallbackForm'),note=overlay.querySelector('#lbCallbackNote'),when=overlay.querySelector('#lbCallbackWhen'),error=overlay.querySelector('#lbCallbackError'),save=overlay.querySelector('#lbCallbackSave');
   let pending=false;
   const finish=ok=>{document.removeEventListener('keydown',escapeKey);overlay.remove();resolve(ok)};
-  const escapeKey=e=>{if(e.key==='Escape'&&!pending)finish(false)};
+  const mayDiscard=()=>!note.value.trim()||confirm('Discard this unsaved callback note?');
+  const escapeKey=e=>{if(e.key==='Escape'&&!pending&&mayDiscard())finish(false)};
   document.addEventListener('keydown',escapeKey);
-  overlay.querySelector('#lbCallbackCancel').onclick=()=>{if(!pending)finish(false)};
+  overlay.querySelector('#lbCallbackCancel').onclick=()=>{if(!pending&&mayDiscard())finish(false)};
   form.onsubmit=async e=>{
     e.preventDefault();
     if(pending)return;
