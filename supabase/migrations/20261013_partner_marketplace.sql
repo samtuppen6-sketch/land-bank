@@ -129,11 +129,15 @@ with assets as (
 )
 select a.*,d.id organisation_id,d.name organisation_name,d.partner_lane,d.partner_type,d.primary_contact,d.primary_email,d.primary_phone,d.earliest_stage,d.latest_stage,d.funds_devex,
 (
- case when coalesce(array_length(d.geographies,1),0)=0 then 20 when a.country=any(d.geographies) then 40
+ case when coalesce(array_length(d.geographies,1),0)=0 then 10 when a.country=any(d.geographies) then 40
       when a.country in ('England','Wales','Scotland','Northern Ireland') and 'UK'=any(d.geographies) then 40
       when a.country='Republic of Ireland' and ('Ireland'=any(d.geographies) or 'Republic of Ireland'=any(d.geographies)) then 40 else 0 end
- + case when a.potential_mwp_base is null then 10 when (d.min_mw is null or a.potential_mwp_base>=d.min_mw) and (d.max_mw is null or a.potential_mwp_base<=d.max_mw) then 30 else 0 end
- + case when a.stage_rank between coalesce(d.stage_min_rank,1) and coalesce(d.stage_max_rank,5) then 20 else 0 end
+ + case when a.potential_mwp_base is null then 5
+        when d.min_mw is null and d.max_mw is null then 10
+        when (d.min_mw is null or a.potential_mwp_base>=d.min_mw) and (d.max_mw is null or a.potential_mwp_base<=d.max_mw) then 30 else 0 end
+ + case when a.stage_rank between coalesce(d.stage_min_rank,1) and coalesce(d.stage_max_rank,5)
+        then case when coalesce(d.stage_min_rank,1)=1 and coalesce(d.stage_max_rank,5)=5 then 10 else 20 end
+        else 0 end
  + case when coalesce(array_length(d.technologies,1),0)=0 or 'solar'=any(d.technologies) then 10 else 0 end
 )::integer match_score
 from assets a cross join public.lb_partner_directory d
