@@ -75,3 +75,23 @@ CREATE POLICY lb_project_partner_team ON public.lb_project_partner_assignments
   WITH CHECK ((SELECT private.lb_access_allowed()));
 COMMENT ON TABLE public.lb_project_execution IS 'Independent development diligence and rights gates; never evidence of capital commitment';
 COMMENT ON TABLE public.lb_project_partner_assignments IS 'Research and negotiation status only; contract_signed requires user-supplied evidence reference, never automatically verifies capital availability';
+
+-- Restrict the new workbench to the existing LandBank authorised team; no table deletes.
+REVOKE ALL ON public.lb_project_execution FROM PUBLIC, anon, authenticated;
+REVOKE ALL ON public.lb_project_partner_assignments FROM PUBLIC, anon, authenticated;
+GRANT SELECT, INSERT, UPDATE ON public.lb_project_execution TO authenticated;
+GRANT SELECT, INSERT, UPDATE ON public.lb_project_partner_assignments TO authenticated;
+DROP POLICY IF EXISTS lb_project_execution_team ON public.lb_project_execution;
+DROP POLICY IF EXISTS lb_project_partner_team ON public.lb_project_partner_assignments;
+CREATE POLICY lb_project_execution_read ON public.lb_project_execution FOR SELECT TO authenticated
+ USING ((SELECT private.lb_access_allowed()));
+CREATE POLICY lb_project_execution_insert ON public.lb_project_execution FOR INSERT TO authenticated
+ WITH CHECK ((SELECT private.lb_access_allowed()));
+CREATE POLICY lb_project_execution_update ON public.lb_project_execution FOR UPDATE TO authenticated
+ USING ((SELECT private.lb_access_allowed())) WITH CHECK ((SELECT private.lb_access_allowed()));
+CREATE POLICY lb_project_partner_read ON public.lb_project_partner_assignments FOR SELECT TO authenticated
+ USING ((SELECT private.lb_access_allowed()));
+CREATE POLICY lb_project_partner_insert ON public.lb_project_partner_assignments FOR INSERT TO authenticated
+ WITH CHECK ((SELECT private.lb_access_allowed()));
+CREATE POLICY lb_project_partner_update ON public.lb_project_partner_assignments FOR UPDATE TO authenticated
+ USING ((SELECT private.lb_access_allowed())) WITH CHECK ((SELECT private.lb_access_allowed()));
